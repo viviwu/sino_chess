@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="XWImageRightDetailCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2UB-O2-Nra">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="city_night.png" translatesAutoresizingMaskIntoConstraints="NO" id="R3h-XM-0Cd">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6J-zw-ZqQ">
+                            <rect key="frame" x="192.5" y="175" width="172.5" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="uTa-jg-Hd4"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHb-wi-aIh">
+                            <rect key="frame" x="10" y="175" width="172.5" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="vfL-AN-G2a"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="R3h-XM-0Cd" firstAttribute="top" secondItem="2UB-O2-Nra" secondAttribute="top" id="4by-ZH-BHq"/>
+                        <constraint firstItem="y6J-zw-ZqQ" firstAttribute="width" secondItem="BHb-wi-aIh" secondAttribute="width" id="5Lz-nJ-Iuo"/>
+                        <constraint firstAttribute="trailing" secondItem="R3h-XM-0Cd" secondAttribute="trailing" id="9XP-tb-Kf6"/>
+                        <constraint firstItem="BHb-wi-aIh" firstAttribute="top" secondItem="R3h-XM-0Cd" secondAttribute="bottom" id="Azl-AN-2aX"/>
+                        <constraint firstItem="R3h-XM-0Cd" firstAttribute="leading" secondItem="2UB-O2-Nra" secondAttribute="leading" id="LwM-uy-4qL"/>
+                        <constraint firstAttribute="trailing" secondItem="y6J-zw-ZqQ" secondAttribute="trailing" constant="10" id="RzJ-3T-P4w"/>
+                        <constraint firstItem="y6J-zw-ZqQ" firstAttribute="leading" secondItem="BHb-wi-aIh" secondAttribute="trailing" constant="10" id="WZH-Yc-Sx0"/>
+                        <constraint firstItem="BHb-wi-aIh" firstAttribute="leading" secondItem="2UB-O2-Nra" secondAttribute="leading" constant="10" id="avy-fU-723"/>
+                        <constraint firstAttribute="bottom" secondItem="y6J-zw-ZqQ" secondAttribute="bottom" id="h1K-Od-jpK"/>
+                        <constraint firstAttribute="bottom" secondItem="BHb-wi-aIh" secondAttribute="bottom" id="jd5-1x-fsf"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="2UB-O2-Nra" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ADK-dY-Njq"/>
+                <constraint firstItem="2UB-O2-Nra" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="bnq-3r-uHg"/>
+                <constraint firstItem="2UB-O2-Nra" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="gil-hL-mIn"/>
+                <constraint firstItem="2UB-O2-Nra" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="vTu-dP-lmj"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="detailLabel" destination="y6J-zw-ZqQ" id="kK4-Mv-rLl"/>
+                <outlet property="imageView" destination="R3h-XM-0Cd" id="27D-la-KHk"/>
+                <outlet property="titleLabel" destination="BHb-wi-aIh" id="Hez-hR-f3h"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="63"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="city_night.png" width="375" height="192"/>
+    </resources>
+</document>

@@ -12,8 +12,12 @@
 #define kScreenH [UIScreen mainScreen].bounds.size.height
 
 @interface XWCellLayout : NSObject
+
 @property (nonatomic, assign) CGSize size;
 @property (nonatomic, copy) NSString * title;
+@property (nonatomic, copy) NSString * detail;
+@property (nonatomic, copy) UIImage * image;
+
 @end
 
 @interface XWSectionLayout : NSObject
