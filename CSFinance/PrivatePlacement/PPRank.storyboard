@@ -1357,7 +1357,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="8ga-3i-voi" kind="show" id="lXi-xR-WPs"/>
+                                    <segue destination="I19-CJ-RAF" kind="show" id="T5R-j5-3MB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1691,7 +1691,7 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="YYY公司"/>
                                                     <connections>
-                                                        <segue destination="8ga-3i-voi" kind="show" id="l5Q-wQ-sO0"/>
+                                                        <segue destination="I19-CJ-RAF" kind="show" id="GoY-yk-VLj"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1744,20 +1744,43 @@
             </objects>
             <point key="canvasLocation" x="897" y="833"/>
         </scene>
-        <!--Institute Homepage View Controller-->
-        <scene sceneID="DME-Lu-BAL">
+        <!--Corp Home Table Controller-->
+        <scene sceneID="2Nd-Pz-C7m">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="8ga-3i-voi" customClass="PPInstituteHomepageViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="t9J-Ar-77M">
+                <tableViewController storyboardIdentifier="CorpHomeTableController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I19-CJ-RAF" customClass="CorpHomeTableController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CRf-bT-Fql">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.62299409429999997" green="0.79087197200000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <viewLayoutGuide key="safeArea" id="I6U-Iz-NH3"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rLY-DL-nYk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="UjI-cC-daH">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="Ptc-Q5-gdU">
+                            <rect key="frame" x="0.0" y="478" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="300" id="nQE-UR-1MA">
+                                <rect key="frame" x="0.0" y="178" width="375" height="300"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nQE-UR-1MA" id="P0a-pI-cMr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="I19-CJ-RAF" id="xfS-jc-6yC"/>
+                            <outlet property="delegate" destination="I19-CJ-RAF" id="eBn-vE-0DB"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k1p-IC-ocO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1878" y="833"/>
+            <point key="canvasLocation" x="1805.5999999999999" y="840.62968515742136"/>
         </scene>
     </scenes>
     <resources>
@@ -1771,7 +1794,7 @@
         <image name="userid.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="l5Q-wQ-sO0"/>
+        <segue reference="GoY-yk-VLj"/>
         <segue reference="HeY-6i-xBd"/>
         <segue reference="bSR-Nn-Qg5"/>
     </inferredMetricsTieBreakers>
