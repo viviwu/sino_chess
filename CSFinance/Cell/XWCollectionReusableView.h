@@ -7,11 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XWFeedLayout.h"
 
+typedef NS_ENUM(NSInteger, XWCollectionReusableViewStyle) {
+    XWCollectionReusableViewStyleNormal=0,
+    XWCollectionReusableViewStyleDetail
+};
+typedef void(^XWActionHandle)(XWItemLayout *);
 @interface XWCollectionReusableView : UICollectionReusableView
+@property(nonatomic, strong)UIView * contentView;
+@property(nonatomic, strong)UILabel * titleLabel;
+//@property(nonatomic, strong)UILabel * detailLabel;
+@property(nonatomic, strong)UIButton * detailButton;
 
-@property(nonatomic, strong)UILabel * label;
+@property(nonatomic, strong)XWItemLayout * layoutModel;
+@property(nonatomic, copy)XWActionHandle actionHandle;
 
-- (void)refreshWithData:(NSString*)data;
+-(void)refreshWithLayoutModel:(id)model;
 
 @end

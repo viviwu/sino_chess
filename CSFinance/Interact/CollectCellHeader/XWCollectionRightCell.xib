@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="XWCollectionRightCell">
+            <rect key="frame" x="0.0" y="0.0" width="309" height="89"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5M-CT-U0M">
+                    <rect key="frame" x="0.0" y="0.0" width="309" height="89"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userid.png" translatesAutoresizingMaskIntoConstraints="NO" id="CcL-Cm-bpP">
+                    <rect key="frame" x="10" y="20.5" width="48" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="48" id="6B2-06-fQC"/>
+                        <constraint firstAttribute="height" constant="48" id="axl-kp-9JM"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如何看待 2017 年 6 月 21 日中国 A 股纳入 MSCI？意味着什么？" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0O-WB-rcE">
+                    <rect key="frame" x="66" y="10" width="227" height="43"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="140个回答～10个答主～17051人关注" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itz-hB-Bqq">
+                    <rect key="frame" x="66" y="58" width="228" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="9BQ-eb-qJc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="CcL-Cm-bpP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="1fN-h1-80o"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="itz-hB-Bqq" secondAttribute="bottom" constant="10" id="1rR-cy-AII"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="T5M-CT-U0M" secondAttribute="trailing" id="2n0-1B-SFz"/>
+                <constraint firstAttribute="bottom" secondItem="T5M-CT-U0M" secondAttribute="bottom" id="7yp-eG-hId"/>
+                <constraint firstItem="CcL-Cm-bpP" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="QEc-JN-NLD"/>
+                <constraint firstItem="T5M-CT-U0M" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="TCb-ev-zh8"/>
+                <constraint firstItem="z0O-WB-rcE" firstAttribute="leading" secondItem="CcL-Cm-bpP" secondAttribute="trailing" constant="8" id="Vpx-uC-4fN"/>
+                <constraint firstItem="T5M-CT-U0M" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cPN-kf-HAf"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="z0O-WB-rcE" secondAttribute="trailing" constant="16" id="gOc-T0-mEf"/>
+                <constraint firstItem="z0O-WB-rcE" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="htd-1i-d0V"/>
+                <constraint firstItem="itz-hB-Bqq" firstAttribute="top" secondItem="z0O-WB-rcE" secondAttribute="bottom" constant="5" id="j6b-gQ-3OT"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="itz-hB-Bqq" secondAttribute="trailing" constant="15" id="jbh-fa-hGp"/>
+                <constraint firstItem="itz-hB-Bqq" firstAttribute="leading" secondItem="CcL-Cm-bpP" secondAttribute="trailing" constant="8" id="w4x-lP-yhL"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="0.5" y="20.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="userid.png" width="30" height="30"/>
+    </resources>
+</document>

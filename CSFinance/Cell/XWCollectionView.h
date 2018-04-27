@@ -19,13 +19,13 @@ typedef void (^SelectActionHandle)(NSIndexPath *);
 
 @interface XWCollectionView : UICollectionView
 
-@property (nonatomic, copy) NSArray<XWSectionLayout*>* sectionLayouts;
+@property (nonatomic, copy) NSArray<XWGroupLayout*>* groupLayouts;
 @property (nonatomic, strong) SelectActionHandle selectHandle;
 
 - (void)setSelectHandle:(SelectActionHandle)selectHandle;
 
-- (void)refreshWith:(id)sectionLayouts;
+- (void)refreshWith:(id)groupLayouts;
 
-+ (NSArray<XWCellLayout*>*)defaultSectionLayouts;
++ (NSArray<XWItemLayout*>*)defaultgroupLayouts;
 
 @end

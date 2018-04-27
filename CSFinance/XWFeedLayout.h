@@ -7,27 +7,42 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #define kScreenW [UIScreen mainScreen].bounds.size.width
 #define kScreenH [UIScreen mainScreen].bounds.size.height
 
-@interface XWCellLayout : NSObject
+//@protocol XWBasicCellModel<NSObject>
+//@property (weak, nonatomic) UILabel *titleLabel;
+//@property (weak, nonatomic) UIImageView *imageView;
+//- (void)refreshWithLayoutModel:(id)model;
+//@end
 
-@property (nonatomic, assign) CGSize size;
+@interface XWItemLayout : NSObject
+
+@property (nonatomic, copy) NSString * reuseID;
+@property (nonatomic, assign) NSInteger cellStyle;
+
 @property (nonatomic, copy) NSString * title;
 @property (nonatomic, copy) NSString * detail;
 @property (nonatomic, copy) UIImage * image;
+@property (nonatomic, copy) NSDictionary * linkInfo;    //url / command /time /...
+
+@property (nonatomic, assign) CGFloat height;    //TableViewCell
+@property (nonatomic, assign) CGSize size;  //CollectionViewCell
 
 @end
 
-@interface XWSectionLayout : NSObject
+@interface XWGroupLayout : NSObject
+@property (nonatomic, strong) XWItemLayout * headerLayout;
+@property (nonatomic, strong) XWItemLayout * footerLayout;
 @property (nonatomic, copy) NSString * cellReuseID;
-@property (nonatomic, assign) CGSize headerSize;
-@property (nonatomic, copy) NSString * headerTitle;
-@property (nonatomic, assign) CGSize footerSize;
-@property (nonatomic, copy) NSString * footerTitle;
-@property (nonatomic, copy) NSArray<XWCellLayout*>* celllayouts;
-- (instancetype)initWithData:(NSArray<XWCellLayout*>*)celllayouts;
+
+@property (nonatomic, copy) NSArray<XWItemLayout*>* itemLayouts;
+- (instancetype)initWithData:(NSArray<XWItemLayout*>*)itemLayouts;
+
+- (XWItemLayout *) headerLayout;
+- (XWItemLayout *) footerLayout;
 
 @end
 

@@ -8,6 +8,7 @@
 
 #import "PodcastCollectionController.h"
 #import "XWCollectionView.h"
+#import "XWImageSubtitleCell.h"
 
 @interface PodcastCollectionController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 {
@@ -15,7 +16,7 @@
 }
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
 @property (nonatomic, strong) UICollectionView * collectionView;
-@property (nonatomic, copy) NSArray<XWSectionLayout*>* sectionLayouts;
+@property (nonatomic, copy) NSArray<XWGroupLayout*>* groupLayouts;
 
 @end
 
@@ -49,11 +50,12 @@
     
     _cellReuseIDs = @[@"videoCellA", @"videoCellB", @"videoCellC"];
     for (NSString * cellid in _cellReuseIDs) {
-        [self.collectionView registerClass:[XWCollectionViewCell class] forCellWithReuseIdentifier:cellid];
+//        [self.collectionView registerClass:[XWCollectionViewCell class] forCellWithReuseIdentifier:cellid];
+        [self.collectionView registerNib:[UINib nibWithNibName:@"XWCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:cellid];
     }
     [self.collectionView registerClass:[XWCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UICollectionElementKindSectionHeader"];
     
-    self.sectionLayouts = [self defaultSectionLayouts];
+    self.groupLayouts = [self defaultgroupLayouts];
     [self.collectionView reloadData];
     // Register cell classes
     
@@ -63,39 +65,42 @@
 #pragma mark <UICollectionViewDataSource>
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return self.sectionLayouts.count;
+    return self.groupLayouts.count;
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    XWSectionLayout * sectionLayout = self.sectionLayouts[section];
-    return sectionLayout.celllayouts.count;
+    XWGroupLayout * groupLayout = self.groupLayouts[section];
+    return groupLayout.itemLayouts.count;
 }
 
 - (nonnull __kindof XWCollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    XWSectionLayout * sectionLayout = self.sectionLayouts[indexPath.section];
-    XWCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:sectionLayout.cellReuseID forIndexPath:indexPath];
+    XWGroupLayout * groupLayout = self.groupLayouts[indexPath.section];
+    XWItemLayout * item = groupLayout.itemLayouts[indexPath.row];
     
-    XWCellLayout * item = sectionLayout.celllayouts[indexPath.row];
-    NSString * str = [NSString stringWithFormat:@"Cell (%ld,%ld)", (long)indexPath.section, (long)indexPath.row];
-    [cell refreshWithData:@{@"title":item.title, @"detail": str}];
+    XWCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:groupLayout.cellReuseID forIndexPath:indexPath];
+    
+    [cell refreshWithLayoutModel:item];
+    
     return cell;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    XWSectionLayout * sectionLayout = self.sectionLayouts[indexPath.section];
+    XWGroupLayout * groupLayout = self.groupLayouts[indexPath.section];
+    
     XWCollectionReusableView * cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kind forIndexPath:indexPath];
-    [cell refreshWithData:sectionLayout.headerTitle];
+    
+    [cell refreshWithLayoutModel:groupLayout.headerLayout];
     return cell;
 }
 
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    XWSectionLayout * sectionLayout = self.sectionLayouts[indexPath.section];
-    XWCellLayout * item = sectionLayout.celllayouts[indexPath.row];
+    XWGroupLayout * groupLayout = self.groupLayouts[indexPath.section];
+    XWItemLayout * item = groupLayout.itemLayouts[indexPath.row];
     if (item.size.height) {
         return item.size;
     }else
@@ -104,9 +109,9 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    XWSectionLayout * sectionLayout = self.sectionLayouts[section];
-    if (sectionLayout.headerSize.height) {
-        return sectionLayout.headerSize;
+    XWGroupLayout * groupLayout = self.groupLayouts[section];
+    if (!CGSizeEqualToSize(groupLayout.headerLayout.size, CGSizeZero)) {
+        return groupLayout.headerLayout.size;
     }else
         return CGSizeZero;
 }
@@ -127,42 +132,42 @@
  }
  */
 
-- (NSArray<XWSectionLayout*>*)defaultSectionLayouts{
+- (NSArray<XWGroupLayout*>*)defaultgroupLayouts{
     
     NSMutableArray * layouts = [NSMutableArray array];
     for (int k=0; k<3; k++) {
-        XWSectionLayout * sectionLayout =[[XWSectionLayout alloc]init];
-        sectionLayout.cellReuseID = _cellReuseIDs[k];
-        sectionLayout.headerSize = CGSizeMake(kScreenW, 40.0);
-        NSMutableArray * celllayouts = [NSMutableArray array];
+        XWGroupLayout * groupLayout =[[XWGroupLayout alloc]init];
+        groupLayout.cellReuseID = _cellReuseIDs[k];
+        groupLayout.headerLayout.size = CGSizeMake(kScreenW, 30.0);
+        NSMutableArray * itemLayouts = [NSMutableArray array];
         if (k==0) {
-            sectionLayout.headerTitle = @"近期路演";
+            groupLayout.headerLayout.title = @"近期路演";
             for (int i=0; i<3; i++) {
-                sectionLayout.headerSize = CGSizeZero;
-                XWCellLayout * cellLayout = [[XWCellLayout alloc]init];
-                cellLayout.size = CGSizeMake(kScreenW-10, kScreenW/2);
-                cellLayout.title = @"XXX路演";
-                [celllayouts addObject:cellLayout];
+                groupLayout.headerLayout.size = CGSizeZero;
+                XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
+                itemLayout.size = CGSizeMake(kScreenW-10, kScreenW/2);
+                itemLayout.title = @"XXX路演";
+                [itemLayouts addObject:itemLayout];
             }
         }else if (k==1) {
-            sectionLayout.headerTitle = @"热门直播";
-            for (int i=0; i<6; i++) {
-                XWCellLayout * cellLayout = [[XWCellLayout alloc]init];
-                cellLayout.size = CGSizeMake(kScreenW/2-7.5, kScreenW/2+20.0);
-                cellLayout.title = @"XXX直播";
-                [celllayouts addObject:cellLayout];
+            groupLayout.headerLayout.title = @"热门直播";
+            for (int i=0; i<4; i++) {
+                XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
+                itemLayout.size = CGSizeMake(kScreenW/2-7.5, kScreenW/2+50.0);
+                itemLayout.title = @"XXX直播";
+                [itemLayouts addObject:itemLayout];
             }
         }else{
-            sectionLayout.headerTitle = @"Live课堂";
-            for (int i=0; i<5; i++) {
-                XWCellLayout * cellLayout = [[XWCellLayout alloc]init];
-                cellLayout.size = CGSizeMake(kScreenW/2-7.5, kScreenW/3);
-                cellLayout.title = @"XXX课堂";
-                [celllayouts addObject:cellLayout];
+            groupLayout.headerLayout.title = @"Live课堂";
+            for (int i=0; i<6; i++) {
+                XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
+                itemLayout.size = CGSizeMake(kScreenW/2-7.5, kScreenW/3);
+                itemLayout.title = @"XXX课堂";
+                [itemLayouts addObject:itemLayout];
             }
         }
-        sectionLayout.celllayouts = [celllayouts copy];
-        [layouts addObject:sectionLayout];
+        groupLayout.itemLayouts = [itemLayouts copy];
+        [layouts addObject:groupLayout];
     }
     return layouts;
 }

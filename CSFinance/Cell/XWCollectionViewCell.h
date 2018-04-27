@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface XWCollectionViewCell : UICollectionViewCell
-@property(nonatomic, strong)UILabel * label;
-@property(nonatomic, strong)UILabel * detailLabel;
+//@property(nonatomic, strong)UILabel * label;
+//@property(nonatomic, strong)UILabel * detailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rightLabel;
+@property (weak, nonatomic) IBOutlet UILabel *leftLabel;
 
-- (void)refreshWithData:(NSDictionary*)data;
+- (void)refreshWithLayoutModel:(id)model;
 
 @end

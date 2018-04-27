@@ -22,26 +22,26 @@
 
 @implementation XWCollectionView
 
-+ (NSArray<XWCellLayout*>*)defaultSectionLayouts{
++ (NSArray<XWItemLayout*>*)defaultgroupLayouts{
     NSMutableArray * layouts = [NSMutableArray array];
     for (int k=0; k<3; k++) {
-        XWSectionLayout * sectionLayout =[[XWSectionLayout alloc]init];
-        sectionLayout.headerSize = CGSizeMake(kScreenW, 40.0);
-        NSMutableArray * celllayouts = [NSMutableArray array];
+        XWGroupLayout * groupLayout =[[XWGroupLayout alloc]init];
+        groupLayout.headerLayout.size = CGSizeMake(kScreenW, 40.0);
+        NSMutableArray * itemLayouts = [NSMutableArray array];
         for (int i=0; i<6; i++) {
-            XWCellLayout * cellLayout = [[XWCellLayout alloc]init];
+            XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
             if (k==1) {
-                cellLayout.size = CGSizeMake(kScreenW/2-7.5, 100.0);
+                itemLayout.size = CGSizeMake(kScreenW/2-7.5, 100.0);
             }else if(k==2){
-                cellLayout.size =  CGSizeMake(kScreenW/3-5.0, 150.0);
+                itemLayout.size =  CGSizeMake(kScreenW/3-5.0, 150.0);
             }else{
-                cellLayout.size = CGSizeMake(kScreenW-10.0, 80.0);
+                itemLayout.size = CGSizeMake(kScreenW-10.0, 80.0);
             }
             
-            [celllayouts addObject:cellLayout];
+            [itemLayouts addObject:itemLayout];
         }
-        sectionLayout.celllayouts = [celllayouts copy];
-        [layouts addObject:sectionLayout];
+        groupLayout.itemLayouts = [itemLayouts copy];
+        [layouts addObject:groupLayout];
     }
     return layouts;
 }
@@ -94,9 +94,9 @@
 //    _actionDelegate = actionDelegate;
 //}
 
-- (void)refreshWith:(id)sectionLayouts
+- (void)refreshWith:(id)groupLayouts
 {
-    self.sectionLayouts = sectionLayouts;
+    self.groupLayouts = groupLayouts;
     [self reloadData];
 }
 
@@ -109,40 +109,43 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return self.sectionLayouts.count;
+    return self.groupLayouts.count;
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    XWSectionLayout * sectionLayout = self.sectionLayouts[section];
-    return sectionLayout.celllayouts.count;
+    XWGroupLayout * groupLayout = self.groupLayouts[section];
+    return groupLayout.itemLayouts.count;
 }
 
 - (nonnull __kindof XWCollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    XWSectionLayout * sectionLayout = self.sectionLayouts[indexPath.section];
-    XWCellLayout * item = sectionLayout.celllayouts[indexPath.row];
-    NSString * str = [NSString stringWithFormat:@"Cell (%ld,%ld)", (long)indexPath.section, (long)indexPath.row];
+    XWGroupLayout * groupLayout = self.groupLayouts[indexPath.section];
+    XWItemLayout * item = groupLayout.itemLayouts[indexPath.row];
+    
     XWCollectionViewCell * cell = nil;
     cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellA" forIndexPath:indexPath];
   
-    [cell refreshWithData:@{@"title":item.title, @"detail": str}];
+    [cell refreshWithLayoutModel:item];
     return cell;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    NSString * str = [NSString stringWithFormat:@"Header (%ld,%ld)", (long)indexPath.section, (long)indexPath.row];
+    XWItemLayout * item =[[XWItemLayout alloc]init];
+    item.title = [NSString stringWithFormat:@"Header (%ld,%ld)", (long)indexPath.section, (long)indexPath.row];
+    
     XWCollectionReusableView * cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kind forIndexPath:indexPath];
-    [cell refreshWithData:str];
+    
+    [cell refreshWithLayoutModel:item];
     return cell;
 }
 
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    XWSectionLayout * sectionLayout = self.sectionLayouts[indexPath.section];
-    XWCellLayout * item = sectionLayout.celllayouts[indexPath.row];
+    XWGroupLayout * groupLayout = self.groupLayouts[indexPath.section];
+    XWItemLayout * item = groupLayout.itemLayouts[indexPath.row];
     if (item.size.height) {
         return item.size;
     }else
@@ -151,9 +154,9 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    XWSectionLayout * sectionLayout = self.sectionLayouts[section];
-    if (sectionLayout.headerSize.height) {
-        return sectionLayout.headerSize;
+    XWGroupLayout * groupLayout = self.groupLayouts[section];
+    if (groupLayout.headerLayout.size.height) {
+        return groupLayout.headerLayout.size;
     }else
         return CGSizeZero;
 }

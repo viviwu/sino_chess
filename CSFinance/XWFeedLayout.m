@@ -7,31 +7,52 @@
 //
 
 #import "XWFeedLayout.h"
+#import "NSDate+YYAdd.h"
 
-@implementation XWCellLayout
+@implementation XWItemLayout
 - (instancetype)init{
     self = [super init];
     if (self) {
-        //        _size = CGSizeZero;
-        _size = CGSizeMake(kScreenW-10.0, 125.0);
-        _title = @"title";
+        _reuseID = nil;
+        _title = @"no title！";
+        _detail = nil;
+        _image = nil;
+        _linkInfo = nil;
+        //@{@"Date":[NSDate dateWithISOFormatString:@"2010-07-09"], @"CTR": @132};
+        
+        _cellStyle = 0;
+        _height = 0;
+        _size = CGSizeZero;
     }
     return self;
 }
 @end
 
-@implementation XWSectionLayout
-- (instancetype)initWithData:(NSArray<XWCellLayout*>*)celllayouts{
+@implementation XWGroupLayout
+- (instancetype)initWithData:(NSArray<XWItemLayout*>*)itemLayouts{
     self = [super init];
-    if (self) {
-        _headerSize = CGSizeZero;
-        _headerTitle = @"headerTitle";
-        _footerSize = CGSizeZero;
-        _footerTitle = @"footerTitle";
-        _celllayouts = [celllayouts copy];
+    if (self) { 
+//        _headerLayout = [[XWItemLayout alloc]init];
+//        _footerLayout = [[XWItemLayout alloc]init];
+        _itemLayouts = [itemLayouts copy];
     }
     return self;
 }
+
+- (XWItemLayout *) headerLayout{
+    if (!_headerLayout) {
+        _headerLayout = [[XWItemLayout alloc]init];
+    }
+    return _headerLayout;
+}
+
+- (XWItemLayout *) footerLayout{
+    if (!_footerLayout) {
+        _footerLayout = [[XWItemLayout alloc]init];
+    }
+    return _footerLayout;
+}
+
 @end
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++
 
