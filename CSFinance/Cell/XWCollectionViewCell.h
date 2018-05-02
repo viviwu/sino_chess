@@ -7,13 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XWFeedLayout.h"
+
+typedef NS_ENUM(NSInteger, XWCollectionCellStyle) {
+    XWCollectionCellStyleNormal=0,   //image above & title below.
+    XWCollectionCellStyleSubtitle,   //image above & title + Subtitle below.
+    XWCollectionCellStyleDuoSubtitle,//image above & title + 2 Subtitle(L + R) below.
+    XWCollectionCellStyleImageTitle,  //image cover * title.
+    
+    XWCollectionCellStyleRightTitle,  //Left image & Right Title
+    XWCollectionCellStyleLeftTitle,   //Left Title & Right Image
+    XWCollectionCellStyleTag
+};
 
 @interface XWCollectionViewCell : UICollectionViewCell
-//@property(nonatomic, strong)UILabel * label;
-//@property(nonatomic, strong)UILabel * detailLabel;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *rightLabel;
-@property (weak, nonatomic) IBOutlet UILabel *leftLabel;
+@property (nonatomic, strong) XWItemLayout * layoutModel;
+@property (nonatomic, assign) XWCollectionCellStyle cellStyle;
+
+@property (nonatomic, strong) UIImageView * imageView;
+@property (strong, nonatomic) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel * subtitleLabel;
+@property (strong, nonatomic) UILabel *rightLabel;
+@property (strong, nonatomic) UILabel *leftLabel;
 
 - (void)refreshWithLayoutModel:(id)model;
 

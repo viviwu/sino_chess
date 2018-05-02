@@ -30,7 +30,7 @@
 
 @implementation XWGroupLayout
 - (instancetype)initWithData:(NSArray<XWItemLayout*>*)itemLayouts{
-    self = [super init];
+    self = [super init];  
     if (self) { 
 //        _headerLayout = [[XWItemLayout alloc]init];
 //        _footerLayout = [[XWItemLayout alloc]init];

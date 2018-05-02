@@ -27,7 +27,7 @@
 @property (nonatomic, copy) NSString * detail;
 @property (nonatomic, copy) UIImage * image;
 @property (nonatomic, copy) NSDictionary * linkInfo;    //url / command /time /...
-
+  
 @property (nonatomic, assign) CGFloat height;    //TableViewCell
 @property (nonatomic, assign) CGSize size;  //CollectionViewCell
 
@@ -37,6 +37,7 @@
 @property (nonatomic, strong) XWItemLayout * headerLayout;
 @property (nonatomic, strong) XWItemLayout * footerLayout;
 @property (nonatomic, copy) NSString * cellReuseID;
+@property (nonatomic, assign) NSInteger groupStyle; //XWCollectionCellStyle
 
 @property (nonatomic, copy) NSArray<XWItemLayout*>* itemLayouts;
 - (instancetype)initWithData:(NSArray<XWItemLayout*>*)itemLayouts;

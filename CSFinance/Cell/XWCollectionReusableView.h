@@ -13,6 +13,7 @@ typedef NS_ENUM(NSInteger, XWCollectionReusableViewStyle) {
     XWCollectionReusableViewStyleNormal=0,
     XWCollectionReusableViewStyleDetail
 };
+
 typedef void(^XWActionHandle)(XWItemLayout *);
 @interface XWCollectionReusableView : UICollectionReusableView
 @property(nonatomic, strong)UIView * contentView;

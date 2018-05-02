@@ -10,6 +10,8 @@
 @import AVFoundation;
 @import CoreMedia.CMTime;
 
+#import "NSDate+YYAdd.h"
+
 #import "MutiPlayerViewController.h"
 #import "AAPLPlayerView.h"
 
@@ -574,11 +576,11 @@ static int AAPLPlayerViewControllerKVOContext = 0;
 {
     if (tableView== _tableView) {
         UITableViewCell * cell =[tableView dequeueReusableCellWithIdentifier:@"play_item" forIndexPath:indexPath];
-        
+        cell.textLabel.text = [NSString stringWithFormat:@"节目标题%ld", (long)indexPath.row];
         return cell;
     }else{
         UITableViewCell * cell =[tableView dequeueReusableCellWithIdentifier:@"time" forIndexPath:indexPath];
-        
+        cell.textLabel.text = [[NSDate date] stringWithFormat:@"MM-dd"];
         return cell;
     }
     

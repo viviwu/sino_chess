@@ -7,10 +7,11 @@
 //
 
 #import "XWConsultViewController.h"
-#import "XWCollectionView.h"
-//#import "XWImageSubtitleCell.h"
-#import "XWImageTitleCell.h"
-#import "XWCollectionRightCell.h"
+#import "XWCollectionViewCell.h"
+#import "XWCollectionReusableView.h"
+
+//#import "XWImageTitleCell.h"
+//#import "XWCollectionRightCell.h"
 
 @interface XWConsultViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 {
@@ -56,11 +57,12 @@
     _cellReuseIDs = @[@"cellA", @"cellB", @"cellC", @"cellD", @"cellE", @"cellF"];
     for (int i=0; i<_cellReuseIDs.count; i++) {
         NSString * cellid = _cellReuseIDs[i];
-        if (i==_cellReuseIDs.count-1) {
-            [self.collectionView registerNib:[UINib nibWithNibName:@"XWCollectionRightCell" bundle:nil] forCellWithReuseIdentifier:cellid];
-        }else{
-            [self.collectionView registerNib:[UINib nibWithNibName:@"XWImageTitleCell" bundle:nil] forCellWithReuseIdentifier:cellid];
-        }
+        [self.collectionView registerClass:[XWCollectionViewCell class] forCellWithReuseIdentifier:cellid];
+//        if (i==_cellReuseIDs.count-1) {
+//            [self.collectionView registerNib:[UINib nibWithNibName:@"XWCollectionRightCell" bundle:nil] forCellWithReuseIdentifier:cellid];
+//        }else{
+//            [self.collectionView registerNib:[UINib nibWithNibName:@"XWImageTitleCell" bundle:nil] forCellWithReuseIdentifier:cellid];
+//        }
     }
     
     [self.collectionView registerClass:[XWCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UICollectionElementKindSectionHeader"];
@@ -92,7 +94,9 @@
 - (nonnull id)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     XWGroupLayout * groupLayout = self.groupLayouts[indexPath.section];
-    XWImageTitleCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:groupLayout.cellReuseID forIndexPath:indexPath]; 
+    XWCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:groupLayout.cellReuseID forIndexPath:indexPath];
+    cell.cellStyle = groupLayout.groupStyle;
+    
     XWItemLayout * item = groupLayout.itemLayouts[indexPath.row];
     [cell refreshWithLayoutModel:item];
     return cell;
@@ -107,10 +111,10 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     XWGroupLayout * groupLayout = self.groupLayouts[indexPath.section];
-    if (groupLayout.headerLayout.size.height>20) {
-        XWCollectionReusableView * cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kind forIndexPath:indexPath];
-        [cell refreshWithLayoutModel:groupLayout.headerLayout];
-        return cell;
+    if (groupLayout.headerLayout.size.height>10.0) {
+        XWCollectionReusableView * header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kind forIndexPath:indexPath];
+        [header refreshWithLayoutModel:groupLayout.headerLayout];
+        return header;
     }else
         return [[UICollectionReusableView alloc]init];
 }
@@ -133,23 +137,31 @@
                       @"如何看待 2017 年 6 月 21 日中国 A 股纳入 MSCI？意味着什么？",
                       @"乐视网目前共涉198项诉讼仲裁 涉案金额超36亿元, 前途何在？",
                       @"如何看待一线城市重排座次：从“北上广深”到“上北深广”？",
+                      @"曾经拒绝马云巨额投资的张一鸣, 可能要联姻阿里?",
+                      @"如何解读人社部：划转国有资本充实社保基金试点顺利启动？",
+                      @"如何看待 2017 年 6 月 21 日中国 A 股纳入 MSCI？意味着什么？",
+                      @"乐视网目前共涉198项诉讼仲裁 涉案金额超36亿元, 前途何在？",
+                      @"如何看待一线城市重排座次：从“北上广深”到“上北深广”？",
                       @"曾经拒绝马云巨额投资的张一鸣, 可能要联姻阿里?"];
     NSMutableArray * layouts = [NSMutableArray array];
     for (int k=0; k<5; k++) {
         XWGroupLayout * groupLayout =[[XWGroupLayout alloc]init];
         groupLayout.cellReuseID = _cellReuseIDs[k];
+        groupLayout.headerLayout.size = CGSizeMake(kScreenW, 24.0);
         NSMutableArray * itemLayouts = [NSMutableArray array];
         if (k==0) {
+            groupLayout.groupStyle = 0 ;
             groupLayout.headerLayout.size = CGSizeMake(kScreenW, 35.0);
             groupLayout.headerLayout.title = @"热门细分领域";
             groupLayout.headerLayout.detail = @"查看更多";
             for (int i=0; i<8; i++) {
                 XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
-                itemLayout.size = CGSizeMake(kScreenW/5, kScreenW/4);
+                itemLayout.size = CGSizeMake(kScreenW/4-10.0, kScreenW/4);
                 itemLayout.title = @"细分领域";
                 [itemLayouts addObject:itemLayout];
             }
         }else if(k==1){
+            groupLayout.groupStyle = 0 ;
             for (int i=0; i<1; i++) {
                 XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
                 itemLayout.size = CGSizeMake(kScreenW-10.0, kScreenW*0.45);
@@ -157,23 +169,28 @@
                 [itemLayouts addObject:itemLayout];
             }
         }else if(k==2){
+            groupLayout.groupStyle = 0 ;
             for (int i=0; i<2; i++) {
+                groupLayout.headerLayout.title = @"近期热门话题";
                 XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
                 itemLayout.size = CGSizeMake(kScreenW/2-7.5, kScreenW/3);
                 itemLayout.title = @"近期热门话题";
                 [itemLayouts addObject:itemLayout];
             }
         }else if(k==3){
-            for (int i=0; i<6; i++) {
-                groupLayout.headerLayout.title = @"近期热门话题";
+            groupLayout.groupStyle = 6 ;
+            for (int i=0; i<7; i++) {
+//                cell.cellStyle = XWCollectionCellStyleTag;
+                groupLayout.headerLayout.title = @"热门话题标签";
                 XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
-                itemLayout.size = CGSizeMake(kScreenW/3-5.0, kScreenW/5);
-                itemLayout.title = @"🏷️话题";
+                itemLayout.size = CGSizeMake(80.0, 30.0);
+                itemLayout.title = [NSString stringWithFormat:@"🏷️标签%d", i];
                 [itemLayouts addObject:itemLayout];
             }
         }else{
+            groupLayout.groupStyle = 4 ;
             for (int i=0; i<arr.count; i++) {
-                groupLayout.headerLayout.title = @"近期热门问题";
+                groupLayout.headerLayout.title = @"近期热议";
                 XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
                 itemLayout.size = CGSizeMake(kScreenW-10.0, kScreenW/4);
                 itemLayout.title = arr[i];

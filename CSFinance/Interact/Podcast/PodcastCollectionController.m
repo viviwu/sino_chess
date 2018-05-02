@@ -7,7 +7,9 @@
 //
 
 #import "PodcastCollectionController.h"
-#import "XWCollectionView.h"
+#import "XWCollectionViewCell.h"
+#import "XWCollectionReusableView.h"
+
 #import "XWImageSubtitleCell.h"
 
 @interface PodcastCollectionController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
@@ -50,8 +52,8 @@
     
     _cellReuseIDs = @[@"videoCellA", @"videoCellB", @"videoCellC"];
     for (NSString * cellid in _cellReuseIDs) {
-//        [self.collectionView registerClass:[XWCollectionViewCell class] forCellWithReuseIdentifier:cellid];
-        [self.collectionView registerNib:[UINib nibWithNibName:@"XWCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:cellid];
+        [self.collectionView registerClass:[XWCollectionViewCell class] forCellWithReuseIdentifier:cellid];
+//        [self.collectionView registerNib:[UINib nibWithNibName:@"XWCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:cellid];
     }
     [self.collectionView registerClass:[XWCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UICollectionElementKindSectionHeader"];
     
@@ -80,7 +82,7 @@
     XWItemLayout * item = groupLayout.itemLayouts[indexPath.row];
     
     XWCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:groupLayout.cellReuseID forIndexPath:indexPath];
-    
+    cell.cellStyle = groupLayout.groupStyle;
     [cell refreshWithLayoutModel:item];
     
     return cell;
@@ -150,6 +152,7 @@
                 [itemLayouts addObject:itemLayout];
             }
         }else if (k==1) {
+            groupLayout.groupStyle = 2;
             groupLayout.headerLayout.title = @"热门直播";
             for (int i=0; i<4; i++) {
                 XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
@@ -159,6 +162,7 @@
             }
         }else{
             groupLayout.headerLayout.title = @"Live课堂";
+            groupLayout.groupStyle = 2;
             for (int i=0; i<6; i++) {
                 XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
                 itemLayout.size = CGSizeMake(kScreenW/2-7.5, kScreenW/3);

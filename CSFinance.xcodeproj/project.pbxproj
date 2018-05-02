@@ -906,7 +906,6 @@
 		4F1B13CC2089CBA900D4114F /* ResourceWeibo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4F1B13AC2089CBA900D4114F /* ResourceWeibo.bundle */; };
 		4F1B13CD2089CBA900D4114F /* EmoticonWeibo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4F1B13AD2089CBA900D4114F /* EmoticonWeibo.bundle */; };
 		4F2F47F0208F321F00169383 /* XWCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F47EA208F321E00169383 /* XWCollectionReusableView.m */; };
-		4F2F47F1208F321F00169383 /* XWCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F47EB208F321E00169383 /* XWCollectionView.m */; };
 		4F2F47F2208F321F00169383 /* XWCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F47EF208F321E00169383 /* XWCollectionViewCell.m */; };
 		4F40463E207CB1AA00FF4DCE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F40463D207CB1AA00FF4DCE /* AppDelegate.m */; };
 		4F404647207CB1AA00FF4DCE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F404645207CB1AA00FF4DCE /* Main.storyboard */; };
@@ -952,7 +951,6 @@
 		4F71F2672091A677007F769D /* XWTableSubtitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F71F2662091A677007F769D /* XWTableSubtitleCell.xib */; };
 		4F71F26A2091AAA0007F769D /* XWCollectLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F71F2692091AAA0007F769D /* XWCollectLabelCell.m */; };
 		4F71F26C2091AAB8007F769D /* XWCollectLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F71F26B2091AAB8007F769D /* XWCollectLabelCell.xib */; };
-		4F71F2722091BA56007F769D /* XWCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F71F2712091BA56007F769D /* XWCollectionViewCell.xib */; };
 		4F7CC71F208D6A6500429B06 /* Podcast.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7CC71E208D6A6500429B06 /* Podcast.storyboard */; };
 		4F7CC722208D6B6400429B06 /* PodcastCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CC721208D6B6400429B06 /* PodcastCollectionController.m */; };
 		4F7CC72F208D782D00429B06 /* SalonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CC724208D782D00429B06 /* SalonCenterViewController.m */; };
@@ -2030,10 +2028,8 @@
 		4F1B13AC2089CBA900D4114F /* ResourceWeibo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ResourceWeibo.bundle; sourceTree = "<group>"; };
 		4F1B13AD2089CBA900D4114F /* EmoticonWeibo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EmoticonWeibo.bundle; sourceTree = "<group>"; };
 		4F2F47EA208F321E00169383 /* XWCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWCollectionReusableView.m; sourceTree = "<group>"; };
-		4F2F47EB208F321E00169383 /* XWCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWCollectionView.m; sourceTree = "<group>"; };
 		4F2F47EC208F321E00169383 /* XWCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWCollectionViewCell.h; sourceTree = "<group>"; };
 		4F2F47ED208F321E00169383 /* XWCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWCollectionReusableView.h; sourceTree = "<group>"; };
-		4F2F47EE208F321E00169383 /* XWCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWCollectionView.h; sourceTree = "<group>"; };
 		4F2F47EF208F321E00169383 /* XWCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWCollectionViewCell.m; sourceTree = "<group>"; };
 		4F404639207CB1AA00FF4DCE /* CSFinance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSFinance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F40463C207CB1AA00FF4DCE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -2109,7 +2105,6 @@
 		4F71F2682091AAA0007F769D /* XWCollectLabelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWCollectLabelCell.h; sourceTree = "<group>"; };
 		4F71F2692091AAA0007F769D /* XWCollectLabelCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWCollectLabelCell.m; sourceTree = "<group>"; };
 		4F71F26B2091AAB8007F769D /* XWCollectLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XWCollectLabelCell.xib; sourceTree = "<group>"; };
-		4F71F2712091BA56007F769D /* XWCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XWCollectionViewCell.xib; sourceTree = "<group>"; };
 		4F7CC71E208D6A6500429B06 /* Podcast.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Podcast.storyboard; sourceTree = "<group>"; };
 		4F7CC720208D6B6400429B06 /* PodcastCollectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PodcastCollectionController.h; sourceTree = "<group>"; };
 		4F7CC721208D6B6400429B06 /* PodcastCollectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PodcastCollectionController.m; sourceTree = "<group>"; };
@@ -3820,13 +3815,10 @@
 		4F7CC756208D7E8500429B06 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				4F2F47EE208F321E00169383 /* XWCollectionView.h */,
-				4F2F47EB208F321E00169383 /* XWCollectionView.m */,
 				4F2F47ED208F321E00169383 /* XWCollectionReusableView.h */,
 				4F2F47EA208F321E00169383 /* XWCollectionReusableView.m */,
 				4F2F47EC208F321E00169383 /* XWCollectionViewCell.h */,
 				4F2F47EF208F321E00169383 /* XWCollectionViewCell.m */,
-				4F71F2712091BA56007F769D /* XWCollectionViewCell.xib */,
 				4F7CC753208D7E8100429B06 /* CSImgCollectCell.h */,
 				4F7CC754208D7E8100429B06 /* CSImgCollectCell.m */,
 			);
@@ -4101,7 +4093,6 @@
 				4F1B11DA2089B2D300D4114F /* library@3x.png in Resources */,
 				4F1B10F22089B2D300D4114F /* stack_of_photos@3x.png in Resources */,
 				4F71F2672091A677007F769D /* XWTableSubtitleCell.xib in Resources */,
-				4F71F2722091BA56007F769D /* XWCollectionViewCell.xib in Resources */,
 				4F1B0FCC2089B2D200D4114F /* vip@2x.png in Resources */,
 				4F1B0F4A2089B2D200D4114F /* right_up2@2x.png in Resources */,
 				4F1B11372089B2D300D4114F /* timeline@3x.png in Resources */,
@@ -5014,7 +5005,6 @@
 				4F7CC74F208D7C3600429B06 /* PPFundDetialPageViewController.m in Sources */,
 				4F1B13602089BDAF00D4114F /* MutiPlayerViewController.m in Sources */,
 				4F1B135F2089BDAF00D4114F /* AAPLPlayerView.m in Sources */,
-				4F2F47F1208F321F00169383 /* XWCollectionView.m in Sources */,
 				4F1B13112089B62100D4114F /* UIDevice+YYAdd.m in Sources */,
 				4F1B13152089B62100D4114F /* UIScreen+YYAdd.m in Sources */,
 				4F1B12FE2089B62100D4114F /* YYTextInput.m in Sources */,

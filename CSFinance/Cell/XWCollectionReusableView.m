@@ -18,14 +18,20 @@
         _contentView.backgroundColor = [UIColor whiteColor];
         [self addSubview:_contentView];
         
-        _titleLabel = [self instanceNewLabel];
-        [_contentView addSubview: _titleLabel];
-        
         [_contentView addSubview:self.detailButton];
         
         self.backgroundColor = [UIColor groupTableViewBackgroundColor];
     }
     return self;
+}
+
+- (UILabel*)titleLabel
+{
+    if (!_titleLabel) {
+        _titleLabel = [self instanceNewLabel];
+        [_contentView addSubview: _titleLabel];
+    }
+    return _titleLabel;
 }
 
 - (UIButton*)detailButton
@@ -47,13 +53,19 @@
 - (void)refreshWithLayoutModel:(XWItemLayout*)model
 {
     _layoutModel = model;
-    _titleLabel.text = model.title;
-    if (model.detail) {
+    if (model.title && kSelfH>15.0) {
+        self.titleLabel.text = model.title;
+    }
+    
+    if (model.detail && kSelfH>25.0) {
         [self.detailButton setTitle:model.detail?:@"查看更多" forState:UIControlStateNormal];
-        [_detailButton setFrame:CGRectMake(kSelfW *0.6, 0, kSelfW *0.4, kSelfH)];
-        [_detailButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [self.detailButton setFrame:CGRectMake(kSelfW - 120.0, 0, 120.0, kSelfH)];
+        [self.detailButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
 //        [self.detailButton defaultStyle];
         [self.detailButton addAwesomeIcon:FAIconChevronRight beforeTitle:NO];
+        [self.detailButton addTarget:self action:@selector(touchAction) forControlEvents:UIControlEventTouchDown];
+    }else{
+        [self.contentView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     }
 }
 
