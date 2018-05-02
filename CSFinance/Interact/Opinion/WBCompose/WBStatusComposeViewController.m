@@ -233,12 +233,12 @@
     if (button == _toolbarPictureButton) {
         
     } else if (button == _toolbarAtButton) {
-        NSArray *atArray = @[@"@姚晨 ", @"@陈坤 ", @"@赵薇 ", @"@Angelababy " , @"@TimCook ", @"@我的印象笔记 "];
+        NSArray *atArray = @[@"@郎咸平 ", @"@许小年 ", @"@厉以宁 ", @"@李稻葵 " , @"@茅于轼 ", @"@私募宝 "];
         NSString *atString = [atArray randomObject];
         [_textView replaceRange:_textView.selectedTextRange withText:atString];
         
     } else if (button == _toolbarTopicButton) {
-        NSArray *topic = @[@"#冰雪奇缘[电影]# ", @"#Let It Go[音乐]# ", @"#纸牌屋[图书]# ", @"#深圳·理想国际大厦[地点]# " , @"#腾讯控股 kh00700[股票]# ", @"#WWDC# "];
+        NSArray *topic = @[@"#小米IPO[金融]# ", @"#Let It Go[音乐]# ", @"#分级基金[证券]# ", @"#深圳·理想国际大厦[地点]# " , @"#腾讯控股 kh00700[股票]# ", @"#WWDC# "];
         NSString *topicString = [topic randomObject];
         [_textView replaceRange:_textView.selectedTextRange withText:topicString];
         

@@ -15,6 +15,9 @@
 #import "MutiPlayerViewController.h"
 #import "AAPLPlayerView.h"
 
+#import "YYKit.h"
+#import "WBStatusComposeViewController.h"
+
 @interface MutiPlayerViewController ()<UITableViewDataSource, UITableViewDelegate>
 {
     NSTimer * _timer;
@@ -29,6 +32,7 @@
      */
     id<NSObject> _timeObserverToken;
     AVPlayerItem *_playerItem;
+    NSDate * _selectDate;
 }
 
 @property (readonly) AVPlayerLayer *playerLayer;
@@ -59,6 +63,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _selectDate = [NSDate date];
+    
     self.readView.hidden = YES;
     delay = 5;
     
@@ -379,8 +386,44 @@ static int AAPLPlayerViewControllerKVOContext = 0;
     NSLog(@"%s", __func__);
     delay = 5;
 }
+- (IBAction)collectOrLikeIt:(id)sender {
+    
+}
+- (IBAction)writeComment:(id)sender {
+    WBStatusComposeViewController *vc = [WBStatusComposeViewController new];
+    vc.type = WBStatusComposeViewTypeStatus;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    @weakify(nav);
+    vc.dismiss = ^{
+        @strongify(nav);
+        [nav dismissViewControllerAnimated:YES completion:NULL];
+    };
+    [self presentViewController:nav animated:YES completion:NULL];
+}
+- (IBAction)shareAction:(id)sender {
+    NSString * title = @"[私募宝]分享：投资、选私募，就上私募宝！";
+    UIImage * image = [UIImage imageNamed:@"CSico.png"];
+    NSURL * url = [NSURL URLWithString:@"http://www.csco.com.cn"];
+    //https://www.pgyer.com/ZpS6
+    NSArray *activityItems = @[title, image, url];
+    NSArray<UIActivityType> *excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeSaveToCameraRoll];
+    
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];  //⑤
+    activityVC.excludedActivityTypes = excludedActivityTypes; //⑥excluded排除的
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        UIPopoverPresentationController *popover = activityVC.popoverPresentationController;
+        if (popover) {
+            popover.barButtonItem = sender;//provide location
+            popover.permittedArrowDirections = UIPopoverArrowDirectionUp;
+        }
+    }else{ }
+    [self presentViewController:activityVC animated:TRUE completion:^{ }];
+}
 
-- (void)presentModalPopoverAlertController:(UIAlertController *)alertController sender:(UIButton *)sender {
+
+- (void)presentModalPopoverAlertController:(UIAlertController *)alertController sender:(UIButton *)sender
+{
     alertController.modalPresentationStyle = UIModalPresentationPopover;
     
     alertController.popoverPresentationController.sourceView = sender;
@@ -566,9 +609,10 @@ static int AAPLPlayerViewControllerKVOContext = 0;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView == _channelTable) {
+        _selectDate = [[NSDate date] dateByAddingDays:indexPath.row];
         [_tableView reloadData];
     }else{
-        
+        [self seekToNext:nil];
     }
 }
 
@@ -577,10 +621,11 @@ static int AAPLPlayerViewControllerKVOContext = 0;
     if (tableView== _tableView) {
         UITableViewCell * cell =[tableView dequeueReusableCellWithIdentifier:@"play_item" forIndexPath:indexPath];
         cell.textLabel.text = [NSString stringWithFormat:@"节目标题%ld", (long)indexPath.row];
+        cell.detailTextLabel.text = [[_selectDate dateByAddingHours:indexPath.row] stringWithFormat:@"yyyy-MM-dd HH:mm"];
         return cell;
     }else{
-        UITableViewCell * cell =[tableView dequeueReusableCellWithIdentifier:@"time" forIndexPath:indexPath];
-        cell.textLabel.text = [[NSDate date] stringWithFormat:@"MM-dd"];
+        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"time" forIndexPath:indexPath];
+        cell.textLabel.text = [[[NSDate date] dateByAddingDays:indexPath.row] stringWithFormat:@"MM-dd"];
         return cell;
     }
     
