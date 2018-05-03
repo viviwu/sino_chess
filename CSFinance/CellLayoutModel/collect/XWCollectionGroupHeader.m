@@ -1,15 +1,15 @@
 //
-//  XWCollectionReusableView.m
+//  XWCollectionGroupHeader.m
 //  XWScrollBanner
 //
 //  Created by vivi wu on 2018/4/23.
 //  Copyright © 2018年 vivi wu. All rights reserved.
 //
 
-#import "XWCollectionReusableView.h"
- #import "UIButton+Bootstrap.h"
+#import "XWCollectionGroupHeader.h"
+#import "UIButton+Bootstrap.h"
 
-@implementation XWCollectionReusableView
+@implementation XWCollectionGroupHeader
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -43,22 +43,28 @@
     return _detailButton;
 }
 
+- (void)setGroupModel:(XWItemLayoutGroup *)groupModel
+{
+    _groupModel = groupModel;
+}
+
 - (void)touchAction{
     
     if (_actionHandle) {
-        _actionHandle(_layoutModel);
+        _actionHandle(_groupModel);
     }
 }
 
-- (void)refreshWithLayoutModel:(XWItemLayout*)model
+- (void)refreshWithGroupLayoutModel:(XWItemLayoutGroup*)groupModel
 {
-    _layoutModel = model;
-    if (model.title && kSelfH>15.0) {
-        self.titleLabel.text = model.title;
+    _groupModel = groupModel;
+//    NSLog(@"groupLayout.itemGroup==%ld", _groupModel.itemGroup.count);
+    if (groupModel.title && kSelfH>15.0) {
+        self.titleLabel.text = groupModel.title;
     }
     
-    if (model.detail && kSelfH>25.0) {
-        [self.detailButton setTitle:model.detail?:@"查看更多" forState:UIControlStateNormal];
+    if (groupModel.detail && kSelfH>25.0) {
+        [self.detailButton setTitle:groupModel.detail?:@"查看更多" forState:UIControlStateNormal];
         [self.detailButton setFrame:CGRectMake(kSelfW - 120.0, 0, 120.0, kSelfH)];
         [self.detailButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
 //        [self.detailButton defaultStyle];

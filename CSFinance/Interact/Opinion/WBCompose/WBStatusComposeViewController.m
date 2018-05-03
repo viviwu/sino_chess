@@ -238,7 +238,7 @@
         [_textView replaceRange:_textView.selectedTextRange withText:atString];
         
     } else if (button == _toolbarTopicButton) {
-        NSArray *topic = @[@"#小米IPO[金融]# ", @"#Let It Go[音乐]# ", @"#分级基金[证券]# ", @"#深圳·理想国际大厦[地点]# " , @"#腾讯控股 kh00700[股票]# ", @"#WWDC# "];
+        NSArray *topic = @[@"#小米IPO[金融]# ", @"#工业4.0VS特斯拉的“熄灯”[汽车]# ", @"#分级基金[证券]# ", @"#深圳·招商大厦[地点]# " , @"#腾讯控股 kh00700[股票]# ", @"#WWDC# "];
         NSString *topicString = [topic randomObject];
         [_textView replaceRange:_textView.selectedTextRange withText:topicString];
         

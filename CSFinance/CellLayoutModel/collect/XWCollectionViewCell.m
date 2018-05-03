@@ -9,6 +9,7 @@
 #import "XWCollectionViewCell.h"
 #import "XWItemLayout.h"
 #import "NSDate+YYAdd.h"
+#import "UIImageView+YYWebImage.h"
 
 #define kContentH self.contentView.bounds.size.height
 #define kContentW self.contentView.bounds.size.width
@@ -39,6 +40,9 @@
 - (void)refreshWithLayoutModel:(XWItemLayout*)model
 {
     self.titleLabel.text = model.title;
+    if (model.imgUrl) {
+        [self.imageView setImageWithURL:model.imgUrl placeholder:[UIImage imageNamed:@"picture"]];
+    }
     if (model.image) {
         self.imageView.image = model.image;
     }
@@ -88,7 +92,7 @@
             break;
         case XWCollectionCellStyleDuoSubtitle:
         {
-            [self.imageView setFrame:CGRectMake(10.0, 0, kContentW - 30.0, kContentH - 30.0)];
+            [self.imageView setFrame:CGRectMake(5.0, 0, kContentW - 10.0, kContentH - 30.0)];
             [self.titleLabel setFrame:CGRectMake(5.0, kContentH - 30.0, kContentW-20.0, 17.0)];
             [self.leftLabel setFrame:CGRectMake(5.0, kContentH - 13.0, kContentW/2-5.0, 13.0)];
             self.leftLabel.textColor = [UIColor darkGrayColor];

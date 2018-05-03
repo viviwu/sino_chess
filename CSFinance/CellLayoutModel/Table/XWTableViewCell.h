@@ -11,10 +11,21 @@
 
 typedef NS_ENUM(NSInteger, XWTableViewCellStyle) {
     XWTableViewCellStyleNormal=0,       //UITableViewCellStyleSubtitle
-    XWTableViewCellStyleDuoDetail=1,    //Two Subtitles
-    XWTableViewCellStyleThreeTitle=2,   //Three title Without image;
+    XWTableViewCellStyleDuoDetail=1,    //Two Subtitles （title Left）
+    XWTableViewCellStyleThreeTitle=2,   //Three title Without image; （horizontal）
+    XWTableViewCellStylePreview=3,      //big image above & vertical titles (DuoDetail)
+    XWTableViewCellStylePoster          //big image cover & Normal titles
 };
 
 @interface XWTableViewCell : UITableViewCell
+//@property (nonatomic, readonly, strong, nullable) UIImageView *imageView;
+//@property (nonatomic, readonly, strong, nullable) UILabel *textLabel;
+//@property (nonatomic, readonly, strong, nullable) UILabel *detailTextLabel;
+@property (nonatomic, strong, nullable) UILabel *extraTextLabel;
+
+@property (nonatomic, strong) XWItemLayout * layoutModel;
+@property (nonatomic, assign) XWTableViewCellStyle cellStyle;
+
+- (void)refreshWithLayoutModel:(id)model;
 
 @end

@@ -28,16 +28,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.sectionTitles = @[@"推荐", @"播客", @"问答", @"观点", @"沙龙"];
+    self.sectionTitles = @[@"热门", @"播客", @"问答", @"观点", @"沙龙"];
      
     _segCtr = [[XWSegmentedControl alloc]initWithSectionTitles:self.sectionTitles];
-    _segCtr.frame = CGRectMake(0, 50.0, kSelfVB_W-100.0, 35.0);
+    _segCtr.frame = CGRectMake(0, 0, 240.0, 35.0);
     _segCtr.backgroundColor = [UIColor clearColor];
     _segCtr.indicatorLocation = XWSegIndicatorLocationDown;
     _segCtr.verticalDividerEnabled=YES;
     _segCtr.verticalDividerColor = UIColor.clearColor;
     _segCtr.indicatorColor = UIColor.orangeColor;
     _segCtr.indicatorHeight = 1.0;
+    _segCtr.selectedTitleTextAttributes = @{NSForegroundColorAttributeName:[UIColor orangeColor]};
     //    _segCtr.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor yellowColor]};
     [_segCtr addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
     _segCtr.selectedIndex = 0;

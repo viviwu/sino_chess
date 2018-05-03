@@ -28,17 +28,21 @@
 }
 @end
 
-@implementation XWGroupLayout
-- (instancetype)initWithData:(NSArray<XWItemLayout*>*)itemLayouts{
+@implementation XWItemLayoutGroup
+- (instancetype)initWithModelGroup:(NSArray<XWItemLayout*>*)itemGroup{
     self = [super init];
-    if (self) { 
-//        _headerLayout = [[XWItemLayout alloc]init];
-//        _footerLayout = [[XWItemLayout alloc]init];
-        _itemLayouts = [itemLayouts copy];
+    if (self) {
+        _itemGroup = [itemGroup copy];
     }
     return self;
 }
 
+- (void)setItemGroup:(NSArray<XWItemLayout *> *)itemGroup
+{
+    _itemGroup  = itemGroup;
+}
+
+/**
 - (XWItemLayout *) headerLayout{
     if (!_headerLayout) {
         _headerLayout = [[XWItemLayout alloc]init];
@@ -52,6 +56,7 @@
     }
     return _footerLayout;
 }
+*/
 
 @end
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -764,7 +764,7 @@
     _profileView.verifyType = layout.status.user.userVerifyType;
     _profileView.height = layout.profileHeight;
     _profileView.top = top;
-    NSLog(@"_profileView.top==%f", _profileView.top);
+//    NSLog(@"_profileView.top==%f", _profileView.top);
     top += layout.profileHeight;
 
     NSURL *picBg = [WBStatusHelper defaultURLForImageURL:layout.status.picBg];
@@ -990,8 +990,8 @@
     self.height = layout.height;
     self.contentView.height = layout.height;
     _statusView.layout = layout;
-    NSLog(@"titleHeight==%ff", layout.titleHeight);//0?
-    NSLog(@"toolbarHeight==%ff", layout.toolbarHeight);
+//    NSLog(@"titleHeight==%ff", layout.titleHeight);//0?
+//    NSLog(@"toolbarHeight==%ff", layout.toolbarHeight);
     
 }
 

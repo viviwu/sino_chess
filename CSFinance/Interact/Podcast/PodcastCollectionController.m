@@ -8,9 +8,22 @@
 
 #import "PodcastCollectionController.h"
 #import "XWCollectionViewCell.h"
-#import "XWCollectionReusableView.h"
+#import "XWCollectionGroupHeader.h"
 
 #import "XWImageSubtitleCell.h"
+
+#import "YYKit.h"
+#import "ZFJVideo.h"
+
+#import "TOWebViewController.h"
+#import "TOWebViewController+1Password.h"
+
+#ifndef NSFoundationVersionNumber_iOS_6_1
+#define NSFoundationVersionNumber_iOS_6_1  993.00
+#endif
+
+/* Detect if we're running iOS 7.0 or higher */
+#define MINIMAL_UI (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1)
 
 @interface PodcastCollectionController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 {
@@ -18,7 +31,7 @@
 }
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
 @property (nonatomic, strong) UICollectionView * collectionView;
-@property (nonatomic, copy) NSArray<XWGroupLayout*>* groupLayouts;
+@property (nonatomic, copy) NSArray<XWItemLayoutGroup*>* groupLayouts;
 
 @end
 
@@ -36,7 +49,7 @@
     if (nil == _layout) {
         _layout = [[UICollectionViewFlowLayout alloc] init];
         _layout.sectionInset = UIEdgeInsetsMake(2.5, 5.0, 5.0, 5.0);
-        _layout.minimumLineSpacing = 2.5;
+        _layout.minimumLineSpacing = 10.0;
         _layout.minimumInteritemSpacing = 2.5;
         _layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     }
@@ -45,7 +58,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+ 
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in [storage cookies]) {
+        [storage deleteCookie:cookie];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+  
     [self.view addSubview:self.collectionView];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
@@ -55,7 +74,7 @@
         [self.collectionView registerClass:[XWCollectionViewCell class] forCellWithReuseIdentifier:cellid];
 //        [self.collectionView registerNib:[UINib nibWithNibName:@"XWCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:cellid];
     }
-    [self.collectionView registerClass:[XWCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UICollectionElementKindSectionHeader"];
+    [self.collectionView registerClass:[XWCollectionGroupHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UICollectionElementKindSectionHeader"];
     
     self.groupLayouts = [self defaultgroupLayouts];
     [self.collectionView reloadData];
@@ -72,14 +91,14 @@
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    XWGroupLayout * groupLayout = self.groupLayouts[section];
-    return groupLayout.itemLayouts.count;
+    XWItemLayoutGroup * groupLayout = self.groupLayouts[section];
+    return groupLayout.itemGroup.count;
 }
 
 - (nonnull __kindof XWCollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    XWGroupLayout * groupLayout = self.groupLayouts[indexPath.section];
-    XWItemLayout * item = groupLayout.itemLayouts[indexPath.row];
+    XWItemLayoutGroup * groupLayout = self.groupLayouts[indexPath.section];
+    XWItemLayout * item = groupLayout.itemGroup[indexPath.row];
     
     XWCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:groupLayout.cellReuseID forIndexPath:indexPath];
     cell.cellStyle = groupLayout.groupStyle;
@@ -90,19 +109,21 @@
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    XWGroupLayout * groupLayout = self.groupLayouts[indexPath.section];
+    XWItemLayoutGroup * groupLayout = self.groupLayouts[indexPath.section];
+    XWCollectionGroupHeader * cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kind forIndexPath:indexPath];
+    cell.actionHandle = ^(XWItemLayoutGroup *groupModel){
+        NSLog(@"-------->itemGroup: %lu", (unsigned long)groupModel.itemGroup.count);
+    };
     
-    XWCollectionReusableView * cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kind forIndexPath:indexPath];
-    
-    [cell refreshWithLayoutModel:groupLayout.headerLayout];
+    [cell refreshWithGroupLayoutModel:groupLayout];
     return cell;
 }
 
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    XWGroupLayout * groupLayout = self.groupLayouts[indexPath.section];
-    XWItemLayout * item = groupLayout.itemLayouts[indexPath.row];
+    XWItemLayoutGroup * groupLayout = self.groupLayouts[indexPath.section];
+    XWItemLayout * item = groupLayout.itemGroup[indexPath.row];
     if (item.size.height) {
         return item.size;
     }else
@@ -111,13 +132,25 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    XWGroupLayout * groupLayout = self.groupLayouts[section];
-    if (!CGSizeEqualToSize(groupLayout.headerLayout.size, CGSizeZero)) {
-        return groupLayout.headerLayout.size;
+    XWItemLayoutGroup * groupLayout = self.groupLayouts[section];
+    if (!CGSizeEqualToSize(groupLayout.size, CGSizeZero)) {
+        return groupLayout.size;
     }else
         return CGSizeZero;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    XWItemLayoutGroup * groupLayout = self.groupLayouts[indexPath.section];
+    XWItemLayout * item = groupLayout.itemGroup[indexPath.row];
+    
+    NSURL *url = item.url;
+    TOWebViewController *webViewController = [[TOWebViewController alloc] initWithURL:url];
+    webViewController.hidesBottomBarWhenPushed = YES;
+    webViewController.showOnePasswordButton = YES;
+    [self.navigationController pushViewController:webViewController animated:YES];
+    webViewController.hidesBottomBarWhenPushed = NO;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -133,49 +166,71 @@
  // Pass the selected object to the new view controller.
  }
  */
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self readJsonFile];
+}
 
-- (NSArray<XWGroupLayout*>*)defaultgroupLayouts{
-    
+- (NSArray<XWItemLayoutGroup*>*)defaultgroupLayouts{
+    NSData *data = [NSData dataNamed:@"jfz_roadshows.json"];
+    ZFJVideoList * list = [ZFJVideoList modelWithJSON:data];
+    NSArray * roadShows = list.videoItems;
     NSMutableArray * layouts = [NSMutableArray array];
     for (int k=0; k<3; k++) {
-        XWGroupLayout * groupLayout =[[XWGroupLayout alloc]init];
+        XWItemLayoutGroup * groupLayout =[[XWItemLayoutGroup alloc]init];
         groupLayout.cellReuseID = _cellReuseIDs[k];
-        groupLayout.headerLayout.size = CGSizeMake(kScreenW, 30.0);
-        NSMutableArray * itemLayouts = [NSMutableArray array];
+        groupLayout.groupStyle = 2;
+//        groupLayout.groupModel = roadShows;
+        groupLayout.size = CGSizeMake(kScreenW, 40.0);
+        groupLayout.detail = @"查看更多";
+        
+        NSMutableArray * itemGroup = [NSMutableArray array];
         if (k==0) {
-            groupLayout.headerLayout.title = @"近期路演";
-            for (int i=0; i<3; i++) {
-                groupLayout.headerLayout.size = CGSizeZero;
+            groupLayout.title = @"近期路演";
+            for (ZFJVideo *item in roadShows) {
+//                groupLayout.size = CGSizeZero;
                 XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
                 itemLayout.size = CGSizeMake(kScreenW-10, kScreenW/2);
-                itemLayout.title = @"XXX路演";
-                [itemLayouts addObject:itemLayout];
+                itemLayout.title = item.title;
+                itemLayout.imgUrl = [NSURL URLWithString:item.thumb];
+                itemLayout.url = [NSURL URLWithString:[item.url stringByReplacingOccurrencesOfString:@"\\" withString:@""]];
+                itemLayout.model = item;
+                [itemGroup addObject:itemLayout];
             }
         }else if (k==1) {
-            groupLayout.groupStyle = 2;
-            groupLayout.headerLayout.title = @"热门直播";
+            groupLayout.title = @"热门直播";
             for (int i=0; i<4; i++) {
                 XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
                 itemLayout.size = CGSizeMake(kScreenW/2-7.5, kScreenW/2+50.0);
                 itemLayout.title = @"XXX直播";
-                [itemLayouts addObject:itemLayout];
+                [itemGroup addObject:itemLayout];
             }
         }else{
-            groupLayout.headerLayout.title = @"Live课堂";
-            groupLayout.groupStyle = 2;
+            groupLayout.title = @"Live课堂"; 
             for (int i=0; i<6; i++) {
                 XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
                 itemLayout.size = CGSizeMake(kScreenW/2-7.5, kScreenW/3);
                 itemLayout.title = @"XXX课堂";
-                [itemLayouts addObject:itemLayout];
+                [itemGroup addObject:itemLayout];
             }
         }
-        groupLayout.itemLayouts = [itemLayouts copy];
+        groupLayout.itemGroup = itemGroup; 
         [layouts addObject:groupLayout];
     }
     return layouts;
 }
 
+
+- (void)readJsonFile{
+    
+    /*
+    for (ZFJVideo * item in list.videoItems) {
+//        ZFJVideo * video = [ZFJVideo modelWithJSON:item];
+        NSLog(@"video:%@", item.title);
+    }
+     */
+}
 
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking

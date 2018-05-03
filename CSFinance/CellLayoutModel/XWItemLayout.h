@@ -11,39 +11,36 @@
 
 #define kScreenW [UIScreen mainScreen].bounds.size.width
 #define kScreenH [UIScreen mainScreen].bounds.size.height
-
-//@protocol XWBasicCellModel<NSObject>
-//@property (weak, nonatomic) UILabel *titleLabel;
-//@property (weak, nonatomic) UIImageView *imageView;
-//- (void)refreshWithLayoutModel:(id)model;
-//@end
-
+ 
 @interface XWItemLayout : NSObject
-
 @property (nonatomic, copy) NSString * reuseID;
 @property (nonatomic, assign) NSInteger cellStyle;
 
 @property (nonatomic, copy) NSString * title;
 @property (nonatomic, copy) NSString * detail;
+@property (nonatomic, copy) NSURL * imgUrl;
 @property (nonatomic, copy) UIImage * image;
+@property (nonatomic, copy) NSURL * url;
 @property (nonatomic, copy) NSDictionary * linkInfo;    //url / command /time /...
   
 @property (nonatomic, assign) CGFloat height;    //TableViewCell
 @property (nonatomic, assign) CGSize size;  //CollectionViewCell
-
+@property (nonatomic, strong) id model;
 @end
 
-@interface XWGroupLayout : NSObject
-@property (nonatomic, strong) XWItemLayout * headerLayout;
-@property (nonatomic, strong) XWItemLayout * footerLayout;
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+@interface XWItemLayoutGroup : XWItemLayout
+
 @property (nonatomic, copy) NSString * cellReuseID;
 @property (nonatomic, assign) NSInteger groupStyle; //XWCollectionCellStyle
 
-@property (nonatomic, copy) NSArray<XWItemLayout*>* itemLayouts;
-- (instancetype)initWithData:(NSArray<XWItemLayout*>*)itemLayouts;
+//@property (nonatomic, strong) id groupModel;
+@property (nonatomic, copy) NSArray<XWItemLayout*>* itemGroup;
+- (instancetype)initWithModelGroup:(NSArray<XWItemLayout*>*)itemGroup;
 
-- (XWItemLayout *) headerLayout;
-- (XWItemLayout *) footerLayout;
+//- (XWItemLayout *) headerLayout;
+//- (XWItemLayout *) footerLayout;
 
 @end
  

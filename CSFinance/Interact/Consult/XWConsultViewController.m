@@ -8,7 +8,8 @@
 
 #import "XWConsultViewController.h"
 #import "XWCollectionViewCell.h"
-#import "XWCollectionReusableView.h"
+#import "XWCollectionGroupHeader.h"
+#import "NSString+YYAdd.h"
 
 //#import "XWImageTitleCell.h"
 //#import "XWCollectionRightCell.h"
@@ -19,7 +20,7 @@
 }
 @property (nonatomic, strong) UICollectionView * collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
-@property (nonatomic, copy) NSArray<XWGroupLayout*>* groupLayouts;
+@property (nonatomic, copy) NSArray<XWItemLayoutGroup*>* groupLayouts;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIButton *mineAccount;
 @property (weak, nonatomic) IBOutlet UIView *headerBoard;
@@ -65,8 +66,8 @@
 //        }
     }
     
-    [self.collectionView registerClass:[XWCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UICollectionElementKindSectionHeader"];
-    //    [_collectionView registerClass:[XWCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionElementKindSectionFooter"];
+    [self.collectionView registerClass:[XWCollectionGroupHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UICollectionElementKindSectionHeader"];
+    //    [_collectionView registerClass:[XWCollectionGroupHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionElementKindSectionFooter"];
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
@@ -87,33 +88,33 @@
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    XWGroupLayout * groupLayout = self.groupLayouts[section];
-    return groupLayout.itemLayouts.count;
+    XWItemLayoutGroup * groupLayout = self.groupLayouts[section];
+    return groupLayout.itemGroup.count;
 }
 
 - (nonnull id)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    XWGroupLayout * groupLayout = self.groupLayouts[indexPath.section];
+    XWItemLayoutGroup * groupLayout = self.groupLayouts[indexPath.section];
     XWCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:groupLayout.cellReuseID forIndexPath:indexPath];
     cell.cellStyle = groupLayout.groupStyle;
     
-    XWItemLayout * item = groupLayout.itemLayouts[indexPath.row];
+    XWItemLayout * item = groupLayout.itemGroup[indexPath.row];
     [cell refreshWithLayoutModel:item];
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    XWGroupLayout * groupLayout = self.groupLayouts[indexPath.section];
-    XWItemLayout * item = groupLayout.itemLayouts[indexPath.row];
+    XWItemLayoutGroup * groupLayout = self.groupLayouts[indexPath.section];
+    XWItemLayout * item = groupLayout.itemGroup[indexPath.row];
     return item.size;
 }
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    XWGroupLayout * groupLayout = self.groupLayouts[indexPath.section];
-    if (groupLayout.headerLayout.size.height>10.0) {
-        XWCollectionReusableView * header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kind forIndexPath:indexPath];
-        [header refreshWithLayoutModel:groupLayout.headerLayout];
+    XWItemLayoutGroup * groupLayout = self.groupLayouts[indexPath.section];
+    if (groupLayout.size.height>10.0) {
+        XWCollectionGroupHeader * header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kind forIndexPath:indexPath];
+        [header refreshWithGroupLayoutModel:groupLayout];
         return header;
     }else
         return [[UICollectionReusableView alloc]init];
@@ -121,8 +122,8 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    XWGroupLayout * groupLayout = self.groupLayouts[section];
-    return groupLayout.headerLayout.size;
+    XWItemLayoutGroup * groupLayout = self.groupLayouts[section];
+    return groupLayout.size;
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     if (section==0) {
@@ -131,8 +132,9 @@
         return UIEdgeInsetsMake(2.5, 2.5, 2.5, 2.5);
     }
 }
-- (NSArray<XWGroupLayout*>*)defaultgroupLayouts{
-    
+- (NSArray<XWItemLayoutGroup*>*)defaultgroupLayouts{
+    NSArray * domains = @[@"IPO", @"私募", @"新三板", @"债权", @"顾问", @"咨询", @"量化", @"选股"];
+    NSArray * labels = @[@"小米IPO", @"MSCI", @"区块链", @"BAT", @"小米概念股", @"中兴被罚", @"粤港澳大湾区", @"虹膜识别", @"混改", @"深圳国企改革", @"大数据"];
     NSArray * arr = @[@"如何解读人社部：划转国有资本充实社保基金试点顺利启动？",
                       @"如何看待 2017 年 6 月 21 日中国 A 股纳入 MSCI？意味着什么？",
                       @"乐视网目前共涉198项诉讼仲裁 涉案金额超36亿元, 前途何在？",
@@ -143,22 +145,23 @@
                       @"乐视网目前共涉198项诉讼仲裁 涉案金额超36亿元, 前途何在？",
                       @"如何看待一线城市重排座次：从“北上广深”到“上北深广”？",
                       @"曾经拒绝马云巨额投资的张一鸣, 可能要联姻阿里?"];
+    
     NSMutableArray * layouts = [NSMutableArray array];
     for (int k=0; k<5; k++) {
-        XWGroupLayout * groupLayout =[[XWGroupLayout alloc]init];
+        XWItemLayoutGroup * groupLayout =[[XWItemLayoutGroup alloc]init];
         groupLayout.cellReuseID = _cellReuseIDs[k];
-        groupLayout.headerLayout.size = CGSizeMake(kScreenW, 24.0);
-        NSMutableArray * itemLayouts = [NSMutableArray array];
+        groupLayout.size = CGSizeMake(kScreenW, 24.0);
+        NSMutableArray * itemGroup = [NSMutableArray array];
         if (k==0) {
             groupLayout.groupStyle = 0 ;
-            groupLayout.headerLayout.size = CGSizeMake(kScreenW, 35.0);
-            groupLayout.headerLayout.title = @"热门细分领域";
-            groupLayout.headerLayout.detail = @"查看更多";
+            groupLayout.size = CGSizeMake(kScreenW, 35.0);
+            groupLayout.title = @"热门细分领域";
+            groupLayout.detail = @"查看更多";
             for (int i=0; i<8; i++) {
                 XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
                 itemLayout.size = CGSizeMake(kScreenW/4-10.0, kScreenW/4);
-                itemLayout.title = @"细分领域";
-                [itemLayouts addObject:itemLayout];
+                itemLayout.title = domains[i];
+                [itemGroup addObject:itemLayout];
             }
         }else if(k==1){
             groupLayout.groupStyle = 0 ;
@@ -166,38 +169,39 @@
                 XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
                 itemLayout.size = CGSizeMake(kScreenW-10.0, kScreenW*0.45);
                 itemLayout.title = @"每日热门推荐";
-                [itemLayouts addObject:itemLayout];
+                [itemGroup addObject:itemLayout];
             }
         }else if(k==2){
             groupLayout.groupStyle = 0 ;
+            groupLayout.title = @"近期热门话题";
             for (int i=0; i<2; i++) {
-                groupLayout.headerLayout.title = @"近期热门话题";
                 XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
                 itemLayout.size = CGSizeMake(kScreenW/2-7.5, kScreenW/3);
                 itemLayout.title = @"近期热门话题";
-                [itemLayouts addObject:itemLayout];
+                [itemGroup addObject:itemLayout];
             }
         }else if(k==3){
             groupLayout.groupStyle = 6 ;
-            for (int i=0; i<7; i++) {
-//                cell.cellStyle = XWCollectionCellStyleTag;
-                groupLayout.headerLayout.title = @"热门话题标签";
+            groupLayout.title = @"热门话题标签";
+            for (NSString * label in labels) {
                 XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
-                itemLayout.size = CGSizeMake(80.0, 30.0);
-                itemLayout.title = [NSString stringWithFormat:@"🏷️标签%d", i];
-                [itemLayouts addObject:itemLayout];
+                CGFloat labelLength = [label widthForFont:[UIFont systemFontOfSize:14.0]] +10.0;
+                itemLayout.size = CGSizeMake(labelLength, 30.0);
+                itemLayout.title = label;
+                [itemGroup addObject:itemLayout];
             }
         }else{
             groupLayout.groupStyle = 4 ;
+            groupLayout.title = @"近期热议";
             for (int i=0; i<arr.count; i++) {
-                groupLayout.headerLayout.title = @"近期热议";
+                
                 XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
                 itemLayout.size = CGSizeMake(kScreenW-10.0, kScreenW/4);
                 itemLayout.title = arr[i];
-                [itemLayouts addObject:itemLayout];
+                [itemGroup addObject:itemLayout];
             }
         }
-        groupLayout.itemLayouts = [itemLayouts copy];
+        groupLayout.itemGroup = [itemGroup copy];
         [layouts addObject:groupLayout];
     }
     return layouts;
