@@ -1,12 +1,12 @@
 //
-//  XWFeedLayout.m
+//  XWItemLayout.m
 //  CSFinance
 //
 //  Created by vivi wu on 2018/4/25.
 //  Copyright © 2018年 csco. All rights reserved.
 //
 
-#import "XWFeedLayout.h"
+#import "XWItemLayout.h"
 #import "NSDate+YYAdd.h"
 
 @implementation XWItemLayout
@@ -55,7 +55,4 @@
 
 @end
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-@implementation XWFeedLayout
-
-@end
+ 

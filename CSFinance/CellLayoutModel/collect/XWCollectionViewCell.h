@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XWFeedLayout.h"
+#import "XWItemLayout.h"
 
 typedef NS_ENUM(NSInteger, XWCollectionCellStyle) {
     XWCollectionCellStyleNormal=0,   //image above & title below.

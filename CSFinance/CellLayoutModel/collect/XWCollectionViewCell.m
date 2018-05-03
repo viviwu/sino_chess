@@ -7,7 +7,7 @@
 //
 
 #import "XWCollectionViewCell.h"
-#import "XWFeedLayout.h"
+#import "XWItemLayout.h"
 #import "NSDate+YYAdd.h"
 
 #define kContentH self.contentView.bounds.size.height

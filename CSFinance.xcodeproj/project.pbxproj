@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D4EA8FD2090BB5900835302 /* XWFeedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4EA8FC2090BB5900835302 /* XWFeedLayout.m */; };
+		0D4EA8FD2090BB5900835302 /* XWItemLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4EA8FC2090BB5900835302 /* XWItemLayout.m */; };
 		0D4EA8FF2090C04000835302 /* double_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4EA8FE2090C03F00835302 /* double_right@2x.png */; };
 		0D4EA9012090C04500835302 /* double_right@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4EA9002090C04500835302 /* double_right@3x.png */; };
 		30E981DC1B280A653FE5B04E /* libPods-CSFinance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2A8AF237248DF06E5B2F3D /* libPods-CSFinance.a */; };
+		4F08D23D209A990D00A68E54 /* XWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F08D23C209A990D00A68E54 /* XWTableViewCell.m */; };
 		4F1B0C1E2089B26800D4114F /* XWBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1B0C152089B26800D4114F /* XWBanner.m */; };
 		4F1B0C1F2089B26800D4114F /* XWScrollBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1B0C162089B26800D4114F /* XWScrollBanner.m */; };
 		4F1B0C272089B26F00D4114F /* NAKPlaybackIndicatorContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1B0C242089B26F00D4114F /* NAKPlaybackIndicatorContentView.m */; };
@@ -999,11 +1000,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0D4EA8FB2090BB5900835302 /* XWFeedLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWFeedLayout.h; sourceTree = "<group>"; };
-		0D4EA8FC2090BB5900835302 /* XWFeedLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWFeedLayout.m; sourceTree = "<group>"; };
+		0D4EA8FB2090BB5900835302 /* XWItemLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWItemLayout.h; sourceTree = "<group>"; };
+		0D4EA8FC2090BB5900835302 /* XWItemLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWItemLayout.m; sourceTree = "<group>"; };
 		0D4EA8FE2090C03F00835302 /* double_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "double_right@2x.png"; sourceTree = "<group>"; };
 		0D4EA9002090C04500835302 /* double_right@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "double_right@3x.png"; sourceTree = "<group>"; };
 		476BC1BA9EF8439151E573AB /* Pods-CSFinance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CSFinance.release.xcconfig"; path = "Pods/Target Support Files/Pods-CSFinance/Pods-CSFinance.release.xcconfig"; sourceTree = "<group>"; };
+		4F08D23B209A990D00A68E54 /* XWTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWTableViewCell.h; sourceTree = "<group>"; };
+		4F08D23C209A990D00A68E54 /* XWTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWTableViewCell.m; sourceTree = "<group>"; };
 		4F1B0C132089B26800D4114F /* XWBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWBanner.h; sourceTree = "<group>"; };
 		4F1B0C142089B26800D4114F /* XWScrollBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWScrollBanner.h; sourceTree = "<group>"; };
 		4F1B0C152089B26800D4114F /* XWBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWBanner.m; sourceTree = "<group>"; };
@@ -2204,6 +2207,28 @@
 				FF2A8AF237248DF06E5B2F3D /* libPods-CSFinance.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4F08D23E209A9B6300A68E54 /* collect */ = {
+			isa = PBXGroup;
+			children = (
+				4F2F47ED208F321E00169383 /* XWCollectionReusableView.h */,
+				4F2F47EA208F321E00169383 /* XWCollectionReusableView.m */,
+				4F2F47EC208F321E00169383 /* XWCollectionViewCell.h */,
+				4F2F47EF208F321E00169383 /* XWCollectionViewCell.m */,
+				4F7CC753208D7E8100429B06 /* CSImgCollectCell.h */,
+				4F7CC754208D7E8100429B06 /* CSImgCollectCell.m */,
+			);
+			path = collect;
+			sourceTree = "<group>";
+		};
+		4F08D23F209A9B8F00A68E54 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				4F08D23B209A990D00A68E54 /* XWTableViewCell.h */,
+				4F08D23C209A990D00A68E54 /* XWTableViewCell.m */,
+			);
+			path = Table;
 			sourceTree = "<group>";
 		};
 		4F1B0C012089B21E00D4114F /* Interact */ = {
@@ -3589,11 +3614,7 @@
 			children = (
 				4F40463C207CB1AA00FF4DCE /* AppDelegate.h */,
 				4F40463D207CB1AA00FF4DCE /* AppDelegate.m */,
-				0D4EA8FB2090BB5900835302 /* XWFeedLayout.h */,
-				0D4EA8FC2090BB5900835302 /* XWFeedLayout.m */,
-				4F7CC756208D7E8500429B06 /* Cell */,
-				4F71F26F2091B4F7007F769D /* TableViewCellHeader */,
-				4F71F25F2091A38F007F769D /* CollectCellHeader */,
+				4F7CC756208D7E8500429B06 /* CellLayoutModel */,
 				4F1B0C012089B21E00D4114F /* Interact */,
 				4F404645207CB1AA00FF4DCE /* Main.storyboard */,
 				4F1B13382089B82300D4114F /* CSPrefixHeader.pch */,
@@ -3742,8 +3763,7 @@
 				4F4265512092EE830052A341 /* XWCollectionRightCell.xib */,
 				4F71F2702091B519007F769D /* composite */,
 			);
-			name = CollectCellHeader;
-			path = Interact/CollectCellHeader;
+			path = CollectCellHeader;
 			sourceTree = "<group>";
 		};
 		4F71F26F2091B4F7007F769D /* TableViewCellHeader */ = {
@@ -3812,17 +3832,17 @@
 			path = PrivatePlacement;
 			sourceTree = "<group>";
 		};
-		4F7CC756208D7E8500429B06 /* Cell */ = {
+		4F7CC756208D7E8500429B06 /* CellLayoutModel */ = {
 			isa = PBXGroup;
 			children = (
-				4F2F47ED208F321E00169383 /* XWCollectionReusableView.h */,
-				4F2F47EA208F321E00169383 /* XWCollectionReusableView.m */,
-				4F2F47EC208F321E00169383 /* XWCollectionViewCell.h */,
-				4F2F47EF208F321E00169383 /* XWCollectionViewCell.m */,
-				4F7CC753208D7E8100429B06 /* CSImgCollectCell.h */,
-				4F7CC754208D7E8100429B06 /* CSImgCollectCell.m */,
+				0D4EA8FB2090BB5900835302 /* XWItemLayout.h */,
+				0D4EA8FC2090BB5900835302 /* XWItemLayout.m */,
+				4F08D23E209A9B6300A68E54 /* collect */,
+				4F08D23F209A9B8F00A68E54 /* Table */,
+				4F71F26F2091B4F7007F769D /* TableViewCellHeader */,
+				4F71F25F2091A38F007F769D /* CollectCellHeader */,
 			);
-			path = Cell;
+			path = CellLayoutModel;
 			sourceTree = "<group>";
 		};
 		4F7CC757208D856C00429B06 /* Rank */ = {
@@ -4856,7 +4876,8 @@
 				4F1B134C2089B9A300D4114F /* UIBarButtonItem+Item.m in Sources */,
 				4F1B13592089BA4300D4114F /* KSYQRCode.m in Sources */,
 				4F71F2652091A653007F769D /* XWTableSubtitleCell.m in Sources */,
-				0D4EA8FD2090BB5900835302 /* XWFeedLayout.m in Sources */,
+				4F08D23D209A990D00A68E54 /* XWTableViewCell.m in Sources */,
+				0D4EA8FD2090BB5900835302 /* XWItemLayout.m in Sources */,
 				4F1B0C502089B2AF00D4114F /* VENTouchLockPasscodeCharacterView.m in Sources */,
 				4F7CC79A208DDBEF00429B06 /* STRefreshHeader.m in Sources */,
 				4F1B13132089B62100D4114F /* UITableView+YYAdd.m in Sources */,

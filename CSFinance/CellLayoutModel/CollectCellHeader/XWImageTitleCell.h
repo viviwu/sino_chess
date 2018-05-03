@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XWFeedLayout.h"
+#import "XWItemLayout.h"
 
 @interface XWImageTitleCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;

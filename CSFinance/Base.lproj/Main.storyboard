@@ -132,11 +132,11 @@
             </objects>
             <point key="canvasLocation" x="370" y="-388"/>
         </scene>
-        <!--First-->
+        <!--互动-->
         <scene sceneID="qGm-VL-8nJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ufc-o3-1Bx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="互动" image="movie_projector.png" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xcX-KU-7P8">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -151,11 +151,11 @@
             </objects>
             <point key="canvasLocation" x="-1407.2" y="468.21589205397305"/>
         </scene>
-        <!--Second-->
+        <!--私募-->
         <scene sceneID="0w7-59-AiK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qho-as-XIK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="私募" image="library.png" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Pzd-F8-0Sb">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -170,11 +170,11 @@
             </objects>
             <point key="canvasLocation" x="-674" y="466"/>
         </scene>
-        <!--Item-->
+        <!--组合-->
         <scene sceneID="n3V-gT-hKg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yWd-IL-VKv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="T37-QY-UVu"/>
+                    <tabBarItem key="tabBarItem" title="组合" image="genealogy.png" id="T37-QY-UVu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZRZ-7A-b5G">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -189,11 +189,11 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="467.3163418290855"/>
         </scene>
-        <!--Item-->
+        <!--交易-->
         <scene sceneID="DAr-dz-Ddl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4ih-ge-9qf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="eKA-H5-fnB"/>
+                    <tabBarItem key="tabBarItem" title="交易" image="quotation.png" id="eKA-H5-fnB"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EAb-sL-3Jc">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -208,11 +208,11 @@
             </objects>
             <point key="canvasLocation" x="896.79999999999995" y="477.21139430284859"/>
         </scene>
-        <!--Item-->
+        <!--我的-->
         <scene sceneID="UT4-xu-AQv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="im6-xv-B5h" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="czn-TM-zyJ"/>
+                    <tabBarItem key="tabBarItem" title="我的" image="account.png" id="czn-TM-zyJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aiz-40-Czf">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -229,7 +229,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="account.png" width="37" height="37"/>
+        <image name="genealogy.png" width="30" height="30"/>
+        <image name="library.png" width="30" height="30"/>
+        <image name="movie_projector.png" width="32" height="32"/>
+        <image name="quotation.png" width="30" height="30"/>
     </resources>
 </document>

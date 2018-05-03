@@ -1,5 +1,5 @@
 //
-//  XWFeedLayout.h
+//  XWItemLayout.h
 //  CSFinance
 //
 //  Created by vivi wu on 2018/4/25.
@@ -46,7 +46,4 @@
 - (XWItemLayout *) footerLayout;
 
 @end
-
-@interface XWFeedLayout : NSObject
-
-@end
+ 

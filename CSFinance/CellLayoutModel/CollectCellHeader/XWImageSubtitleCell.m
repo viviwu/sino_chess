@@ -7,7 +7,7 @@
 //
 
 #import "XWImageSubtitleCell.h"
-#import "XWFeedLayout.h"
+#import "XWItemLayout.h"
 
 @implementation XWImageSubtitleCell
 

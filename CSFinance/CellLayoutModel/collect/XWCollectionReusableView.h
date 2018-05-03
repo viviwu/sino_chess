@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XWFeedLayout.h"
+#import "XWItemLayout.h"
 
 typedef NS_ENUM(NSInteger, XWCollectionReusableViewStyle) {
     XWCollectionReusableViewStyleNormal=0,
