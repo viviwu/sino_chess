@@ -9,6 +9,7 @@
 #import "PPManagersRankTableController.h"
 #import "XWScrollBanner.h"
 #import "XWFilterView.h"
+#import "XWTableViewCell.h"
 
 @interface PPManagersRankTableController ()
 @property (weak, nonatomic) IBOutlet UIView *headerBoard;
@@ -90,6 +91,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView registerClass:[XWTableViewCell class] forCellReuseIdentifier:@"manager"];
     
     NSArray * models = [self fakeModels];
     NSMutableArray * sources = [NSMutableArray array];
@@ -135,7 +137,7 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"manager" forIndexPath:indexPath];
+    XWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"manager" forIndexPath:indexPath];
     
     // Configure the cell...
     

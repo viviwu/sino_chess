@@ -292,9 +292,9 @@ static int AAPLPlayerViewControllerKVOContext = 0;
 {
     NSArray *assetsArray = nil;
     
-    NSData *jsonData = [[NSData alloc] initWithContentsOfURL:jsonURL];
-    if (jsonData) {
-        assetsArray = (NSArray *)[NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+    NSData *dataJson = [[NSData alloc] initWithContentsOfURL:jsonURL];
+    if (dataJson) {
+        assetsArray = (NSArray *)[NSJSONSerialization JSONObjectWithData:dataJson options:0 error:nil];
         if (!assetsArray) {
             [self handleErrorWithMessage:NSLocalizedString(@"error.json_parse_failed.description", @"Failed to parse the assets manifest JSON") error:nil];
         }

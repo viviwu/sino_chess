@@ -1434,16 +1434,16 @@ static NSString *ModelDescription(NSObject *model) {
 + (NSDictionary *)_yy_dictionaryWithJSON:(id)json {
     if (!json || json == (id)kCFNull) return nil;
     NSDictionary *dic = nil;
-    NSData *jsonData = nil;
+    NSData *dataJson = nil;
     if ([json isKindOfClass:[NSDictionary class]]) {
         dic = json;
     } else if ([json isKindOfClass:[NSString class]]) {
-        jsonData = [(NSString *)json dataUsingEncoding : NSUTF8StringEncoding];
+        dataJson = [(NSString *)json dataUsingEncoding : NSUTF8StringEncoding];
     } else if ([json isKindOfClass:[NSData class]]) {
-        jsonData = json;
+        dataJson = json;
     }
-    if (jsonData) {
-        dic = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:NULL];
+    if (dataJson) {
+        dic = [NSJSONSerialization JSONObjectWithData:dataJson options:kNilOptions error:NULL];
         if (![dic isKindOfClass:[NSDictionary class]]) dic = nil;
     }
     return dic;
@@ -1539,9 +1539,9 @@ static NSString *ModelDescription(NSObject *model) {
 }
 
 - (NSString *)modelToJSONString {
-    NSData *jsonData = [self modelToJSONData];
-    if (jsonData.length == 0) return nil;
-    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSData *dataJson = [self modelToJSONData];
+    if (dataJson.length == 0) return nil;
+    return [[NSString alloc] initWithData:dataJson encoding:NSUTF8StringEncoding];
 }
 
 - (id)modelCopy{
@@ -1774,16 +1774,16 @@ static NSString *ModelDescription(NSObject *model) {
 + (NSArray *)modelArrayWithClass:(Class)cls json:(id)json {
     if (!json) return nil;
     NSArray *arr = nil;
-    NSData *jsonData = nil;
+    NSData *dataJson = nil;
     if ([json isKindOfClass:[NSArray class]]) {
         arr = json;
     } else if ([json isKindOfClass:[NSString class]]) {
-        jsonData = [(NSString *)json dataUsingEncoding : NSUTF8StringEncoding];
+        dataJson = [(NSString *)json dataUsingEncoding : NSUTF8StringEncoding];
     } else if ([json isKindOfClass:[NSData class]]) {
-        jsonData = json;
+        dataJson = json;
     }
-    if (jsonData) {
-        arr = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:NULL];
+    if (dataJson) {
+        arr = [NSJSONSerialization JSONObjectWithData:dataJson options:kNilOptions error:NULL];
         if (![arr isKindOfClass:[NSArray class]]) arr = nil;
     }
     return [self modelArrayWithClass:cls array:arr];
@@ -1808,16 +1808,16 @@ static NSString *ModelDescription(NSObject *model) {
 + (NSDictionary *)modelDictionaryWithClass:(Class)cls json:(id)json {
     if (!json) return nil;
     NSDictionary *dic = nil;
-    NSData *jsonData = nil;
+    NSData *dataJson = nil;
     if ([json isKindOfClass:[NSDictionary class]]) {
         dic = json;
     } else if ([json isKindOfClass:[NSString class]]) {
-        jsonData = [(NSString *)json dataUsingEncoding : NSUTF8StringEncoding];
+        dataJson = [(NSString *)json dataUsingEncoding : NSUTF8StringEncoding];
     } else if ([json isKindOfClass:[NSData class]]) {
-        jsonData = json;
+        dataJson = json;
     }
-    if (jsonData) {
-        dic = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:NULL];
+    if (dataJson) {
+        dic = [NSJSONSerialization JSONObjectWithData:dataJson options:kNilOptions error:NULL];
         if (![dic isKindOfClass:[NSDictionary class]]) dic = nil;
     }
     return [self modelDictionaryWithClass:cls dictionary:dic];

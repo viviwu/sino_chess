@@ -9,6 +9,7 @@
 #import "PPCorpsRankTableController.h"
 #import "XWScrollBanner.h"
 #import "XWFilterView.h"
+#import "XWTableViewCell.h"
 
 @interface PPCorpsRankTableController ()
 
@@ -91,6 +92,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView registerClass:[XWTableViewCell class] forCellReuseIdentifier:@"crop"];
     
     NSArray * models = [self fakeModels];
     NSMutableArray * sources = [NSMutableArray array];
@@ -135,8 +137,9 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"crop" forIndexPath:indexPath];
+- (XWTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    XWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"crop" forIndexPath:indexPath];
+    cell.cellStyle = XWTableViewCellStyleThreeTitle;
     
     // Configure the cell...
     

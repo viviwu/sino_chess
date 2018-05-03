@@ -75,6 +75,18 @@
                 [self.textLabel setFrame:CGRectMake(10.0, 5.0, textWidth, kContentH-10.0)];
                 [self.detailTextLabel setFrame:CGRectMake(10.0+textWidth, 5.0, textWidth, kContentH-10.0)];
                 [self.extraTextLabel setFrame:CGRectMake(10.0+textWidth*2, 5.0, textWidth, kContentH-10.0)];
+                
+                self.textLabel.adjustsFontSizeToFitWidth = NO;
+                self.textLabel.textColor = [UIColor blackColor];
+                self.textLabel.font = [UIFont systemFontOfSize:15];
+                self.textLabel.numberOfLines = 0;
+                
+                self.detailTextLabel.textColor = [UIColor redColor];
+                self.detailTextLabel.font = [UIFont systemFontOfSize:15];
+                self.detailTextLabel.textAlignment = NSTextAlignmentCenter;
+                
+                self.extraTextLabel.textColor = [UIColor redColor];
+                self.extraTextLabel.font = [UIFont systemFontOfSize:15];
             }
             break;
         case XWTableViewCellStylePreview:

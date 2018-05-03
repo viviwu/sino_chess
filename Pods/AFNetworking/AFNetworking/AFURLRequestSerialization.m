@@ -1267,13 +1267,13 @@ typedef enum {
             return nil;
         }
 
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:parameters options:self.writingOptions error:error];
+        NSData *dataJson = [NSJSONSerialization dataWithJSONObject:parameters options:self.writingOptions error:error];
         
-        if (!jsonData) {
+        if (!dataJson) {
             return nil;
         }
         
-        [mutableRequest setHTTPBody:jsonData];
+        [mutableRequest setHTTPBody:dataJson];
     }
 
     return mutableRequest;
