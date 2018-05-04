@@ -147,7 +147,9 @@
 {
 //    [self performSegueWithIdentifier:@"fund_page" sender:self];
     XWFundDetailViewController  * fundDetail = [[XWFundDetailViewController alloc]init];
+    fundDetail.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:fundDetail animated:YES];
+    fundDetail.hidesBottomBarWhenPushed = NO;
 }
 
 #pragma mark - Table view data source

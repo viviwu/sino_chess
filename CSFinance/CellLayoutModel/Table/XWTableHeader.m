@@ -19,6 +19,7 @@
     if (self) {
         self.backgroundColor = [UIColor yellowColor];
         self.headerStyle = headerStyle;
+ 
     }
     return self;
 }
@@ -30,19 +31,19 @@
 
 - (void)layoutSubviews
 {
-    CGFloat inset = kSelfH*0.1;
+    CGFloat inset = kSelfH*0.05;
     CGFloat lY = kSelfH *0.5;
     CGFloat lW = kSelfW/3;
     CGFloat aH = kSelfH *0.2;
     CGFloat bH = kSelfH *0.3;
     
     if ( XWTableHeaderStyleFund == _headerStyle) {
-        self.textLabel.text = @"封闭基金";
-        self.detailTextLabel.text = @"托管人：招商证券";
         //        [self.imageView setFrame:CGRectZero];
-       
-//        [self.textLabel setFrame:CGRectMake(inset, inset, kSelfW*0.8, aH)];
-//        [self.detailTextLabel setFrame:CGRectMake(inset, bH, kSelfW*0.8, aH)];
+        [self.textLabel setFrame:CGRectMake(0, inset, kSelfW, aH)];
+        [self.detailTextLabel setFrame:CGRectMake(0, bH, kSelfW, aH)];
+        
+        self.textLabel.text = @"小牛资本  (封闭运行)";
+        self.detailTextLabel.text = @"托管人：招商证券";
         
         self.laLabel.text = @"最新净值";
         self.maLabel.text = @"近一年收益";
@@ -60,9 +61,6 @@
         [self.detailTextLabel setFrame:CGRectMake(kSelfW*0.4, bH, lY, aH)];
     }else {}
     
-    [self.textLabel setFrame:CGRectMake(0, inset, lW, aH)];
-    [self.detailTextLabel setFrame:CGRectMake(0, bH, lW, aH)];
-    
     [self.laLabel setFrame:CGRectMake(0, lY, lW, aH)];
     [self.maLabel setFrame:CGRectMake(lW, lY, lW, aH)];
     [self.raLabel setFrame:CGRectMake(lW*2, lY, lW, aH)];
@@ -70,9 +68,6 @@
     [self.lbLabel setFrame:CGRectMake(0, aH+lY, lW, bH)];
     [self.mbLabel setFrame:CGRectMake(lW, aH+lY, lW, bH)];
     [self.rbLabel setFrame:CGRectMake(lW*2, aH+lY, lW, bH)];
-    NSLog(@"textLabel-----%@", NSStringFromCGRect(self.textLabel.frame));
-    NSLog(@"detailTextLabel-----%@", NSStringFromCGRect(self.detailTextLabel.frame));
-    NSLog(@"rbLabel-----%@", NSStringFromCGRect(self.rbLabel.frame));
     [super layoutSubviews];
 }
 
@@ -91,7 +86,7 @@
         _textLabel = [self instanceNewLabel];
         _textLabel.font =  [UIFont systemFontOfSize:18.0];
     }
-    return _laLabel;
+    return _textLabel;
 }
 
 - (UILabel *)detailTextLabel
@@ -100,7 +95,7 @@
         _detailTextLabel = [self instanceNewLabel];
         _detailTextLabel.font =  [UIFont systemFontOfSize:18.0];
     }
-    return _laLabel;
+    return _detailTextLabel;
 }
 //+++++++++++++++++++
 - (UILabel *)laLabel

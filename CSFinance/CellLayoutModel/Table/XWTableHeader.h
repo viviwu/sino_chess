@@ -16,6 +16,7 @@ typedef NS_ENUM(NSInteger, XWTableHeaderStyle) {
 };
 
 @interface XWTableHeader : UIView
+
 @property (nonatomic, assign) XWTableHeaderStyle headerStyle;
 @property (nonatomic, strong) UIImageView * imageView;
 @property (nonatomic, strong) UILabel * textLabel;

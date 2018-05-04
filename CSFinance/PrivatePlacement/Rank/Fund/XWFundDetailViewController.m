@@ -9,6 +9,7 @@
 #import "XWFundDetailViewController.h"
 #import "XWTableHeader.h"
 #import "XWTableViewCell.h"
+#import "XWTrendTableCell.h"
 
 @interface XWFundDetailViewController ()
 @property(nonatomic, strong)XWTableHeader * header;
@@ -22,7 +23,6 @@
     self.title = @"XXX基金";
     _header = [[XWTableHeader alloc]initWithFrame:CGRectMake(0, 0, kScreenW, 160.0) headerStyle:XWTableHeaderStyleFund]; 
     self.tableView.tableHeaderView = _header;
-    NSLog(@"textLabel.frame==%@", NSStringFromCGRect(_header.textLabel.frame));
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -39,8 +39,8 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+//#warning Incomplete implementation, return the number of sections
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -58,6 +58,14 @@
 }
 */
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (0 == indexPath.section) {
+        return 300.0;
+    }else{
+        return 44.0;
+    }
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

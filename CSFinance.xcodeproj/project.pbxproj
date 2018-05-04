@@ -978,6 +978,7 @@
 		4F778654209C01D70052F7E4 /* XWCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F778653209C01D70052F7E4 /* XWCompany.m */; };
 		4F778658209C2AEA0052F7E4 /* XWFundDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F778656209C2AEA0052F7E4 /* XWFundDetailViewController.m */; };
 		4F77865C209C2C190052F7E4 /* XWTableHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F77865B209C2C190052F7E4 /* XWTableHeader.m */; };
+		4F778661209C58C70052F7E4 /* XWTrendTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F778660209C58C70052F7E4 /* XWTrendTableCell.m */; };
 		4F7CC71F208D6A6500429B06 /* Podcast.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7CC71E208D6A6500429B06 /* Podcast.storyboard */; };
 		4F7CC722208D6B6400429B06 /* PodcastCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CC721208D6B6400429B06 /* PodcastCollectionController.m */; };
 		4F7CC72F208D782D00429B06 /* SalonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CC724208D782D00429B06 /* SalonCenterViewController.m */; };
@@ -2187,6 +2188,8 @@
 		4F778656209C2AEA0052F7E4 /* XWFundDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWFundDetailViewController.m; sourceTree = "<group>"; };
 		4F77865A209C2C190052F7E4 /* XWTableHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWTableHeader.h; sourceTree = "<group>"; };
 		4F77865B209C2C190052F7E4 /* XWTableHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWTableHeader.m; sourceTree = "<group>"; };
+		4F77865F209C58C70052F7E4 /* XWTrendTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWTrendTableCell.h; sourceTree = "<group>"; };
+		4F778660209C58C70052F7E4 /* XWTrendTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWTrendTableCell.m; sourceTree = "<group>"; };
 		4F7CC71E208D6A6500429B06 /* Podcast.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Podcast.storyboard; sourceTree = "<group>"; };
 		4F7CC720208D6B6400429B06 /* PodcastCollectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PodcastCollectionController.h; sourceTree = "<group>"; };
 		4F7CC721208D6B6400429B06 /* PodcastCollectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PodcastCollectionController.m; sourceTree = "<group>"; };
@@ -2310,6 +2313,8 @@
 				4F08D241209AAB6600A68E54 /* XWTableGroupHeader.m */,
 				4F77865A209C2C190052F7E4 /* XWTableHeader.h */,
 				4F77865B209C2C190052F7E4 /* XWTableHeader.m */,
+				4F77865F209C58C70052F7E4 /* XWTrendTableCell.h */,
+				4F778660209C58C70052F7E4 /* XWTrendTableCell.m */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -5039,6 +5044,7 @@
 				4F7CC767208DB2AF00429B06 /* ShopOverviewTableController.m in Sources */,
 				4F6FF3B520901CEE00D3F6B3 /* MastersTableViewController.m in Sources */,
 				4F1B131D2089B62100D4114F /* NSNumber+YYAdd.m in Sources */,
+				4F778661209C58C70052F7E4 /* XWTrendTableCell.m in Sources */,
 				4F1B13212089B62100D4114F /* NSThread+YYAdd.m in Sources */,
 				4F1B134C2089B9A300D4114F /* UIBarButtonItem+Item.m in Sources */,
 				4F1B13592089BA4300D4114F /* KSYQRCode.m in Sources */,
