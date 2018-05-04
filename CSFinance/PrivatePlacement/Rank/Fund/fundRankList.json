@@ -1,0 +1,460 @@
+{
+  "status" : 0,
+  "data" : {
+    "total" : 6413,
+    "is_login" : true,
+    "list" : [
+      {
+        "fund_id" : "HF000049U5",
+        "income" : "51.72",
+        "fund_name" : "红亨稳赢三期",
+        "sort_no" : 1,
+        "nav" : "1.5818",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF000024G7",
+        "income" : "51.02",
+        "fund_name" : "飞蚁一号",
+        "sort_no" : 2,
+        "nav" : "1.2266",
+        "sharp" : "",
+        "nav_date" : "04-27"
+      },
+      {
+        "fund_id" : "HF00002DVZ",
+        "income" : "48.36",
+        "fund_name" : "红亨稳赢一期",
+        "sort_no" : 3,
+        "nav" : "1.3990",
+        "sharp" : "",
+        "nav_date" : "04-26"
+      },
+      {
+        "fund_id" : "HF000040GA",
+        "income" : "45.62",
+        "fund_name" : "神骑资本王者荣耀",
+        "sort_no" : 4,
+        "nav" : "1.1350",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF00003PJI",
+        "income" : "45.21",
+        "fund_name" : "来兴酷元素",
+        "sort_no" : 5,
+        "nav" : "0.8989",
+        "sharp" : "",
+        "nav_date" : "04-27"
+      },
+      {
+        "fund_id" : "HF00001M7J",
+        "income" : "45.16",
+        "fund_name" : "天贝合共盈1号",
+        "sort_no" : 6,
+        "nav" : "0.7930",
+        "sharp" : "",
+        "nav_date" : "04-27"
+      },
+      {
+        "fund_id" : "HF000025PG",
+        "income" : "44.81",
+        "fund_name" : "大凡1号",
+        "sort_no" : 7,
+        "nav" : "1.0520",
+        "sharp" : "",
+        "nav_date" : "04-27"
+      },
+      {
+        "fund_id" : "HF000028GD",
+        "income" : "40.96",
+        "fund_name" : "流星2号",
+        "sort_no" : 8,
+        "nav" : "1.0831",
+        "sharp" : "",
+        "nav_date" : "04-27"
+      },
+      {
+        "fund_id" : "HF00004HG6",
+        "income" : "39.76",
+        "fund_name" : "天和思创天和18号",
+        "sort_no" : 9,
+        "nav" : "1.2431",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF00001HUP",
+        "income" : "38.69",
+        "fund_name" : "私募工场宫奇锐进",
+        "sort_no" : 10,
+        "nav" : "0.3280",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF00004HG5",
+        "income" : "37.32",
+        "fund_name" : "天和思创天和16号",
+        "sort_no" : 11,
+        "nav" : "1.2285",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF00002IN2",
+        "income" : "36.54",
+        "fund_name" : "东方价值基金三号",
+        "sort_no" : 12,
+        "nav" : "1.8300",
+        "sharp" : "",
+        "nav_date" : "03-28"
+      },
+      {
+        "fund_id" : "HF00003CSK",
+        "income" : "34.72",
+        "fund_name" : "协捷资产-学院菁英324号",
+        "sort_no" : 13,
+        "nav" : "1.5722",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF00001HJI",
+        "income" : "34.71",
+        "fund_name" : "华鑫信托-054号",
+        "sort_no" : 14,
+        "nav" : "1.7504",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF00004HGC",
+        "income" : "34.37",
+        "fund_name" : "天和思创天和17号",
+        "sort_no" : 15,
+        "nav" : "1.2119",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF000006WZ",
+        "income" : "34.16",
+        "fund_name" : "天马一期",
+        "sort_no" : 16,
+        "nav" : "0.9687",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF00003MZX",
+        "income" : "33.95",
+        "fund_name" : "晨吉一号",
+        "sort_no" : 17,
+        "nav" : "1.0890",
+        "sharp" : "",
+        "nav_date" : "03-30"
+      },
+      {
+        "fund_id" : "HF000049U6",
+        "income" : "33.91",
+        "fund_name" : "红亨稳赢四期",
+        "sort_no" : 18,
+        "nav" : "1.4947",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF00002DOW",
+        "income" : "33.83",
+        "fund_name" : "天和7号基金",
+        "sort_no" : 19,
+        "nav" : "1.9070",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF000019VZ",
+        "income" : "32.45",
+        "fund_name" : "贤华一期",
+        "sort_no" : 20,
+        "nav" : "0.6000",
+        "sharp" : "",
+        "nav_date" : "03-30"
+      },
+      {
+        "fund_id" : "HF00003W0B",
+        "income" : "31.58",
+        "fund_name" : "玄元新大宗策略3号",
+        "sort_no" : 21,
+        "nav" : "1.5230",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF00002EDI",
+        "income" : "30.44",
+        "fund_name" : "速赢一号",
+        "sort_no" : 22,
+        "nav" : "1.4153",
+        "sharp" : "",
+        "nav_date" : "04-27"
+      },
+      {
+        "fund_id" : "HF00003N9R",
+        "income" : "30.09",
+        "fund_name" : "红亨稳赢二期",
+        "sort_no" : 23,
+        "nav" : "1.7956",
+        "sharp" : "",
+        "nav_date" : "04-26"
+      },
+      {
+        "fund_id" : "HF00003XZL",
+        "income" : "28.91",
+        "fund_name" : "微明恒远丰誉1期",
+        "sort_no" : 24,
+        "nav" : "1.2310",
+        "sharp" : "",
+        "nav_date" : "04-25"
+      },
+      {
+        "fund_id" : "HF00002DSX",
+        "income" : "28.47",
+        "fund_name" : "天和8号基金",
+        "sort_no" : 25,
+        "nav" : "1.5400",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF00001GPL",
+        "income" : "28.27",
+        "fund_name" : "仲谋专属5号",
+        "sort_no" : 26,
+        "nav" : "1.0589",
+        "sharp" : "",
+        "nav_date" : "04-13"
+      },
+      {
+        "fund_id" : "HF00001MZ7",
+        "income" : "27.89",
+        "fund_name" : "龟圣价值一号",
+        "sort_no" : 27,
+        "nav" : "1.6940",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF000049UI",
+        "income" : "27.62",
+        "fund_name" : "汇富金财价值精选1号证券",
+        "sort_no" : 28,
+        "nav" : "1.2520",
+        "sharp" : "",
+        "nav_date" : "03-30"
+      },
+      {
+        "fund_id" : "HF00002EYW",
+        "income" : "27.49",
+        "fund_name" : "恒德吉明价值成长1号",
+        "sort_no" : 29,
+        "nav" : "1.4610",
+        "sharp" : "",
+        "nav_date" : "03-09"
+      },
+      {
+        "fund_id" : "HF00000WL1",
+        "income" : "27.33",
+        "fund_name" : "源实-瑞鑫1号",
+        "sort_no" : 30,
+        "nav" : "0.9816",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF00001LPC",
+        "income" : "27.06",
+        "fund_name" : "私募工场睿阳至信",
+        "sort_no" : 31,
+        "nav" : "0.5100",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF00002G1O",
+        "income" : "26.54",
+        "fund_name" : "天禄一号",
+        "sort_no" : 32,
+        "nav" : "1.0960",
+        "sharp" : "",
+        "nav_date" : "04-27"
+      },
+      {
+        "fund_id" : "HF00002IKD",
+        "income" : "26.44",
+        "fund_name" : "云南信托-峻茂15号",
+        "sort_no" : 33,
+        "nav" : "0.9375",
+        "sharp" : "",
+        "nav_date" : "04-27"
+      },
+      {
+        "fund_id" : "HF00002F2L",
+        "income" : "26.38",
+        "fund_name" : "天益一号基金",
+        "sort_no" : 34,
+        "nav" : "1.7882",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF00001P62",
+        "income" : "26.15",
+        "fund_name" : "天和10号",
+        "sort_no" : 35,
+        "nav" : "1.6020",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF00001AMT",
+        "income" : "26.10",
+        "fund_name" : "天和4号证券基金",
+        "sort_no" : 36,
+        "nav" : "1.9830",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF00003N7P",
+        "income" : "25.73",
+        "fund_name" : "佳盈国企改革1号",
+        "sort_no" : 37,
+        "nav" : "0.4671",
+        "sharp" : "",
+        "nav_date" : "03-30"
+      },
+      {
+        "fund_id" : "HF000019O9",
+        "income" : "25.65",
+        "fund_name" : "中众都发一号",
+        "sort_no" : 38,
+        "nav" : "0.7530",
+        "sharp" : "",
+        "nav_date" : "04-13"
+      },
+      {
+        "fund_id" : "HF00001K3W",
+        "income" : "25.55",
+        "fund_name" : "至秦成长3号",
+        "sort_no" : 39,
+        "nav" : "0.7860",
+        "sharp" : "",
+        "nav_date" : "04-27"
+      },
+      {
+        "fund_id" : "HF00000XNX",
+        "income" : "25.50",
+        "fund_name" : "旭诚七期",
+        "sort_no" : 40,
+        "nav" : "1.2550",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF00003N0Q",
+        "income" : "25.36",
+        "fund_name" : "珺越东启私募基金",
+        "sort_no" : 41,
+        "nav" : "1.9760",
+        "sharp" : "",
+        "nav_date" : "04-20"
+      },
+      {
+        "fund_id" : "HF0000294L",
+        "income" : "25.24",
+        "fund_name" : "振邦稳健二号",
+        "sort_no" : 42,
+        "nav" : "1.0630",
+        "sharp" : "",
+        "nav_date" : "04-09"
+      },
+      {
+        "fund_id" : "HF00004H3N",
+        "income" : "24.37",
+        "fund_name" : "钱江潮",
+        "sort_no" : 43,
+        "nav" : "1.2024",
+        "sharp" : "",
+        "nav_date" : "04-25"
+      },
+      {
+        "fund_id" : "HF00003VLZ",
+        "income" : "24.34",
+        "fund_name" : "春明一号",
+        "sort_no" : 44,
+        "nav" : "2.1931",
+        "sharp" : "",
+        "nav_date" : "04-13"
+      },
+      {
+        "fund_id" : "HF00003M33",
+        "income" : "24.34",
+        "fund_name" : "云南信托-汇赢5号",
+        "sort_no" : 45,
+        "nav" : "1.3790",
+        "sharp" : "",
+        "nav_date" : "04-27"
+      },
+      {
+        "fund_id" : "HF000018KA",
+        "income" : "24.20",
+        "fund_name" : "私募工场睿阳成长1期",
+        "sort_no" : 46,
+        "nav" : "0.3505",
+        "sharp" : "",
+        "nav_date" : "04-26"
+      },
+      {
+        "fund_id" : "HF00002FCC",
+        "income" : "24.01",
+        "fund_name" : "雪糕一号",
+        "sort_no" : 47,
+        "nav" : "1.1490",
+        "sharp" : "",
+        "nav_date" : "04-27"
+      },
+      {
+        "fund_id" : "HF00002IKP",
+        "income" : "23.52",
+        "fund_name" : "云南信托-合顺13号",
+        "sort_no" : 48,
+        "nav" : "1.3620",
+        "sharp" : "",
+        "nav_date" : "04-27"
+      },
+      {
+        "fund_id" : "HF00001FEC",
+        "income" : "23.30",
+        "fund_name" : "晟泰1号",
+        "sort_no" : 49,
+        "nav" : "1.0383",
+        "sharp" : "",
+        "nav_date" : "04-02"
+      },
+      {
+        "fund_id" : "HF00003Y1W",
+        "income" : "23.04",
+        "fund_name" : "福汇资本一号",
+        "sort_no" : 50,
+        "nav" : "1.2389",
+        "sharp" : "",
+        "nav_date" : "03-30"
+      }
+    ]
+  },
+  "msg" : "NO ERROR!"
+}

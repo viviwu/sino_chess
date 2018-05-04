@@ -9,6 +9,8 @@
 #import "XWConsultViewController.h"
 #import "XWCollectionViewCell.h"
 #import "XWCollectionGroupHeader.h"
+#import "MastersTableViewController.h"
+
 #import "NSString+YYAdd.h"
 
 //#import "XWImageTitleCell.h"
@@ -59,21 +61,26 @@
     for (int i=0; i<_cellReuseIDs.count; i++) {
         NSString * cellid = _cellReuseIDs[i];
         [self.collectionView registerClass:[XWCollectionViewCell class] forCellWithReuseIdentifier:cellid];
-//        if (i==_cellReuseIDs.count-1) {
-//            [self.collectionView registerNib:[UINib nibWithNibName:@"XWCollectionRightCell" bundle:nil] forCellWithReuseIdentifier:cellid];
-//        }else{
-//            [self.collectionView registerNib:[UINib nibWithNibName:@"XWImageTitleCell" bundle:nil] forCellWithReuseIdentifier:cellid];
-//        }
     }
     
     [self.collectionView registerClass:[XWCollectionGroupHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UICollectionElementKindSectionHeader"];
-    //    [_collectionView registerClass:[XWCollectionGroupHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionElementKindSectionFooter"];
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.groupLayouts = [self defaultgroupLayouts];
     [self.collectionView reloadData];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath * indexPath = self.collectionView.indexPathsForSelectedItems.lastObject;
+    XWItemLayoutGroup * groupLayout = self.groupLayouts[indexPath.section];
+    XWItemLayout * item = groupLayout.itemGroup[indexPath.row];
+    
+    MastersTableViewController *destinationVC = segue.destinationViewController;
+    destinationVC.title = item.title;
+    
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath

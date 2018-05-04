@@ -1,0 +1,360 @@
+{
+  "status" : 0,
+  "data" : {
+    "total" : 2936,
+    "is_login" : true,
+    "list" : [
+      {
+        "company_name" : "韬韫投资",
+        "sort_no" : 1,
+        "income" : "2385.19",
+        "company_id" : "CO0000087K",
+        "fund_managers" : "--"
+      },
+      {
+        "company_name" : "南京紫熙投资",
+        "sort_no" : 2,
+        "income" : "1452.68",
+        "company_id" : "CO000009QC",
+        "fund_managers" : "--"
+      },
+      {
+        "company_name" : "上海保银投资",
+        "sort_no" : 3,
+        "income" : "1406.56",
+        "company_id" : "CO000000MU",
+        "fund_managers" : "王强"
+      },
+      {
+        "company_name" : "景林资产",
+        "sort_no" : 4,
+        "income" : "1083.01",
+        "company_id" : "CO000000FU",
+        "fund_managers" : "蒋锦志"
+      },
+      {
+        "company_name" : "明达资产",
+        "sort_no" : 5,
+        "income" : "960.23",
+        "company_id" : "CO0000005K",
+        "fund_managers" : "刘明达"
+      },
+      {
+        "company_name" : "凌通盛泰",
+        "sort_no" : 6,
+        "income" : "839.57",
+        "company_id" : "CO000000N8",
+        "fund_managers" : "董宝珍"
+      },
+      {
+        "company_name" : "泓睿投资",
+        "sort_no" : 7,
+        "income" : "801.48",
+        "company_id" : "CO000002BI",
+        "fund_managers" : "--"
+      },
+      {
+        "company_name" : "德亚投资",
+        "sort_no" : 8,
+        "income" : "718.44",
+        "company_id" : "CO000001M1",
+        "fund_managers" : "张明利"
+      },
+      {
+        "company_name" : "北京源乐晟资产",
+        "sort_no" : 9,
+        "income" : "717.70",
+        "company_id" : "CO000000FN",
+        "fund_managers" : "曾晓洁,杨建海"
+      },
+      {
+        "company_name" : "富利投资",
+        "sort_no" : 10,
+        "income" : "649.86",
+        "company_id" : "CO000001KP",
+        "fund_managers" : "李嘉,于航"
+      },
+      {
+        "company_name" : "倚天阁资产",
+        "sort_no" : 11,
+        "income" : "572.56",
+        "company_id" : "CO000000L2",
+        "fund_managers" : "黄如洪,李美涛,黄彦珠"
+      },
+      {
+        "company_name" : "彤源投资",
+        "sort_no" : 12,
+        "income" : "569.79",
+        "company_id" : "CO000000E1",
+        "fund_managers" : "管华雨"
+      },
+      {
+        "company_name" : "天井投资",
+        "sort_no" : 13,
+        "income" : "543.55",
+        "company_id" : "CO00000BKZ",
+        "fund_managers" : "--"
+      },
+      {
+        "company_name" : "伏牛基金",
+        "sort_no" : 14,
+        "income" : "537.96",
+        "company_id" : "CO00000I3R",
+        "fund_managers" : "刘海锋,黄琪,柳丹青"
+      },
+      {
+        "company_name" : "华银精治",
+        "sort_no" : 15,
+        "income" : "519.23",
+        "company_id" : "CO000000G0",
+        "fund_managers" : "杨桦"
+      },
+      {
+        "company_name" : "融湖投资",
+        "sort_no" : 16,
+        "income" : "475.91",
+        "company_id" : "CO0000085U",
+        "fund_managers" : "王庆华"
+      },
+      {
+        "company_name" : "滚雪球投资",
+        "sort_no" : 17,
+        "income" : "462.61",
+        "company_id" : "CO0000011Q",
+        "fund_managers" : "林涛"
+      },
+      {
+        "company_name" : "广运千帆",
+        "sort_no" : 18,
+        "income" : "459.08",
+        "company_id" : "CO00000FHM",
+        "fund_managers" : "--"
+      },
+      {
+        "company_name" : "上海远策投资",
+        "sort_no" : 19,
+        "income" : "448.18",
+        "company_id" : "CO0000020Z",
+        "fund_managers" : "王菡珏"
+      },
+      {
+        "company_name" : "混沌道然",
+        "sort_no" : 20,
+        "income" : "433.93",
+        "company_id" : "CO000000E3",
+        "fund_managers" : "葛卫东"
+      },
+      {
+        "company_name" : "东源(天津)",
+        "sort_no" : 21,
+        "income" : "416.33",
+        "company_id" : "CO000000NB",
+        "fund_managers" : "杨成义"
+      },
+      {
+        "company_name" : "红亨投资",
+        "sort_no" : 22,
+        "income" : "414.83",
+        "company_id" : "CO000008RV",
+        "fund_managers" : "战滨,刘卫民"
+      },
+      {
+        "company_name" : "美港资本",
+        "sort_no" : 23,
+        "income" : "411.96",
+        "company_id" : "CO000002WD",
+        "fund_managers" : "陈龙"
+      },
+      {
+        "company_name" : "匀丰资产",
+        "sort_no" : 24,
+        "income" : "404.10",
+        "company_id" : "CO00000DHL",
+        "fund_managers" : "张芳铭,常新颖"
+      },
+      {
+        "company_name" : "瑞福资产",
+        "sort_no" : 25,
+        "income" : "393.25",
+        "company_id" : "CO00000CSE",
+        "fund_managers" : "温东平"
+      },
+      {
+        "company_name" : "重阳投资",
+        "sort_no" : 26,
+        "income" : "392.71",
+        "company_id" : "CO0000009D",
+        "fund_managers" : "裘国根,陈心"
+      },
+      {
+        "company_name" : "从容投资",
+        "sort_no" : 27,
+        "income" : "369.78",
+        "company_id" : "CO0000001A",
+        "fund_managers" : "吕俊"
+      },
+      {
+        "company_name" : "黑森投资",
+        "sort_no" : 28,
+        "income" : "366.15",
+        "company_id" : "CO0000019E",
+        "fund_managers" : "周涛"
+      },
+      {
+        "company_name" : "青岛以太",
+        "sort_no" : 29,
+        "income" : "362.35",
+        "company_id" : "CO0000006J",
+        "fund_managers" : "丁伟,丁坚"
+      },
+      {
+        "company_name" : "林园投资",
+        "sort_no" : 30,
+        "income" : "338.09",
+        "company_id" : "CO000000A0",
+        "fund_managers" : "林园,张文云,王洪"
+      },
+      {
+        "company_name" : "淡水泉",
+        "sort_no" : 31,
+        "income" : "331.79",
+        "company_id" : "CO0000000G",
+        "fund_managers" : "赵军"
+      },
+      {
+        "company_name" : "西藏中睿合银",
+        "sort_no" : 32,
+        "income" : "327.90",
+        "company_id" : "CO000002W6",
+        "fund_managers" : "刘睿"
+      },
+      {
+        "company_name" : "展博投资",
+        "sort_no" : 33,
+        "income" : "325.32",
+        "company_id" : "CO000000A4",
+        "fund_managers" : "陈锋,袁巍,廖波俊"
+      },
+      {
+        "company_name" : "优波资本",
+        "sort_no" : 34,
+        "income" : "322.03",
+        "company_id" : "CO000009TW",
+        "fund_managers" : "陈龙"
+      },
+      {
+        "company_name" : "证大投资",
+        "sort_no" : 35,
+        "income" : "318.93",
+        "company_id" : "CO0000002L",
+        "fund_managers" : "朱南松,姜榕"
+      },
+      {
+        "company_name" : "富恩德资产",
+        "sort_no" : 36,
+        "income" : "304.60",
+        "company_id" : "CO000000LU",
+        "fund_managers" : "孟力,吴金宫,孙培源,吴彦霖"
+      },
+      {
+        "company_name" : "菁英时代",
+        "sort_no" : 37,
+        "income" : "303.83",
+        "company_id" : "CO0000000F",
+        "fund_managers" : "陈宏超,王敏燕,王伟民,罗志鹏,张洪"
+      },
+      {
+        "company_name" : "航长投资",
+        "sort_no" : 38,
+        "income" : "303.77",
+        "company_id" : "CO00000165",
+        "fund_managers" : "刘国杭,贾炜"
+      },
+      {
+        "company_name" : "新思哲投资",
+        "sort_no" : 39,
+        "income" : "293.93",
+        "company_id" : "CO000000AL",
+        "fund_managers" : "韩广斌"
+      },
+      {
+        "company_name" : "元葵资产",
+        "sort_no" : 40,
+        "income" : "289.95",
+        "company_id" : "CO000001FY",
+        "fund_managers" : "施振星"
+      },
+      {
+        "company_name" : "云溪基金",
+        "sort_no" : 41,
+        "income" : "289.16",
+        "company_id" : "CO00000HTX",
+        "fund_managers" : "阳勇"
+      },
+      {
+        "company_name" : "恒复投资",
+        "sort_no" : 42,
+        "income" : "287.72",
+        "company_id" : "CO0000009Y",
+        "fund_managers" : "刘强"
+      },
+      {
+        "company_name" : "盈阳资产",
+        "sort_no" : 43,
+        "income" : "287.39",
+        "company_id" : "CO000002RR",
+        "fund_managers" : "傅夷"
+      },
+      {
+        "company_name" : "质嘉投资",
+        "sort_no" : 44,
+        "income" : "286.20",
+        "company_id" : "CO000003XN",
+        "fund_managers" : "隋秉建"
+      },
+      {
+        "company_name" : "星石投资",
+        "sort_no" : 45,
+        "income" : "285.96",
+        "company_id" : "CO00000021",
+        "fund_managers" : "江晖"
+      },
+      {
+        "company_name" : "清水源",
+        "sort_no" : 46,
+        "income" : "285.03",
+        "company_id" : "CO000000QR",
+        "fund_managers" : "张小川"
+      },
+      {
+        "company_name" : "乐正资本",
+        "sort_no" : 47,
+        "income" : "280.55",
+        "company_id" : "CO000001KB",
+        "fund_managers" : "王江平,徐兆红,杜位移"
+      },
+      {
+        "company_name" : "理成资产",
+        "sort_no" : 48,
+        "income" : "279.86",
+        "company_id" : "CO0000001I",
+        "fund_managers" : "程义全,周锐"
+      },
+      {
+        "company_name" : "呈瑞投资",
+        "sort_no" : 49,
+        "income" : "278.87",
+        "company_id" : "CO0000001Q",
+        "fund_managers" : "王欣艺,王巍"
+      },
+      {
+        "company_name" : "新萌投资",
+        "sort_no" : 50,
+        "income" : "276.60",
+        "company_id" : "CO00000HWK",
+        "fund_managers" : "李萌"
+      }
+    ]
+  },
+  "msg" : "NO ERROR!"
+}

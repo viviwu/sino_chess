@@ -9,6 +9,11 @@
 #import "PPFundsRankTableController.h"
 #import "XWScrollBanner.h"
 #import "XWFilterView.h"
+#import "NSData+YYAdd.h"
+#import "NSObject+YYModel.h"
+#import "XWFund.h"
+
+#import "XWTableViewCell.h"
 
 @interface PPFundsRankTableController ()
 @property (weak, nonatomic) IBOutlet UIView *headerBoard;
@@ -16,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet XWScrollBanner *scrollBanner;
 @property (weak, nonatomic) IBOutlet UIView *menuView;
 @property (weak, nonatomic) IBOutlet UIView *sectionHeader;
-
+@property (strong, nonatomic) NSArray * funds;
 @end
 
 @implementation PPFundsRankTableController
@@ -91,6 +96,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.tableView registerClass:[XWTableViewCell class] forCellReuseIdentifier:@"fund"];
+    
     NSArray * models = [self fakeModels];
     NSMutableArray * sources = [NSMutableArray array];
     for (int i=0; i<models.count; i++) {
@@ -116,6 +123,18 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    NSData *data = [NSData dataNamed:@"fundRankList.json"];
+    XWRequestResponse * response = [XWRequestResponse modelWithJSON:data];
+    XWJsonData * dataJson = response.data;
+    _funds = dataJson.list;
+    if (_funds.count) {
+        [self.tableView reloadData];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -130,15 +149,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //#warning Incomplete implementation, return the number of rows
-    return 30;
+    return _funds.count;
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"fund" forIndexPath:indexPath];
+- (XWTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    XWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"fund" forIndexPath:indexPath];
+    cell.cellStyle = XWTableViewCellStyleThreeTitle;
     
+    XWFund * fund = _funds[indexPath.row];
     // Configure the cell...
-    
+    cell.textLabel.text = fund.fund_name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", fund.nav];
+    cell.extraTextLabel.text = fund.income;
     return cell;
 }
 

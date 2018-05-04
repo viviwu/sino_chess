@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MastersTableViewController : UITableViewController
-
+@property (nonatomic, strong) id models;
 @end
