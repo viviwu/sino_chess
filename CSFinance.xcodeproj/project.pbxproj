@@ -973,6 +973,11 @@
 		4F71F2672091A677007F769D /* XWTableSubtitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F71F2662091A677007F769D /* XWTableSubtitleCell.xib */; };
 		4F71F26A2091AAA0007F769D /* XWCollectLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F71F2692091AAA0007F769D /* XWCollectLabelCell.m */; };
 		4F71F26C2091AAB8007F769D /* XWCollectLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F71F26B2091AAB8007F769D /* XWCollectLabelCell.xib */; };
+		4F778648209BF3240052F7E4 /* PPFundsRankTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F778647209BF3240052F7E4 /* PPFundsRankTableViewController.m */; };
+		4F778651209C01CA0052F7E4 /* XWManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F778650209C01CA0052F7E4 /* XWManager.m */; };
+		4F778654209C01D70052F7E4 /* XWCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F778653209C01D70052F7E4 /* XWCompany.m */; };
+		4F778658209C2AEA0052F7E4 /* XWFundDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F778656209C2AEA0052F7E4 /* XWFundDetailViewController.m */; };
+		4F77865C209C2C190052F7E4 /* XWTableHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F77865B209C2C190052F7E4 /* XWTableHeader.m */; };
 		4F7CC71F208D6A6500429B06 /* Podcast.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7CC71E208D6A6500429B06 /* Podcast.storyboard */; };
 		4F7CC722208D6B6400429B06 /* PodcastCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CC721208D6B6400429B06 /* PodcastCollectionController.m */; };
 		4F7CC72F208D782D00429B06 /* SalonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CC724208D782D00429B06 /* SalonCenterViewController.m */; };
@@ -2172,6 +2177,16 @@
 		4F71F2682091AAA0007F769D /* XWCollectLabelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWCollectLabelCell.h; sourceTree = "<group>"; };
 		4F71F2692091AAA0007F769D /* XWCollectLabelCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWCollectLabelCell.m; sourceTree = "<group>"; };
 		4F71F26B2091AAB8007F769D /* XWCollectLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XWCollectLabelCell.xib; sourceTree = "<group>"; };
+		4F778646209BF3230052F7E4 /* PPFundsRankTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPFundsRankTableViewController.h; sourceTree = "<group>"; };
+		4F778647209BF3240052F7E4 /* PPFundsRankTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPFundsRankTableViewController.m; sourceTree = "<group>"; };
+		4F77864F209C01CA0052F7E4 /* XWManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWManager.h; sourceTree = "<group>"; };
+		4F778650209C01CA0052F7E4 /* XWManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWManager.m; sourceTree = "<group>"; };
+		4F778652209C01D70052F7E4 /* XWCompany.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWCompany.h; sourceTree = "<group>"; };
+		4F778653209C01D70052F7E4 /* XWCompany.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWCompany.m; sourceTree = "<group>"; };
+		4F778655209C2AEA0052F7E4 /* XWFundDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWFundDetailViewController.h; sourceTree = "<group>"; };
+		4F778656209C2AEA0052F7E4 /* XWFundDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWFundDetailViewController.m; sourceTree = "<group>"; };
+		4F77865A209C2C190052F7E4 /* XWTableHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWTableHeader.h; sourceTree = "<group>"; };
+		4F77865B209C2C190052F7E4 /* XWTableHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWTableHeader.m; sourceTree = "<group>"; };
 		4F7CC71E208D6A6500429B06 /* Podcast.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Podcast.storyboard; sourceTree = "<group>"; };
 		4F7CC720208D6B6400429B06 /* PodcastCollectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PodcastCollectionController.h; sourceTree = "<group>"; };
 		4F7CC721208D6B6400429B06 /* PodcastCollectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PodcastCollectionController.m; sourceTree = "<group>"; };
@@ -2293,6 +2308,8 @@
 				4F08D23C209A990D00A68E54 /* XWTableViewCell.m */,
 				4F08D240209AAB6600A68E54 /* XWTableGroupHeader.h */,
 				4F08D241209AAB6600A68E54 /* XWTableGroupHeader.m */,
+				4F77865A209C2C190052F7E4 /* XWTableHeader.h */,
+				4F77865B209C2C190052F7E4 /* XWTableHeader.m */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -3706,8 +3723,8 @@
 		4F404630207CB1AA00FF4DCE = {
 			isa = PBXGroup;
 			children = (
-				4F1B12352089B56600D4114F /* Universal */,
 				4F40463B207CB1AA00FF4DCE /* CSFinance */,
+				4F1B12352089B56600D4114F /* Universal */,
 				4F404657207CB1AB00FF4DCE /* CSFinanceTests */,
 				4F404662207CB1AB00FF4DCE /* CSFinanceUITests */,
 				4F40463A207CB1AA00FF4DCE /* Products */,
@@ -3811,6 +3828,8 @@
 				0D19ACA5209B536900D34A18 /* XWFund.m */,
 				4F7CC746208D7C3600429B06 /* PPFundsRankTableController.h */,
 				4F7CC73B208D7C3600429B06 /* PPFundsRankTableController.m */,
+				4F778655209C2AEA0052F7E4 /* XWFundDetailViewController.h */,
+				4F778656209C2AEA0052F7E4 /* XWFundDetailViewController.m */,
 				4F7CC738208D7C3600429B06 /* PPFundDetialPageViewController.h */,
 				4F7CC741208D7C3600429B06 /* PPFundDetialPageViewController.m */,
 			);
@@ -3822,6 +3841,8 @@
 			children = (
 				0D19AC9C209B4E6400D34A18 /* managerRankList.json */,
 				0D19AC9E209B4E9100D34A18 /* manager_info.json */,
+				4F77864F209C01CA0052F7E4 /* XWManager.h */,
+				4F778650209C01CA0052F7E4 /* XWManager.m */,
 				4F7CC736208D7C3600429B06 /* PPManagersRankTableController.h */,
 				4F7CC73F208D7C3600429B06 /* PPManagersRankTableController.m */,
 				4F7CC747208D7C3600429B06 /* PPManagerHomepageViewController.h */,
@@ -3835,6 +3856,8 @@
 			children = (
 				0D19ACA2209B4F8100D34A18 /* companyRankList.json */,
 				0D19ACA0209B4EF300D34A18 /* company_info.json */,
+				4F778652209C01D70052F7E4 /* XWCompany.h */,
+				4F778653209C01D70052F7E4 /* XWCompany.m */,
 				4F7CC742208D7C3600429B06 /* PPCorpsRankTableController.h */,
 				4F7CC737208D7C3600429B06 /* PPCorpsRankTableController.m */,
 				4F71F12F20915A47007F769D /* CorpHomeTableController.h */,
@@ -3954,6 +3977,8 @@
 				4F7CC743208D7C3600429B06 /* PPRank.storyboard */,
 				4F7CC73C208D7C3600429B06 /* PPRankViewController.h */,
 				4F7CC745208D7C3600429B06 /* PPRankViewController.m */,
+				4F778646209BF3230052F7E4 /* PPFundsRankTableViewController.h */,
+				4F778647209BF3240052F7E4 /* PPFundsRankTableViewController.m */,
 				4F7CC757208D856C00429B06 /* Rank */,
 			);
 			path = PrivatePlacement;
@@ -5049,6 +5074,7 @@
 				4F1B12EE2089B62100D4114F /* YYImage.m in Sources */,
 				4F71F13720915BAC007F769D /* CropHomePageCollectionController.m in Sources */,
 				4F40464F207CB1AB00FF4DCE /* main.m in Sources */,
+				4F778654209C01D70052F7E4 /* XWCompany.m in Sources */,
 				4F7CC799208DDBEF00429B06 /* UIScrollView+STRefresh.m in Sources */,
 				4F1B13C82089CBA900D4114F /* WBStatusComposeViewController.m in Sources */,
 				4F42655D209317120052A341 /* UIButton+Bootstrap.m in Sources */,
@@ -5068,7 +5094,9 @@
 				4F08D242209AAB6600A68E54 /* XWTableGroupHeader.m in Sources */,
 				4F1B13322089B62100D4114F /* YYKeychain.m in Sources */,
 				4F1B12EA2089B62100D4114F /* YYMemoryCache.m in Sources */,
+				4F778658209C2AEA0052F7E4 /* XWFundDetailViewController.m in Sources */,
 				4F1B12E72089B62100D4114F /* YYDiskCache.m in Sources */,
+				4F778648209BF3240052F7E4 /* PPFundsRankTableViewController.m in Sources */,
 				4F1B13142089B62100D4114F /* UIScrollView+YYAdd.m in Sources */,
 				4F1B0C4F2089B2AF00D4114F /* VENTouchLock.m in Sources */,
 				4F1B13C02089CBA900D4114F /* YYFPSLabel.m in Sources */,
@@ -5153,6 +5181,7 @@
 				4F1B0C4D2089B2AF00D4114F /* VENTouchLockEnterPasscodeViewController.m in Sources */,
 				4F1B13042089B62100D4114F /* YYLabel.m in Sources */,
 				4F1B132D2089B62100D4114F /* YYAsyncLayer.m in Sources */,
+				4F778651209C01CA0052F7E4 /* XWManager.m in Sources */,
 				4F7CC74B208D7C3600429B06 /* PPFundsRankTableController.m in Sources */,
 				4F1B13222089B62100D4114F /* NSKeyedUnarchiver+YYAdd.m in Sources */,
 				4F1B13162089B62100D4114F /* UIView+YYAdd.m in Sources */,
@@ -5179,6 +5208,7 @@
 				4F1B13602089BDAF00D4114F /* MutiPlayerViewController.m in Sources */,
 				4F1B135F2089BDAF00D4114F /* AAPLPlayerView.m in Sources */,
 				4F1B13112089B62100D4114F /* UIDevice+YYAdd.m in Sources */,
+				4F77865C209C2C190052F7E4 /* XWTableHeader.m in Sources */,
 				4F1B13152089B62100D4114F /* UIScreen+YYAdd.m in Sources */,
 				4F1B12FE2089B62100D4114F /* YYTextInput.m in Sources */,
 				4F1B13342089B62100D4114F /* YYFileHash.m in Sources */,

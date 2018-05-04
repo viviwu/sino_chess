@@ -254,7 +254,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="bT2-cN-BXb" kind="show" id="SAA-2N-kwr"/>
+                                    <segue destination="bT2-cN-BXb" kind="show" identifier="fund_page" id="SAA-2N-kwr"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -321,17 +321,17 @@
                                                 <constraint firstItem="V8M-hn-clp" firstAttribute="height" secondItem="77P-B0-WKg" secondAttribute="height" id="qve-M4-iXd"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEM-zU-fin">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="近一季收益" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEM-zU-fin">
                                             <rect key="frame" x="1" y="1" width="70.5" height="36"/>
                                             <color key="backgroundColor" red="0.1296828407" green="0.59694552310000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="月" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFc-u3-bBc">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="近一年收益" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFc-u3-bBc">
                                             <rect key="frame" x="72.5" y="1" width="70" height="36"/>
                                             <color key="backgroundColor" red="0.1296828407" green="0.59694552310000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -349,7 +349,7 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-6.09%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cH-tY-XIE">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+6.09%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cH-tY-XIE">
                                             <rect key="frame" x="72.5" y="38" width="70" height="36"/>
                                             <color key="backgroundColor" red="0.1296828407" green="0.59694552310000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -897,7 +897,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="187.5" height="40"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcx-F8-AbG">
-                                                    <rect key="frame" x="44" y="5" width="100" height="30"/>
+                                                    <rect key="frame" x="44.5" y="5" width="100" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="6Sq-Gi-mRP"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="OMq-ie-FSq"/>
@@ -911,7 +911,7 @@
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filled_filter.png" translatesAutoresizingMaskIntoConstraints="NO" id="yI7-Di-wBB">
-                                                    <rect key="frame" x="145" y="12.5" width="15" height="15"/>
+                                                    <rect key="frame" x="145.5" y="12.5" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="15" id="ZFO-oW-p2o"/>
                                                         <constraint firstAttribute="height" constant="15" id="oAZ-By-cQj"/>
@@ -931,7 +931,7 @@
                                             <rect key="frame" x="187.5" y="0.0" width="187.5" height="40"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDQ-hH-Y45">
-                                                    <rect key="frame" x="54" y="5" width="80" height="30"/>
+                                                    <rect key="frame" x="54.5" y="5" width="80" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="hlJ-Pq-00G"/>
                                                     </constraints>
@@ -944,7 +944,7 @@
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filled_filter.png" translatesAutoresizingMaskIntoConstraints="NO" id="f3v-j8-zpZ">
-                                                    <rect key="frame" x="135" y="13" width="15" height="15"/>
+                                                    <rect key="frame" x="135.5" y="13" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="Q7Q-el-wKb"/>
                                                         <constraint firstAttribute="width" constant="15" id="UM1-cY-PV9"/>
@@ -1081,7 +1081,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="187.5" height="40"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLj-LN-jo4">
-                                                    <rect key="frame" x="44" y="5" width="100" height="30"/>
+                                                    <rect key="frame" x="44.5" y="5" width="100" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Cav-SJ-h74"/>
                                                         <constraint firstAttribute="width" constant="100" id="vij-No-hdU"/>
@@ -1095,7 +1095,7 @@
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filled_filter.png" translatesAutoresizingMaskIntoConstraints="NO" id="cNB-v2-xit">
-                                                    <rect key="frame" x="145" y="12.5" width="15" height="15"/>
+                                                    <rect key="frame" x="145.5" y="12.5" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="15" id="ezN-ED-cSd"/>
                                                         <constraint firstAttribute="height" constant="15" id="mlS-aA-seM"/>
@@ -1115,7 +1115,7 @@
                                             <rect key="frame" x="187.5" y="0.0" width="187.5" height="40"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbh-9v-CKQ">
-                                                    <rect key="frame" x="54" y="5" width="80" height="30"/>
+                                                    <rect key="frame" x="54.5" y="5" width="80" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="HKL-02-1Dt"/>
                                                     </constraints>
@@ -1128,7 +1128,7 @@
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filled_filter.png" translatesAutoresizingMaskIntoConstraints="NO" id="Bna-IY-vol">
-                                                    <rect key="frame" x="135" y="13" width="15" height="15"/>
+                                                    <rect key="frame" x="135.5" y="13" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="6LU-E1-m9f"/>
                                                         <constraint firstAttribute="width" constant="15" id="XHc-YQ-N5m"/>
@@ -1748,8 +1748,8 @@
         <image name="userid.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="T5R-j5-3MB"/>
-        <segue reference="HeY-6i-xBd"/>
+        <segue reference="GoY-yk-VLj"/>
+        <segue reference="uWm-p6-DWM"/>
         <segue reference="SAA-2N-kwr"/>
     </inferredMetricsTieBreakers>
 </document>

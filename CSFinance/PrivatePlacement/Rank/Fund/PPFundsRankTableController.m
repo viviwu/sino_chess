@@ -7,13 +7,14 @@
 //
 
 #import "PPFundsRankTableController.h"
+#import "XWFundDetailViewController.h"
 #import "XWScrollBanner.h"
 #import "XWFilterView.h"
+#import "XWTableViewCell.h"
+
 #import "NSData+YYAdd.h"
 #import "NSObject+YYModel.h"
 #import "XWFund.h"
-
-#import "XWTableViewCell.h"
 
 @interface PPFundsRankTableController ()
 @property (weak, nonatomic) IBOutlet UIView *headerBoard;
@@ -21,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet XWScrollBanner *scrollBanner;
 @property (weak, nonatomic) IBOutlet UIView *menuView;
 @property (weak, nonatomic) IBOutlet UIView *sectionHeader;
-@property (strong, nonatomic) NSArray * funds;
+@property (strong, nonatomic) NSMutableArray * funds;
 @end
 
 @implementation PPFundsRankTableController
@@ -95,7 +96,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _funds = [NSMutableArray array];
     [self.tableView registerClass:[XWTableViewCell class] forCellReuseIdentifier:@"fund"];
     
     NSArray * models = [self fakeModels];
@@ -126,18 +127,27 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    NSData *data = [NSData dataNamed:@"fundRankList.json"];
-    XWRequestResponse * response = [XWRequestResponse modelWithJSON:data];
-    XWJsonData * dataJson = response.data;
-    _funds = dataJson.list;
-    if (_funds.count) {
-        [self.tableView reloadData];
+    if (_funds.count<1) {
+        NSData *data = [NSData dataNamed:@"fundRankList.json"];
+        XWFundResponse * response = [XWFundResponse modelWithJSON:data];
+        XWFundData * dataJson = response.data;
+        [_funds addObjectsFromArray:dataJson.list];
+        if (_funds.count) {
+            [self.tableView reloadData];
+        }
     }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    [self performSegueWithIdentifier:@"fund_page" sender:self];
+    XWFundDetailViewController  * fundDetail = [[XWFundDetailViewController alloc]init];
+    [self.navigationController pushViewController:fundDetail animated:YES];
 }
 
 #pragma mark - Table view data source
@@ -152,8 +162,8 @@
     return _funds.count;
 }
 
-
-- (XWTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (XWTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     XWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"fund" forIndexPath:indexPath];
     cell.cellStyle = XWTableViewCellStyleThreeTitle;
     
@@ -161,10 +171,14 @@
     // Configure the cell...
     cell.textLabel.text = fund.fund_name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", fund.nav];
-    cell.extraTextLabel.text = fund.income;
+    cell.exTextLabel.text = [NSString stringWithFormat:@"+%@%%", fund.income];
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50.0;
+}
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     return _sectionHeader;

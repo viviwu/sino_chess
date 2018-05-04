@@ -11,13 +11,17 @@
 #import "XWFilterView.h"
 #import "XWTableViewCell.h"
 
+#import "NSData+YYAdd.h"
+#import "NSObject+YYModel.h"
+#import "XWManager.h"
+
 @interface PPManagersRankTableController ()
 @property (weak, nonatomic) IBOutlet UIView *headerBoard;
 @property (strong, nonatomic) XWFilterView * filterView;
 @property (weak, nonatomic) IBOutlet XWScrollBanner *scrollBanner;
 @property (weak, nonatomic) IBOutlet UIView *menuView;
 @property (weak, nonatomic) IBOutlet UIView *sectionHeader;
-
+@property (strong, nonatomic) NSMutableArray * managers;
 @end
 
 @implementation PPManagersRankTableController
@@ -91,6 +95,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _managers =[NSMutableArray array];
     [self.tableView registerClass:[XWTableViewCell class] forCellReuseIdentifier:@"manager"];
     
     NSArray * models = [self fakeModels];
@@ -118,6 +123,20 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (_managers.count<1) {
+        NSData *data = [NSData dataNamed:@"managerRankList.json"];
+        XWManagerResponse * response = [XWManagerResponse modelWithJSON:data];
+        XWManagerData * dataJson = response.data;
+        [_managers addObjectsFromArray:dataJson.list];
+        if (_managers.count) {
+            [self.tableView reloadData];
+        }
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -132,16 +151,24 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //#warning Incomplete implementation, return the number of rows
-    return 30;
+    return _managers.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     XWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"manager" forIndexPath:indexPath];
-    
+    cell.cellStyle = XWTableViewCellStyleThreeTitle;
     // Configure the cell...
-    
+    XWManager * manager = _managers[indexPath.row];
+    // Configure the cell...
+    cell.textLabel.text = manager.manager_name;
+    cell.detailTextLabel.text = manager.company_name;
+    cell.exTextLabel.text = [NSString stringWithFormat:@"%@", manager.income];
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50.0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

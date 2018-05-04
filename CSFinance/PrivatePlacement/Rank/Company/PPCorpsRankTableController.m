@@ -11,6 +11,11 @@
 #import "XWFilterView.h"
 #import "XWTableViewCell.h"
 
+
+#import "NSData+YYAdd.h"
+#import "NSObject+YYModel.h"
+#import "XWCompany.h"
+
 @interface PPCorpsRankTableController ()
 
 @property (weak, nonatomic) IBOutlet UIView *headerBoard;
@@ -18,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet XWScrollBanner *scrollBanner;
 @property (weak, nonatomic) IBOutlet UIView *menuView;
 @property (weak, nonatomic) IBOutlet UIView *sectionHeader;
-
+@property (nonatomic, strong) NSMutableArray * companys;
 @end
 
 @implementation PPCorpsRankTableController
@@ -74,6 +79,7 @@
     [self.view addSubview:self.filterView];
     //    [self.view bringSubviewToFront:self.filterView];
 }
+
 - (IBAction)stockStrategy:(id)sender {
     [self xxx];
 }
@@ -92,6 +98,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _companys = [NSMutableArray array];
     [self.tableView registerClass:[XWTableViewCell class] forCellReuseIdentifier:@"crop"];
     
     NSArray * models = [self fakeModels];
@@ -119,6 +126,20 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (_companys.count<1) {
+        NSData *data = [NSData dataNamed:@"companyRankList.json"];
+        XWCompanyResponse * response = [XWCompanyResponse modelWithJSON:data];
+        XWCompanyData * dataJson = response.data;
+        [_companys  addObjectsFromArray:dataJson.list];
+        if (_companys.count) {
+            [self.tableView reloadData];
+        }
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -133,7 +154,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //#warning Incomplete implementation, return the number of rows
-    return 30;
+    return _companys.count;
 }
 
 
@@ -142,8 +163,18 @@
     cell.cellStyle = XWTableViewCellStyleThreeTitle;
     
     // Configure the cell...
-    
+    XWCompany * company = _companys[indexPath.row];
+    // Configure the cell...
+    cell.textLabel.text = company.company_name;
+    cell.detailTextLabel.text = company.fund_managers;
+    cell.exTextLabel.text = [NSString stringWithFormat:@"+%@", company.income];
     return cell;
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50.0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

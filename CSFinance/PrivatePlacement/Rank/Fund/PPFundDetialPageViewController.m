@@ -7,6 +7,8 @@
 //
 
 #import "PPFundDetialPageViewController.h"
+#import "XWTableHeader.h"
+#import "XWTableViewCell.h"
 
 @interface PPFundDetialPageViewController ()
 {
