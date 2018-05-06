@@ -8,24 +8,35 @@
 
 #import "XWFilterCell.h"
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 @implementation XWFilter
-
 - (id)init{
     self= [super init];
     if (self) {
-        _title = @"Ω≈ç√∫˜µ˜";
+        _title = @"--filter";
         _selected = NO;
-        _sectionTitle = @"";
     }
     return self;
 }
-
+@end
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+@implementation XWFilterGroup
+- (id)init{
+    self= [super init];
+    if (self) {
+        _items = [NSMutableArray array];
+        _sectionTitle = @"--sectionTitle";
+    }
+    return self;
+}
 @end
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 @interface XWFilterCell ()
-
 @property (nonatomic, strong) UILabel * titlelabel;
-
 @end
 
 @implementation XWFilterCell
@@ -51,8 +62,8 @@
     _titlelabel.text = model.title;
     if (model.selected) {
         self.titlelabel.layer.borderColor = [UIColor redColor].CGColor;
-        self.titlelabel.layer.borderWidth = 1.0;
-        self.titlelabel.layer.cornerRadius = 8.0;
+        self.titlelabel.layer.borderWidth = 0.5;
+        self.titlelabel.layer.cornerRadius = 5.0;
     }else{
         //        self.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor whiteColor]);
         self.titlelabel.layer.borderWidth = 0;
@@ -77,18 +88,13 @@
 //- (void)setSelected:(BOOL)selected{
 //
 //}
-
-
 @end
 
-//ΩΩΩzΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩzΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩzΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ
-
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 @interface XWFilterSectionHeader()
-
 @property (nonatomic, strong) UILabel * titlelabel;
-
 @end
-
 @implementation XWFilterSectionHeader
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -106,16 +112,17 @@
     return _titlelabel;
 }
 
-- (void)refreshModel:(XWFilter*)model
+- (void)refreshModel:(XWFilterGroup*)group
 {
-    self.filter = model;
-    _titlelabel.text = model.sectionTitle;
+    _group = group;
+    _titlelabel.text = group.sectionTitle;
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     _titlelabel.textAlignment = NSTextAlignmentLeft;
+//    _titlelabel.adjustsFontSizeToFitWidth = YES;
     //    self.imgView.contentMode = UIViewContentModeScaleToFill;
 }
 

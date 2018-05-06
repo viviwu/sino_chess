@@ -9,10 +9,15 @@
 #import "XWFilterView.h"
 #import "XWFilterCell.h"
 
+#define kCBarH 40.0
+#define kSelfH self.bounds.size.height
+#define kSelfW self.bounds.size.width
+
 @interface XWFilterView ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
 @property (nonatomic, strong) UICollectionView * collectionView;
+@property (nonatomic, strong) UIView * controBar;
 @property (nonatomic, strong) UIButton * resetBtn;
 @property (nonatomic, strong) UIButton * confirmBtn;
 @end
@@ -44,10 +49,9 @@
     [self setUp];
 }
 
-
 - (UICollectionView *)collectionView{
     if (nil == _collectionView) {
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height-40.0) collectionViewLayout:self.layout];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kSelfW, kSelfH-kCBarH) collectionViewLayout:self.layout];
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.allowsMultipleSelection = YES; //多选
     }
@@ -55,15 +59,15 @@
 }
 
 - (UICollectionViewFlowLayout *)layout{
-    CGFloat itemWidth = self.frame.size.width/4;
+    CGFloat itemWidth = kSelfW/4;
     CGFloat itemHeight = 25.0;
     if (nil == _layout) {
         _layout = [[UICollectionViewFlowLayout alloc] init];
     }
-    _layout.sectionInset = UIEdgeInsetsMake(5, 15, 5, 15);
+    _layout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5);
     _layout.itemSize = CGSizeMake(itemWidth, itemHeight);
-    _layout.minimumLineSpacing = 10;
-    _layout.minimumInteritemSpacing = 10;
+    _layout.minimumLineSpacing = 5;
+    _layout.minimumInteritemSpacing = 5;
     _layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     _layout.headerReferenceSize =CGSizeMake(itemWidth*2, itemHeight+5.0);
     return _layout;
@@ -73,53 +77,55 @@
     self.backgroundColor = [UIColor yellowColor];
     [self addSubview:self.collectionView];
     [self.collectionView registerClass:[XWFilterCell class] forCellWithReuseIdentifier:@"filter"];
+    
     [self.collectionView registerClass:[XWFilterSectionHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
+    
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
-    UIView * controBar = [[UIView alloc]initWithFrame:CGRectMake(0, self.frame.size.height-40.0, self.bounds.size.width, 40.0)];
-    controBar.backgroundColor = [UIColor whiteColor];
-    [self addSubview:controBar];
-    [self bringSubviewToFront:controBar];
-    
-    [self.resetBtn addTarget:self action:@selector(reset) forControlEvents:UIControlEventTouchDown];
-    [controBar addSubview:self.resetBtn];
-    
-    [self.confirmBtn addTarget:self action:@selector(confirm) forControlEvents:UIControlEventTouchDown];
-    [controBar addSubview:self.confirmBtn];
+    [self addSubview:self.controBar];
+}
+
+- (UIView *)controBar{
+    if (!_controBar) {
+        _controBar = [[UIView alloc]initWithFrame:CGRectMake(0, kSelfH-kCBarH, kSelfW, kCBarH)];
+        _controBar.backgroundColor = [UIColor redColor];
+        [self addSubview:_controBar];
+        [self bringSubviewToFront:_controBar];
+        
+        [_controBar addSubview:self.resetBtn];
+        [_controBar addSubview:self.confirmBtn];
+    }
+    return _controBar;
 }
 
 - (UIButton*)resetBtn{
     if (nil==_resetBtn) {
-        _resetBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.bounds.size.width/2, 40.0)];
+        _resetBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, kSelfW/2, kCBarH)];
         [_resetBtn setTitle:@"重置" forState:UIControlStateNormal];
         [_resetBtn setBackgroundColor:[UIColor lightGrayColor]];
+        [_resetBtn addTarget:self action:@selector(reset) forControlEvents:UIControlEventTouchDown];
     }
     return _resetBtn;
 }
 
 - (UIButton*)confirmBtn{
     if (nil==_confirmBtn) {
-        _confirmBtn = [[UIButton alloc]initWithFrame:CGRectMake(self.bounds.size.width/2, 0, self.bounds.size.width/2, 40.0)];
+        _confirmBtn = [[UIButton alloc]initWithFrame:CGRectMake(kSelfW/2, 0, kSelfW/2, kCBarH)];
         [_confirmBtn setTitle:@"确认" forState:UIControlStateNormal];
         [_confirmBtn setBackgroundColor:[UIColor redColor]];
+        [_confirmBtn addTarget:self action:@selector(confirm) forControlEvents:UIControlEventTouchDown];
     }
     return _confirmBtn;
 }
 
 - (void)reset{
-    for (id obj in self.dataSource) {
-        if ([obj isKindOfClass:[NSArray class]]) {
-            NSArray * arr = obj;
-            NSAssert([arr[0] isKindOfClass:[XWFilter class]], @"obj isNotKindOfClass XWFilter!!!");
-            for (XWFilter * model in arr) {
+    for (XWFilterGroup * group in self.dataSource) {
+        // NSAssert([arr[0] isKindOfClass:[XWFilter class]], @"obj isNotKindOfClass XWFilter!!!");
+        for (XWFilter * model in group.items) {
+            if (model.selected) {
                 model.selected = NO;
             }
-        }else if([obj isKindOfClass:[XWFilter class]]){
-            XWFilter * model = obj;
-            model.selected = NO;
-        }else{
-            //
         }
     }
     [self.collectionView reloadData];
@@ -128,22 +134,12 @@
 - (void)confirm{
     [self removeFromSuperview];
     NSMutableArray * results = [NSMutableArray array];
-    for (id obj in self.dataSource) {
-        if ([obj isKindOfClass:[NSArray class]]) {
-            NSArray * arr = obj;
-            NSAssert([arr[0] isKindOfClass:[XWFilter class]], @"obj isNotKindOfClass XWFilter!!!");
-            for (XWFilter * model in arr) {
-                if (model.selected) {
-                    [results addObject:model];
-                }
-            }
-        }else if([obj isKindOfClass:[XWFilter class]]){
-            XWFilter * model = obj;
+    for (XWFilterGroup * group in self.dataSource) {
+//        NSAssert([arr[0] isKindOfClass:[XWFilter class]], @"obj isNotKindOfClass XWFilter!!!");
+        for (XWFilter * model in group.items) {
             if (model.selected) {
-                [results addObject:model];
+                [results addObject:[NSString stringWithString:model.title]];
             }
-        }else{
-            //
         }
     }
     if (self.multiResulter) {
@@ -154,24 +150,24 @@
 - (void)setDataSource:(NSArray *)dataSource
 {
     _dataSource = dataSource;
+    [self.collectionView reloadData];
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     
-    [self.collectionView setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height-40.0)];
-    [self.collectionView setCollectionViewLayout:self.layout];
-    [self.collectionView reloadData];
 }
 
 - (void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
-    [self.collectionView setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height-40.0)];
-    [_resetBtn.superview setFrame:CGRectMake(0, self.frame.size.height-40.0, self.bounds.size.width, 40.0)];
-    [_resetBtn setFrame:CGRectMake(0, 0, self.bounds.size.width/2, 40.0)];
-    [_confirmBtn setFrame:CGRectMake(self.bounds.size.width/2, 0, self.bounds.size.width/2, 40.0)];
+    [self.collectionView setFrame:CGRectMake(0, 0, kSelfW, kSelfH-kCBarH)];
+    [self.controBar setFrame:CGRectMake(0, kSelfH-kCBarH, kSelfW, kCBarH)];
+    
+    [self.collectionView setCollectionViewLayout:self.layout];
+    [self.collectionView reloadData];
+    
 }
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -181,57 +177,59 @@
 }
 */
 
-- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray * rowdata = self.dataSource[indexPath.section];
-    XWFilter *model = rowdata[indexPath.row];
-    BOOL slected = NO;
-    for (XWFilter * model in rowdata) {
-        if (model.selected) {
-            slected = model.selected;
-        }
+    XWFilterGroup *group = self.dataSource[indexPath.section];
+    for (XWFilter * model in group.items) {
+        model.selected = NO;
     }
-    if (indexPath.row==0 && slected==NO) {
-        model.selected = YES;
-    }
-    XWFilterCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"filter" forIndexPath:indexPath];
-    [cell refreshModel:model];
+    XWFilter *model = group.items[indexPath.row];
+    model.selected = YES;
     
-    return cell;
+    [collectionView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section]];
+    
 }
+#pragma mark --UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return self.dataSource.count;
 }
 
-- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSArray * rowdata = self.dataSource[section];
-    return rowdata.count;
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    XWFilterGroup *group = self.dataSource[section];
+    return group.items.count;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    NSArray * rowdata = self.dataSource[indexPath.section];
-    for (XWFilter * model in rowdata) {
-        model.selected = NO;
-    }
-    XWFilter *model = rowdata[indexPath.row];
-    model.selected = !model.selected;
+    XWFilterCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"filter" forIndexPath:indexPath];
     
-    [collectionView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section]];
-    if (nil != self.selectHandle) {
-        self.selectHandle(indexPath, model.title);
+    XWFilterGroup *group = self.dataSource[indexPath.section];
+    BOOL slected = NO;
+    for (XWFilter * model in group.items) {
+        if (model.selected) {
+            slected = model.selected;
+        }
     }
+    
+    XWFilter *model = group.items[indexPath.row];
+    if (slected==NO && indexPath.row==0) {
+        model.selected = YES;
+    }
+    
+    [cell refreshModel:model];
+    return cell;
 }
+
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray * rowdata = self.dataSource[indexPath.section];
-    XWFilter *model = rowdata[indexPath.row];
-    
     XWFilterSectionHeader * header =[collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
-    [header refreshModel:model];
+    
+    XWFilterGroup *group = self.dataSource[indexPath.section];
+    [header refreshModel:group];
     
     return header;
 }

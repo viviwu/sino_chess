@@ -36,18 +36,8 @@
     CGFloat startY = 230.0-self.tableView.contentOffset.y;
     
     if (nil ==_filterView) {
-        NSMutableArray * dataSource = [NSMutableArray array];
-        for (int i=0; i<7; i++) {
-            NSMutableArray * sectionSource = [NSMutableArray array];
-            for (int k=0; k<arc4random()%4+3; k++) {
-                XWFilter * filter = [[XWFilter alloc]init];
-                filter.title = [NSString stringWithFormat:@"(%d,%d)", i, k];
-                filter.sectionTitle = [NSString stringWithFormat:@"Section-%d", i];
-                [sectionSource addObject:filter];
-            }
-            [dataSource addObject:sectionSource];
-        }
-        _filterView =[[XWFilterView alloc]initWithFrame:CGRectMake(0, startY, self.view.frame.size.width, self.view.frame.size.height - startY- safeBottom) dataSource:dataSource];
+       
+        _filterView =[[XWFilterView alloc]initWithFrame:CGRectMake(0, startY, self.view.frame.size.width, self.view.frame.size.height - startY- safeBottom) ];
     }
     return _filterView;
 }
@@ -64,9 +54,7 @@
     }
     NSLog(@"self.tableView.contentOffset.y==%f", self.tableView.contentOffset.y);
     CGFloat startY = 180.0-self.tableView.contentOffset.y;
-    self.filterView.selectHandle = ^(NSIndexPath * indexPath, NSString  * title){
-        NSLog(@"%@",title);
-    };
+    
     self.filterView.multiResulter = ^(NSArray * results){
         for (XWFilter * model in results) {
             NSLog(@"results:%@", model.title);

@@ -9,18 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "XWFilterCell.h"
 
-typedef void(^XWSingleSelectHandle)(NSIndexPath *, NSString *);
+//typedef void(^XWSingleSelectHandle)(NSIndexPath *, NSString *);
 typedef void(^XWMultiSelectHandle)(NSArray *);
-
+//@property (nonatomic, copy) XWSingleSelectHandle selectHandle;
 @interface XWFilterView : UIView
-
-@property (nonatomic, copy) NSArray* dataSource;
-@property (nonatomic, copy) XWSingleSelectHandle selectHandle;
-@property (nonatomic, copy) XWMultiSelectHandle multiResulter;
-
-- (instancetype)initWithFrame:(CGRect)frame;
-
+@property (nonatomic, copy) NSArray<XWFilterGroup *> * dataSource;
+@property (nonatomic, assign) XWMultiSelectHandle multiResulter;
 - (instancetype)initWithFrame:(CGRect)frame
                    dataSource:(NSArray*)dataSource;
-
+- (instancetype)initWithFrame:(CGRect)frame;
 @end

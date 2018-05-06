@@ -32,7 +32,7 @@
         <!--Rank View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="PPRankViewController" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="XWRankViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,23 +41,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="0dZ-CA-aHE">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Fj4-a7-wAo">
-                            <rect key="frame" x="84.5" y="7" width="206" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="私募基金"/>
-                                <segment title="基金经理"/>
-                                <segment title="私募公司"/>
-                            </segments>
-                            <color key="tintColor" red="0.67754209840000001" green="0.1132209331" blue="0.079451711999999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <connections>
-                                <action selector="categoryChanged:" destination="8rJ-Kc-sve" eventType="valueChanged" id="m20-wa-7Md"/>
-                            </connections>
-                        </segmentedControl>
                     </navigationItem>
-                    <connections>
-                        <outlet property="segCtr" destination="Fj4-a7-wAo" id="kR9-Vd-3Cj"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
