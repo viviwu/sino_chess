@@ -11,7 +11,9 @@
 #import "XWCollectionGroupHeader.h"
 #import "MastersTableViewController.h"
 
+#import "YYKit.h"
 #import "NSString+YYAdd.h"
+#import "WBStatusComposeViewController.h"
 
 //#import "XWImageTitleCell.h"
 //#import "XWCollectionRightCell.h"
@@ -37,7 +39,15 @@
     
 }
 - (IBAction)quickAsk:(id)sender {
-    
+    WBStatusComposeViewController *vc = [WBStatusComposeViewController new];
+    vc.type = WBStatusComposeViewTypeStatus;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    @weakify(nav);
+    vc.dismiss = ^{
+        @strongify(nav);
+        [nav dismissViewControllerAnimated:YES completion:NULL];
+    };
+    [self presentViewController:nav animated:YES completion:NULL];
 }
 - (IBAction)orderMaster:(id)sender {
     

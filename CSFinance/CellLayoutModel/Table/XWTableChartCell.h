@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "XWSegmentedControl.h"
-#import <AAChartView/AAChartView.h>
+#import "AAChartView.h"
 
 typedef NS_ENUM(NSInteger, XWTableChartStyle) {
     XWTableChartStyleFund=0,
@@ -18,6 +18,7 @@ typedef NS_ENUM(NSInteger, XWTableChartStyle) {
 
 @interface XWTableChartCell : UITableViewCell
 @property (nonatomic, nullable) XWSegmentedControl * segCtr;
+@property (nonatomic, strong) AAChartView *aaChartView;
 @property (nonatomic, assign) XWTableChartStyle chartStyle;
 
 @end

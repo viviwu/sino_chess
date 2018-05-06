@@ -127,7 +127,10 @@
         XWTableChartCell *cell = [tableView dequeueReusableCellWithIdentifier:kReuseIdChart forIndexPath:indexPath];
         cell.chartStyle = 1;
         // Configure the cell...
-        
+        AAChartModel *chartModel = [self configureAAChartModel];
+        chartModel.chartType = AAChartTypePie;
+        //        NSString *chartType = chartModel.chartType;
+        [cell.aaChartView aa_drawChartWithChartModel:chartModel];
         return cell;
     }else if (2 ==indexPath.section) {
         XWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReuseIdentifier forIndexPath:indexPath];
@@ -219,6 +222,68 @@
 {
     return 35.0;
 }
+
+
+- (AAChartModel *)configureAAChartModel {
+    AAChartModel *aaChartModel= AAObject(AAChartModel)
+    .chartTypeSet(AAChartTypeAreaspline)//图表类型AAChartTypeColumn
+    .titleSet(@"")//图表主标题
+    .subtitleSet(@"")//图表副标题
+    .yAxisVisibleSet(true)//设置 Y 轴是否可见
+    .colorsThemeSet(@[@"#9b43b4",@"#ef476f",@"#ffd066",@"#04d69f",@"#25547c",])//设置主体颜色数组
+    .yAxisTitleSet(@"")//设置 Y 轴标题
+    .tooltipValueSuffixSet(@"%")//设置浮动提示框单位后缀
+    .backgroundColorSet(@"#ffffff")
+    .yAxisGridLineWidthSet(@0)//y轴横向分割线宽度为0(即是隐藏分割线)
+    .stackingSet(AAChartStackingTypeNormal)
+    .borderRadiusSet(@1)
+    .markerRadiusSet(@2)//设置折线连接点宽度为0,即是隐藏连接点
+    .yAxisGridLineWidthSet(@0)
+    .seriesSet(@[
+                 AAObject(AASeriesElement)
+                 .nameSet(@"本基金")
+                 .dataSet(@[@17.0, @16.9, @9.5, @14.5, @18.2, @21.5, @25.2, @26.5, @23.3, @18.3, @13.9, @9.6]),
+                 AAObject(AASeriesElement)
+                 .nameSet(@"沪深300")
+                 .dataSet(@[@1.2, @3.8, @5.7, @11.3, @17.0, @22.0, @24.8, @24.1, @20.1, @14.1, @8.6, @7.5])
+                 ]);
+    return aaChartModel;
+}
+
+- (NSArray *)configureTheConstraintArrayWithItem:(UIView *)view1 toItem:(UIView *)view2 {
+    return  @[[NSLayoutConstraint constraintWithItem:view1
+                                           attribute:NSLayoutAttributeLeft
+                                           relatedBy:NSLayoutRelationEqual
+                                              toItem:view2
+                                           attribute:NSLayoutAttributeLeft
+                                          multiplier:1.0
+                                            constant:0],
+              [NSLayoutConstraint constraintWithItem:view1
+                                           attribute:NSLayoutAttributeRight
+                                           relatedBy:NSLayoutRelationEqual
+                                              toItem:view2
+                                           attribute:NSLayoutAttributeRight
+                                          multiplier:1.0
+                                            constant:0],
+              [NSLayoutConstraint constraintWithItem:view1
+                                           attribute:NSLayoutAttributeTop
+                                           relatedBy:NSLayoutRelationEqual
+                                              toItem:view2
+                                           attribute:NSLayoutAttributeTop
+                                          multiplier:1.0
+                                            constant:0],
+              [NSLayoutConstraint constraintWithItem:view1
+                                           attribute:NSLayoutAttributeBottom
+                                           relatedBy:NSLayoutRelationEqual
+                                              toItem:view2
+                                           attribute:NSLayoutAttributeBottom
+                                          multiplier:1.0
+                                            constant:0],
+              
+              ];
+}
+
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
