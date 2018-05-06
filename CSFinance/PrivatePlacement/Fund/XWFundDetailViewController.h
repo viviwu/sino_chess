@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XWFund.h"
 
 @interface XWFundDetailViewController : UITableViewController
-
+@property (nonatomic, strong) XWFund * fund;
 @end

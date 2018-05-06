@@ -18,6 +18,11 @@
 		0D4EA8FF2090C04000835302 /* double_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4EA8FE2090C03F00835302 /* double_right@2x.png */; };
 		0D4EA9012090C04500835302 /* double_right@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4EA9002090C04500835302 /* double_right@3x.png */; };
 		0D76B729209E0E8A00F075CF /* XWRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D76B728209E0E8900F075CF /* XWRankViewController.m */; };
+		0D76B72E209EB95D00F075CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D76B72D209EB95D00F075CF /* Foundation.framework */; };
+		0D76B730209EB96400F075CF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D76B72F209EB96400F075CF /* UIKit.framework */; };
+		0D76B733209EBAE700F075CF /* PPManagerInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D76B732209EBAE700F075CF /* PPManagerInfoCell.m */; };
+		0D76B73C209ED81D00F075CF /* XWManagerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D76B73B209ED81D00F075CF /* XWManagerDetailViewController.m */; };
+		0D76B742209EFBC000F075CF /* PPCompanyOfficialPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D76B741209EFBC000F075CF /* PPCompanyOfficialPageController.m */; };
 		30E981DC1B280A653FE5B04E /* libPods-CSFinance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2A8AF237248DF06E5B2F3D /* libPods-CSFinance.a */; };
 		4F08D23D209A990D00A68E54 /* XWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F08D23C209A990D00A68E54 /* XWTableViewCell.m */; };
 		4F08D242209AAB6600A68E54 /* XWTableGroupHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F08D241209AAB6600A68E54 /* XWTableGroupHeader.m */; };
@@ -978,7 +983,7 @@
 		4F778654209C01D70052F7E4 /* XWCompany.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F778653209C01D70052F7E4 /* XWCompany.m */; };
 		4F778658209C2AEA0052F7E4 /* XWFundDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F778656209C2AEA0052F7E4 /* XWFundDetailViewController.m */; };
 		4F77865C209C2C190052F7E4 /* XWTableHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F77865B209C2C190052F7E4 /* XWTableHeader.m */; };
-		4F778661209C58C70052F7E4 /* XWTrendTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F778660209C58C70052F7E4 /* XWTrendTableCell.m */; };
+		4F778661209C58C70052F7E4 /* XWTableChartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F778660209C58C70052F7E4 /* XWTableChartCell.m */; };
 		4F7CC71F208D6A6500429B06 /* Podcast.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F7CC71E208D6A6500429B06 /* Podcast.storyboard */; };
 		4F7CC722208D6B6400429B06 /* PodcastCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CC721208D6B6400429B06 /* PodcastCollectionController.m */; };
 		4F7CC72F208D782D00429B06 /* SalonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CC724208D782D00429B06 /* SalonCenterViewController.m */; };
@@ -1041,6 +1046,14 @@
 		0D4EA9002090C04500835302 /* double_right@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "double_right@3x.png"; sourceTree = "<group>"; };
 		0D76B727209E0E8900F075CF /* XWRankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWRankViewController.h; sourceTree = "<group>"; };
 		0D76B728209E0E8900F075CF /* XWRankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWRankViewController.m; sourceTree = "<group>"; };
+		0D76B72D209EB95D00F075CF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0D76B72F209EB96400F075CF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0D76B731209EBAE700F075CF /* PPManagerInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPManagerInfoCell.h; sourceTree = "<group>"; };
+		0D76B732209EBAE700F075CF /* PPManagerInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPManagerInfoCell.m; sourceTree = "<group>"; };
+		0D76B73A209ED81D00F075CF /* XWManagerDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWManagerDetailViewController.h; sourceTree = "<group>"; };
+		0D76B73B209ED81D00F075CF /* XWManagerDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWManagerDetailViewController.m; sourceTree = "<group>"; };
+		0D76B740209EFBC000F075CF /* PPCompanyOfficialPageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPCompanyOfficialPageController.h; sourceTree = "<group>"; };
+		0D76B741209EFBC000F075CF /* PPCompanyOfficialPageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPCompanyOfficialPageController.m; sourceTree = "<group>"; };
 		476BC1BA9EF8439151E573AB /* Pods-CSFinance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CSFinance.release.xcconfig"; path = "Pods/Target Support Files/Pods-CSFinance/Pods-CSFinance.release.xcconfig"; sourceTree = "<group>"; };
 		4F08D23B209A990D00A68E54 /* XWTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWTableViewCell.h; sourceTree = "<group>"; };
 		4F08D23C209A990D00A68E54 /* XWTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWTableViewCell.m; sourceTree = "<group>"; };
@@ -2188,8 +2201,8 @@
 		4F778656209C2AEA0052F7E4 /* XWFundDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWFundDetailViewController.m; sourceTree = "<group>"; };
 		4F77865A209C2C190052F7E4 /* XWTableHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWTableHeader.h; sourceTree = "<group>"; };
 		4F77865B209C2C190052F7E4 /* XWTableHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWTableHeader.m; sourceTree = "<group>"; };
-		4F77865F209C58C70052F7E4 /* XWTrendTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWTrendTableCell.h; sourceTree = "<group>"; };
-		4F778660209C58C70052F7E4 /* XWTrendTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWTrendTableCell.m; sourceTree = "<group>"; };
+		4F77865F209C58C70052F7E4 /* XWTableChartCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWTableChartCell.h; sourceTree = "<group>"; };
+		4F778660209C58C70052F7E4 /* XWTableChartCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWTableChartCell.m; sourceTree = "<group>"; };
 		4F7CC71E208D6A6500429B06 /* Podcast.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Podcast.storyboard; sourceTree = "<group>"; };
 		4F7CC720208D6B6400429B06 /* PodcastCollectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PodcastCollectionController.h; sourceTree = "<group>"; };
 		4F7CC721208D6B6400429B06 /* PodcastCollectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PodcastCollectionController.m; sourceTree = "<group>"; };
@@ -2251,6 +2264,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D76B730209EB96400F075CF /* UIKit.framework in Frameworks */,
+				0D76B72E209EB95D00F075CF /* Foundation.framework in Frameworks */,
 				4F42656020931CC70052A341 /* CoreGraphics.framework in Frameworks */,
 				30E981DC1B280A653FE5B04E /* libPods-CSFinance.a in Frameworks */,
 			);
@@ -2285,6 +2300,8 @@
 		26F20C41E17B07050AD107C0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0D76B72F209EB96400F075CF /* UIKit.framework */,
+				0D76B72D209EB95D00F075CF /* Foundation.framework */,
 				4F42655F20931CC60052A341 /* CoreGraphics.framework */,
 				FF2A8AF237248DF06E5B2F3D /* libPods-CSFinance.a */,
 			);
@@ -2311,10 +2328,8 @@
 				4F08D23C209A990D00A68E54 /* XWTableViewCell.m */,
 				4F08D240209AAB6600A68E54 /* XWTableGroupHeader.h */,
 				4F08D241209AAB6600A68E54 /* XWTableGroupHeader.m */,
-				4F77865A209C2C190052F7E4 /* XWTableHeader.h */,
-				4F77865B209C2C190052F7E4 /* XWTableHeader.m */,
-				4F77865F209C58C70052F7E4 /* XWTrendTableCell.h */,
-				4F778660209C58C70052F7E4 /* XWTrendTableCell.m */,
+				4F77865F209C58C70052F7E4 /* XWTableChartCell.h */,
+				4F778660209C58C70052F7E4 /* XWTableChartCell.m */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -3831,12 +3846,10 @@
 				0D19AC99209B4DC200D34A18 /* fundRankList.json */,
 				0D19ACA4209B536900D34A18 /* XWFund.h */,
 				0D19ACA5209B536900D34A18 /* XWFund.m */,
-				4F7CC746208D7C3600429B06 /* PPFundsRankTableController.h */,
-				4F7CC73B208D7C3600429B06 /* PPFundsRankTableController.m */,
 				4F778655209C2AEA0052F7E4 /* XWFundDetailViewController.h */,
 				4F778656209C2AEA0052F7E4 /* XWFundDetailViewController.m */,
-				4F7CC738208D7C3600429B06 /* PPFundDetialPageViewController.h */,
-				4F7CC741208D7C3600429B06 /* PPFundDetialPageViewController.m */,
+				0D76B731209EBAE700F075CF /* PPManagerInfoCell.h */,
+				0D76B732209EBAE700F075CF /* PPManagerInfoCell.m */,
 			);
 			path = Fund;
 			sourceTree = "<group>";
@@ -3848,10 +3861,8 @@
 				0D19AC9E209B4E9100D34A18 /* manager_info.json */,
 				4F77864F209C01CA0052F7E4 /* XWManager.h */,
 				4F778650209C01CA0052F7E4 /* XWManager.m */,
-				4F7CC736208D7C3600429B06 /* PPManagersRankTableController.h */,
-				4F7CC73F208D7C3600429B06 /* PPManagersRankTableController.m */,
-				4F7CC747208D7C3600429B06 /* PPManagerHomepageViewController.h */,
-				4F7CC73A208D7C3600429B06 /* PPManagerHomepageViewController.m */,
+				0D76B73A209ED81D00F075CF /* XWManagerDetailViewController.h */,
+				0D76B73B209ED81D00F075CF /* XWManagerDetailViewController.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -3863,6 +3874,22 @@
 				0D19ACA0209B4EF300D34A18 /* company_info.json */,
 				4F778652209C01D70052F7E4 /* XWCompany.h */,
 				4F778653209C01D70052F7E4 /* XWCompany.m */,
+				0D76B740209EFBC000F075CF /* PPCompanyOfficialPageController.h */,
+				0D76B741209EFBC000F075CF /* PPCompanyOfficialPageController.m */,
+			);
+			path = Company;
+			sourceTree = "<group>";
+		};
+		4F6FF3CA20905AC900D3F6B3 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				4F71F13820916A2B007F769D /* ManagerInfoCell.h */,
+				4F71F13920916A2B007F769D /* ManagerInfoCell.m */,
+				4F71F14020916BEB007F769D /* ManagerInfoCell.xib */,
+				4F7CC746208D7C3600429B06 /* PPFundsRankTableController.h */,
+				4F7CC73B208D7C3600429B06 /* PPFundsRankTableController.m */,
+				4F7CC738208D7C3600429B06 /* PPFundDetialPageViewController.h */,
+				4F7CC741208D7C3600429B06 /* PPFundDetialPageViewController.m */,
 				4F7CC742208D7C3600429B06 /* PPCorpsRankTableController.h */,
 				4F7CC737208D7C3600429B06 /* PPCorpsRankTableController.m */,
 				4F71F12F20915A47007F769D /* CorpHomeTableController.h */,
@@ -3875,19 +3902,15 @@
 				4F71F14920917155007F769D /* CorpManagersTableController.m */,
 				4F71F14B209171FD007F769D /* CorpOpinionsViewController.h */,
 				4F71F14C209171FD007F769D /* CorpOpinionsViewController.m */,
-				4F71F13820916A2B007F769D /* ManagerInfoCell.h */,
-				4F71F13920916A2B007F769D /* ManagerInfoCell.m */,
-				4F71F14020916BEB007F769D /* ManagerInfoCell.xib */,
 				4F71F13B20916A4B007F769D /* FundInfoCell.h */,
 				4F71F13C20916A4B007F769D /* FundInfoCell.m */,
 				4F71F13E20916A9C007F769D /* FundInfoCell.xib */,
-			);
-			path = Company;
-			sourceTree = "<group>";
-		};
-		4F6FF3CA20905AC900D3F6B3 /* Others */ = {
-			isa = PBXGroup;
-			children = (
+				4F7CC736208D7C3600429B06 /* PPManagersRankTableController.h */,
+				4F7CC73F208D7C3600429B06 /* PPManagersRankTableController.m */,
+				4F7CC747208D7C3600429B06 /* PPManagerHomepageViewController.h */,
+				4F7CC73A208D7C3600429B06 /* PPManagerHomepageViewController.m */,
+				4F7CC73C208D7C3600429B06 /* PPRankViewController.h */,
+				4F7CC745208D7C3600429B06 /* PPRankViewController.m */,
 				4F7CC75A208D876600429B06 /* ManagerPageViews.h */,
 				4F7CC759208D876600429B06 /* ManagerPageViews.m */,
 				4F7CC739208D7C3600429B06 /* CSSeniorUserViewController.h */,
@@ -3982,9 +4005,10 @@
 				4F7CC743208D7C3600429B06 /* PPRank.storyboard */,
 				0D76B727209E0E8900F075CF /* XWRankViewController.h */,
 				0D76B728209E0E8900F075CF /* XWRankViewController.m */,
-				4F7CC73C208D7C3600429B06 /* PPRankViewController.h */,
-				4F7CC745208D7C3600429B06 /* PPRankViewController.m */,
-				4F7CC757208D856C00429B06 /* Rank */,
+				4F6FF3C920905ABC00D3F6B3 /* Company */,
+				4F6FF3C820905AB000D3F6B3 /* Manager */,
+				4F6FF3C720905AA600D3F6B3 /* Fund */,
+				4F6FF3CA20905AC900D3F6B3 /* Others */,
 			);
 			path = PrivatePlacement;
 			sourceTree = "<group>";
@@ -3994,23 +4018,14 @@
 			children = (
 				0D4EA8FB2090BB5900835302 /* XWItemLayout.h */,
 				0D4EA8FC2090BB5900835302 /* XWItemLayout.m */,
+				4F77865A209C2C190052F7E4 /* XWTableHeader.h */,
+				4F77865B209C2C190052F7E4 /* XWTableHeader.m */,
 				4F08D23E209A9B6300A68E54 /* collect */,
 				4F08D23F209A9B8F00A68E54 /* Table */,
 				4F71F26F2091B4F7007F769D /* TableViewCellHeader */,
 				4F71F25F2091A38F007F769D /* CollectCellHeader */,
 			);
 			path = CellLayoutModel;
-			sourceTree = "<group>";
-		};
-		4F7CC757208D856C00429B06 /* Rank */ = {
-			isa = PBXGroup;
-			children = (
-				4F6FF3C720905AA600D3F6B3 /* Fund */,
-				4F6FF3C820905AB000D3F6B3 /* Manager */,
-				4F6FF3C920905ABC00D3F6B3 /* Company */,
-				4F6FF3CA20905AC900D3F6B3 /* Others */,
-			);
-			path = Rank;
 			sourceTree = "<group>";
 		};
 		4F7CC771208DBE0000429B06 /* Institution */ = {
@@ -5044,7 +5059,8 @@
 				4F7CC767208DB2AF00429B06 /* ShopOverviewTableController.m in Sources */,
 				4F6FF3B520901CEE00D3F6B3 /* MastersTableViewController.m in Sources */,
 				4F1B131D2089B62100D4114F /* NSNumber+YYAdd.m in Sources */,
-				4F778661209C58C70052F7E4 /* XWTrendTableCell.m in Sources */,
+				0D76B73C209ED81D00F075CF /* XWManagerDetailViewController.m in Sources */,
+				4F778661209C58C70052F7E4 /* XWTableChartCell.m in Sources */,
 				4F1B13212089B62100D4114F /* NSThread+YYAdd.m in Sources */,
 				4F1B134C2089B9A300D4114F /* UIBarButtonItem+Item.m in Sources */,
 				4F1B13592089BA4300D4114F /* KSYQRCode.m in Sources */,
@@ -5058,6 +5074,7 @@
 				4F1B13192089B62100D4114F /* UIImage+YYAdd.m in Sources */,
 				4F1B12E82089B62100D4114F /* YYCache.m in Sources */,
 				4F1B13252089B62100D4114F /* NSDate+YYAdd.m in Sources */,
+				0D76B742209EFBC000F075CF /* PPCompanyOfficialPageController.m in Sources */,
 				4F1B13422089B88000D4114F /* NSDictionary+CS.m in Sources */,
 				4F40463E207CB1AA00FF4DCE /* AppDelegate.m in Sources */,
 				4F1B13782089C47500D4114F /* NewsItemsTableController.m in Sources */,
@@ -5172,6 +5189,7 @@
 				4F1B0C302089B29E00D4114F /* XWFilterView.m in Sources */,
 				4F1B132C2089B62100D4114F /* YYWeakProxy.m in Sources */,
 				4F1B0C1F2089B26800D4114F /* XWScrollBanner.m in Sources */,
+				0D76B733209EBAE700F075CF /* PPManagerInfoCell.m in Sources */,
 				4F1B12FC2089B62100D4114F /* YYTextContainerView.m in Sources */,
 				4F1B0C4C2089B2AF00D4114F /* VENTouchLockCreatePasscodeViewController.m in Sources */,
 				4F1B13122089B62100D4114F /* UIApplication+YYAdd.m in Sources */,

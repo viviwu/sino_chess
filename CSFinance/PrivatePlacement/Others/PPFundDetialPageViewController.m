@@ -9,6 +9,7 @@
 #import "PPFundDetialPageViewController.h"
 #import "XWTableHeader.h"
 #import "XWTableViewCell.h"
+#import "YYSimpleWebViewController.h"
 
 @interface PPFundDetialPageViewController ()
 {

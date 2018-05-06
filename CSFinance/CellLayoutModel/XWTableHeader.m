@@ -17,9 +17,11 @@
 {
     self =[super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor yellowColor];
+        self.backgroundColor = [UIColor whiteColor];
         self.headerStyle = headerStyle;
- 
+        if(XWTableHeaderStyleManager == headerStyle){
+            self.imageView.image = [UIImage imageNamed:@"userid.png"];
+        }
     }
     return self;
 }
@@ -31,16 +33,15 @@
 
 - (void)layoutSubviews
 {
-    CGFloat inset = kSelfH*0.05;
     CGFloat lY = kSelfH *0.5;
     CGFloat lW = kSelfW/3;
-    CGFloat aH = kSelfH *0.2;
-    CGFloat bH = kSelfH *0.3;
+    CGFloat LH = kSelfH *0.25;
+    CGFloat imgWH = kSelfH *0.4;
     
     if ( XWTableHeaderStyleFund == _headerStyle) {
-        //        [self.imageView setFrame:CGRectZero];
-        [self.textLabel setFrame:CGRectMake(0, inset, kSelfW, aH)];
-        [self.detailTextLabel setFrame:CGRectMake(0, bH, kSelfW, aH)];
+        //  [self.imageView setFrame:CGRectZero];
+        [self.textLabel setFrame:CGRectMake(0, 10.0, kSelfW, LH)];
+        [self.detailTextLabel setFrame:CGRectMake(0, LH, kSelfW, LH)];
         
         self.textLabel.text = @"小牛资本  (封闭运行)";
         self.detailTextLabel.text = @"托管人：招商证券";
@@ -49,25 +50,35 @@
         self.maLabel.text = @"近一年收益";
         self.raLabel.text = @"累计收益";
         
-    }else if ( XWTableHeaderStyleManager == _headerStyle) {
-        [self.imageView setFrame:CGRectMake(inset, inset, bH, bH)];
-        [self.textLabel setFrame:CGRectMake(kSelfW*0.4, inset, lY, aH)];
-        [self.detailTextLabel setFrame:CGRectMake(kSelfW*0.4, bH, lY, aH)];
-        
-    }else if ( XWTableHeaderStyleCompany== _headerStyle) {
-        
-        [self.imageView setFrame:CGRectMake(inset, inset, bH, bH)];
-        [self.textLabel setFrame:CGRectMake(kSelfW*0.4, inset, lY, aH)];
-        [self.detailTextLabel setFrame:CGRectMake(kSelfW*0.4, bH, lY, aH)];
-    }else {}
+    }else {
+        if (XWTableHeaderStyleManager == _headerStyle) {
+            self.textLabel.text = @"基金经理（从业28年）";
+            self.detailTextLabel.text = @"上海保银投资";
+            
+            self.laLabel.text = @"旗下基金数";
+            self.maLabel.text = @"近一年收益";
+            self.raLabel.text = @"累计收益";
+        }else if (XWTableHeaderStyleCompany== _headerStyle){
+            self.textLabel.text = @"";
+            self.detailTextLabel.text = @"上海保银投资管理有限公司";
+            
+            self.laLabel.text = @"最新净值";
+            self.maLabel.text = @"近一年收益";
+            self.raLabel.text = @"累计收益";
+        }
+        CGFloat txtW = kSelfW -(imgWH+30.0);
+        [self.imageView setFrame:CGRectMake(25.0, 15.0, imgWH, imgWH)];
+        [self.textLabel setFrame:CGRectMake(imgWH+30.0, 10.0, txtW, LH)];
+        [self.detailTextLabel setFrame:CGRectMake(imgWH+30.0, LH+10.0, txtW, LH)];
+    }
     
-    [self.laLabel setFrame:CGRectMake(0, lY, lW, aH)];
-    [self.maLabel setFrame:CGRectMake(lW, lY, lW, aH)];
-    [self.raLabel setFrame:CGRectMake(lW*2, lY, lW, aH)];
+    [self.laLabel setFrame:CGRectMake(0, lY, lW, LH)];
+    [self.maLabel setFrame:CGRectMake(lW, lY, lW, LH)];
+    [self.raLabel setFrame:CGRectMake(lW*2, lY, lW, LH)];
     
-    [self.lbLabel setFrame:CGRectMake(0, aH+lY, lW, bH)];
-    [self.mbLabel setFrame:CGRectMake(lW, aH+lY, lW, bH)];
-    [self.rbLabel setFrame:CGRectMake(lW*2, aH+lY, lW, bH)];
+    [self.lbLabel setFrame:CGRectMake(0, LH+lY, lW, LH)];
+    [self.mbLabel setFrame:CGRectMake(lW, LH+lY, lW, LH)];
+    [self.rbLabel setFrame:CGRectMake(lW*2, LH+lY, lW, LH)];
     [super layoutSubviews];
 }
 

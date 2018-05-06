@@ -79,7 +79,7 @@
             [self.textLabel setFrame:CGRectMake(0, 5.0, tW, kContentH-10.0)];
             [self.detailTextLabel setFrame:CGRectMake(tW, 5.0, tW, kContentH-10.0)];
             [self.exTextLabel setFrame:CGRectMake(tW*2, 5.0, tW, kContentH-10.0)];
-            [self.exTextLabel setFrame:CGRectMake(tW*3, 5.0, tW, kContentH-10.0)];
+            [self.eyTextLabel setFrame:CGRectMake(tW*3, 5.0, tW, kContentH-10.0)];
             
             self.textLabel.textColor = [UIColor blackColor];
             self.textLabel.textAlignment = NSTextAlignmentCenter;
@@ -89,6 +89,9 @@
             
             self.exTextLabel.textColor = [UIColor blackColor];
             self.exTextLabel.textAlignment = NSTextAlignmentCenter;
+            
+            self.eyTextLabel.textColor = [UIColor blackColor];
+            self.eyTextLabel.textAlignment = NSTextAlignmentCenter;
         }
             break;
             
@@ -161,7 +164,7 @@
 
 - (UILabel*)eyTextLabel
 {
-    if (!_exTextLabel) {
+    if (!_eyTextLabel) {
         _eyTextLabel =[self instanceNewLabel];
     }
     return _eyTextLabel;

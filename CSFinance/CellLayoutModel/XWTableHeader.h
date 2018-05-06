@@ -11,8 +11,8 @@
 
 typedef NS_ENUM(NSInteger, XWTableHeaderStyle) {
     XWTableHeaderStyleFund=0,
-    XWTableHeaderStyleManager=0,
-    XWTableHeaderStyleCompany=0,
+    XWTableHeaderStyleManager=1,
+    XWTableHeaderStyleCompany=2,
 };
 
 @interface XWTableHeader : UIView

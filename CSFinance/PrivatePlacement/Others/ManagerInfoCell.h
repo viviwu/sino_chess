@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ManagerInfoCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *iconView;
 
 @end

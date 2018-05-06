@@ -18,6 +18,10 @@
 #import "XWManager.h"
 #import "XWCompany.h"
 
+#import "XWFundDetailViewController.h"
+#import "XWManagerDetailViewController.h"
+#import "PPCompanyOfficialPageController.h"
+
 #define kScreenW [UIScreen mainScreen].bounds.size.width
 #define kScreenH [UIScreen mainScreen].bounds.size.height
 
@@ -215,11 +219,11 @@
                 [btn setFrame:CGRectMake(menuW*k, 0, 0, kMenuH)];
             }
         }
-        if (0 == self->_segmentedControl.selectedSegmentIndex && self->_funds.count) {
+        if (0 == self->_segmentedControl.selectedSegmentIndex && self->_funds.count>0) {
             [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-        }else if(0 == self->_segmentedControl.selectedSegmentIndex && self->_funds.count){
+        }else if(0 == self->_segmentedControl.selectedSegmentIndex && self->_managers.count>0){
             [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-        }else if(0 == self->_segmentedControl.selectedSegmentIndex && self->_funds.count){
+        }else if(0 == self->_segmentedControl.selectedSegmentIndex && self->_companys.count>0){
             [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
         }else{}
         
@@ -273,7 +277,6 @@
     [self.topADboard addSubview:self.filterMenu];
     
     // Do any additional setup after loading the view.
-    [self segmentedControlValueChanged];
 }
 
 - (void)viewDidLayoutSubviews
@@ -305,9 +308,9 @@
     [self.tableView setFrame:CGRectMake(0, _insetY, kScreenW, kScreenH)];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     if (_funds.count<1) {
         dispatch_sync(dispatch_get_global_queue(0, 0), ^{
             // 处理耗时操作的代码块...
@@ -356,9 +359,13 @@
             });
         });
     }
-    
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self segmentedControlValueChanged];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -377,9 +384,34 @@
             [self.tableView setFrame:CGRectMake(0, self->_insetY, kScreenW, kScreenH)];
         }
     }];
- 
 }
 
+//+++++++++++++++++++++++++++++++++++++++++
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (0==_segmentedControl.selectedSegmentIndex) {
+        XWFund * fund = _funds[indexPath.row];
+        XWFundDetailViewController * fundDetail = [[XWFundDetailViewController  alloc]init];
+        fundDetail.fund = fund;
+        fundDetail.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:fundDetail animated:NO];
+        fundDetail.hidesBottomBarWhenPushed = NO;
+    }else if(1==_segmentedControl.selectedSegmentIndex){
+        XWManager * manager = _managers[indexPath.row];
+        XWManagerDetailViewController * managerDetail = [[XWManagerDetailViewController alloc]init];
+        managerDetail.manager = manager;
+        managerDetail.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:managerDetail animated:NO];
+        managerDetail.hidesBottomBarWhenPushed = NO;
+    }else{
+        XWCompany * company = _companys[indexPath.row];
+        PPCompanyOfficialPageController * companyPage = [[PPCompanyOfficialPageController alloc]init];
+        companyPage.company=company;
+        companyPage.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:companyPage animated:NO];
+        companyPage.hidesBottomBarWhenPushed = NO;
+    }
+}
 
 /*
 #pragma mark - Navigation
