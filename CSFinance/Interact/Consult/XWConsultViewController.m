@@ -38,6 +38,7 @@
 - (IBAction)seeMineQnA:(id)sender {
     
 }
+
 - (IBAction)quickAsk:(id)sender {
     WBStatusComposeViewController *vc = [WBStatusComposeViewController new];
     vc.type = WBStatusComposeViewTypeStatus;

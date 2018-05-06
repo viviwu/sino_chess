@@ -56,6 +56,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *readView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
@@ -71,6 +72,11 @@
     
     self.navigationController.interactivePopGestureRecognizer.delegate = (id<UIGestureRecognizerDelegate>)self;
     // Do any additional setup after loading the view.
+    
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"关于PE" ofType:@"html"];
+    NSURL* url = [NSURL fileURLWithPath:path];
+    NSURLRequest* request = [NSURLRequest requestWithURL:url] ;
+    [_webView loadRequest:request];
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
@@ -126,7 +132,8 @@ static int AAPLPlayerViewControllerKVOContext = 0;
     dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0/*延迟执行时间*/ * NSEC_PER_SEC));
     dispatch_after(delayTime, dispatch_get_main_queue(), ^{
 //        [weakSelf.collectionView reloadData];
-        NSLog(@"self.player.items.count==%lu", (unsigned long)self.player.items.count);
+//        NSLog(@"self.player.items.count==%lu", (unsigned long)self.player.items.count);
+        [self.player play];
     });
 }
 - (void)viewWillDisappear:(BOOL)animated
@@ -153,7 +160,6 @@ static int AAPLPlayerViewControllerKVOContext = 0;
     [self removeObserver:self forKeyPath:@"player.currentItem.status" context:&AAPLPlayerViewControllerKVOContext];
     [self removeObserver:self forKeyPath:@"player.currentItem" context:&AAPLPlayerViewControllerKVOContext];
 }
-
 
 // MARK: - Properties
 
@@ -321,7 +327,6 @@ static int AAPLPlayerViewControllerKVOContext = 0;
     }
     
 }
-
 
 // MARK: Convenience
 

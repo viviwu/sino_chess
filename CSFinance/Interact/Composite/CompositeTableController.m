@@ -160,7 +160,9 @@
     ICTableMoreHeader * header =[tableView dequeueReusableHeaderFooterViewWithIdentifier:@"ICTableMoreHeader"];
     header.titleLabel.text = _headers[section];
     header.actionhandle= ^(){
-        NSLog(@"XXXX");
+        if (section==0) {
+            [self performSegueWithIdentifier:@"AllNews" sender:nil];
+        }
     };
     return header;
 }
