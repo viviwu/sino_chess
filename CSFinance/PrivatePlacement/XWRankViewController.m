@@ -92,8 +92,7 @@
         for (int k=0; k<3; k++) {
             UIButton * btn =[UIButton buttonWithType:UIButtonTypeCustom];
             [btn setTitle:@"---" forState:UIControlStateNormal];
-            [btn setTintColor:[UIColor blueColor]];
-            [btn defaultStyle];
+            [btn austerityStyle];
             [btn addAwesomeIcon:FAIconArrowDown beforeTitle:NO];
             btn.tag = 1000+k;
             [btn addTarget:self action:@selector(btnTouchEvent:) forControlEvents:UIControlEventTouchUpInside];
@@ -154,7 +153,7 @@
             [self.filterView layoutIfNeeded];
         }];
     }else{
-//        [btn defaultStyle];
+        [btn austerityStyle];
         [btn addAwesomeIcon:FAIconArrowDown beforeTitle:NO];
         self.filterView.hidden = YES;
     }
@@ -181,14 +180,15 @@
 
 - (UISegmentedControl *)segmentedControl{
     if (!_segmentedControl) {
-        _segmentedControl= [[UISegmentedControl alloc]initWithItems:@[@"Fund", @"Manager", @"Conpany"]];
+        _segmentedControl= [[UISegmentedControl alloc]initWithItems:@[@"私募基金", @"基金经理", @"私募公司"]];
         _segmentedControl.selectedSegmentIndex = 0;
-        _segmentedControl.tintColor = KSYRGBAlpha(30, 144, 255, 1.0);
-        NSDictionary *selAttri = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor yellowColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18], NSFontAttributeName,nil];
+        _segmentedControl.tintColor = [UIColor orangeColor];
+        //KSYRGBAlpha(30, 144, 255, 1.0);
+        NSDictionary *selAttri = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18], NSFontAttributeName,nil];
         
         [ _segmentedControl setTitleTextAttributes:selAttri forState:UIControlStateSelected];
         //默认字体颜色
-        NSDictionary *normalAttri = [NSDictionary dictionaryWithObjectsAndKeys:KSYRGBAlpha(30, 144, 255, 1.0), NSForegroundColorAttributeName,  [UIFont systemFontOfSize:12], NSFontAttributeName,nil];
+        NSDictionary *normalAttri = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor orangeColor], NSForegroundColorAttributeName,  [UIFont systemFontOfSize:12], NSFontAttributeName,nil];
         
         [ _segmentedControl setTitleTextAttributes:normalAttri forState:UIControlStateNormal];
     }
@@ -443,17 +443,17 @@
         XWFund * fund = _funds[indexPath.row];
         cell.textLabel.text = fund.fund_name;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", fund.nav];
-        cell.exTextLabel.text = [NSString stringWithFormat:@"+%@", fund.income];
+        cell.exTextLabel.text = [NSString stringWithFormat:@"+%.2f%%", [fund.income floatValue]];
     }else if (1 == self.segmentedControl.selectedSegmentIndex) {
         XWManager * manager = _managers[indexPath.row];
         cell.textLabel.text = manager.manager_name;
         cell.detailTextLabel.text = manager.company_name;
-        cell.exTextLabel.text = [NSString stringWithFormat:@"%@", manager.income];
+        cell.exTextLabel.text = [NSString stringWithFormat:@"+%.2f%%", [manager.income floatValue]];
     }else{
         XWCompany * company = _companys[indexPath.row];
         cell.textLabel.text = company.company_name;
         cell.detailTextLabel.text = company.fund_managers;
-        cell.exTextLabel.text = [NSString stringWithFormat:@"+%@", company.income];
+        cell.exTextLabel.text = [NSString stringWithFormat:@"+%.2f%%", [company.income floatValue]];
     }
     return cell;
 }

@@ -13,7 +13,7 @@
 
 #import "YYKit.h"
 #import "NSString+YYAdd.h"
-#import "WBStatusComposeViewController.h"
+#import "XWOpinionComposeViewController.h"
 #import "MyQnATableViewController.h"
 #import "XWTopicsTableController.h"
 
@@ -45,8 +45,8 @@
 }
 
 - (IBAction)quickAsk:(id)sender {
-    WBStatusComposeViewController *vc = [WBStatusComposeViewController new];
-    vc.type = WBStatusComposeViewTypeStatus;
+    XWOpinionComposeViewController *vc = [XWOpinionComposeViewController new];
+    vc.type = XWOpinionComposeViewTypeStatus;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     @weakify(nav);
     vc.dismiss = ^{

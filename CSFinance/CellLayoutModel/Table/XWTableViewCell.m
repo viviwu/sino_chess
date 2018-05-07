@@ -63,12 +63,12 @@
                 self.textLabel.font = [UIFont systemFontOfSize:15];
                 self.textLabel.numberOfLines = 0;
                 
-                self.detailTextLabel.textColor = [UIColor redColor];
-                self.detailTextLabel.font = [UIFont systemFontOfSize:15];
+                self.detailTextLabel.textColor = [UIColor orangeColor];
+                self.detailTextLabel.font = [UIFont systemFontOfSize:16];
                 self.detailTextLabel.textAlignment = NSTextAlignmentCenter;
                 
                 self.exTextLabel.textColor = [UIColor redColor];
-                self.exTextLabel.font = [UIFont systemFontOfSize:15];
+                self.exTextLabel.font = [UIFont systemFontOfSize:16];
                 self.exTextLabel.textAlignment = NSTextAlignmentCenter;
             }
             break;

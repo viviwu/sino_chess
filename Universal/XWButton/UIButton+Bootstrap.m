@@ -9,6 +9,20 @@
 #import <QuartzCore/QuartzCore.h>
 @implementation UIButton (Bootstrap)
 
+-(void)austerityStyle{
+    self.layer.borderWidth = 0.1;
+    self.layer.cornerRadius = 1;
+    self.layer.masksToBounds = YES;
+    self.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    
+    [self setAdjustsImageWhenHighlighted:NO];
+    UIColor *color = [UIColor colorWithRed:70/255.0 green:130/255.0 blue:180/255.0 alpha:1];
+    [self setTitleColor:color forState:UIControlStateNormal];
+    [self setTitleColor:[UIColor orangeColor] forState:UIControlStateHighlighted];
+    [self.titleLabel setFont:[UIFont fontWithName:@"FontAwesome" size:self.titleLabel.font.pointSize]];
+    [self setBackgroundImage:[self buttonImageFromColor:[UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1]] forState:UIControlStateHighlighted];
+}
+
 -(void)bootstrapStyle{
     self.layer.borderWidth = 1;
     self.layer.cornerRadius = 4.0;
@@ -65,11 +79,11 @@
 - (void)addAwesomeIcon:(FAIcon)icon beforeTitle:(BOOL)before
 {
     NSString *iconString = [NSString stringFromAwesomeIcon:icon];
-    UIFont * font =[UIFont fontWithName:@"FontAwesome"
-                                   size:self.titleLabel.font.pointSize];
-    if (nil==font) {
-        NSLog(@"nil==fontnil==fontnil==fontnil==fontnil==font");
-    }
+//    UIFont * font =[UIFont fontWithName:@"FontAwesome"
+//                                   size:self.titleLabel.font.pointSize];
+//    if (nil==font) {
+//        NSLog(@"nil==fontnil==fontnil==fontnil==fontnil==font");
+//    }
     self.titleLabel.font = [UIFont fontWithName:@"FontAwesome"
                                            size:self.titleLabel.font.pointSize];
     

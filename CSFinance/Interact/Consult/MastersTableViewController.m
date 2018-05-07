@@ -8,7 +8,7 @@
 
 #import "MastersTableViewController.h"
 #import "YYKit.h"
-#import "WBStatusComposeViewController.h"
+#import "XWOpinionComposeViewController.h"
 
 
 
@@ -66,8 +66,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WBStatusComposeViewController *vc = [WBStatusComposeViewController new];
-    vc.type = WBStatusComposeViewTypeStatus;
+    XWOpinionComposeViewController *vc = [XWOpinionComposeViewController new];
+    vc.type = XWOpinionComposeViewTypeStatus;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     @weakify(nav);
     vc.dismiss = ^{

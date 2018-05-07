@@ -11,11 +11,11 @@
 #import "CompositeTableController.h"
 #import "PodcastCollectionController.h"
 #import "XWConsultViewController.h"
-#import "WBStatusTimelineViewController.h"
+#import "XWOpinionTimelineViewController.h"
 #import "SalonCenterViewController.h"
 
 #import "YYKit.h"
-#import "WBStatusComposeViewController.h"
+#import "XWOpinionComposeViewController.h"
 
 @interface InteractMainViewController ()
 
@@ -77,8 +77,8 @@
 
 - (void)actionCompose{
     if(_segCtr.selectedIndex ==3){
-        WBStatusComposeViewController *vc = [WBStatusComposeViewController new];
-        vc.type = WBStatusComposeViewTypeStatus;
+        XWOpinionComposeViewController *vc = [XWOpinionComposeViewController new];
+        vc.type = XWOpinionComposeViewTypeStatus;
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
         @weakify(nav);
         vc.dismiss = ^{
@@ -118,7 +118,7 @@
     CompositeTableController * interact = [[UIStoryboard storyboardWithName:@"Interact" bundle:nil] instantiateViewControllerWithIdentifier:@"CompositeTableController"];
     PodcastCollectionController * podcast = [[UIStoryboard storyboardWithName:@"Podcast" bundle:nil] instantiateViewControllerWithIdentifier:@"PodcastCollectionController"];
     XWConsultViewController * consult = [[UIStoryboard storyboardWithName:@"Interact" bundle:nil] instantiateViewControllerWithIdentifier:@"XWConsultViewController"];
-    UIViewController * opinion = [WBStatusTimelineViewController new];
+    UIViewController * opinion = [XWOpinionTimelineViewController new];
     SalonCenterViewController * salon = [[SalonCenterViewController alloc]init];
     
     [interact.view setFrame:CGRectMake(0, 0, kScreenW, kSelfVB_H)];
