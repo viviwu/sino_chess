@@ -14,6 +14,9 @@
 #import "WBStatusTimelineViewController.h"
 #import "SalonCenterViewController.h"
 
+#import "YYKit.h"
+#import "WBStatusComposeViewController.h"
+
 @interface InteractMainViewController ()
 
 @property (nonatomic, assign) CGFloat safeTop;
@@ -21,7 +24,8 @@
 @property (nonatomic) XWSegmentedControl * segCtr;
 @property (nonatomic, copy) NSArray<NSString*>* sectionTitles;
 @property (nonatomic, strong) UIScrollView * scrollView;
-
+@property (nonatomic, strong) UIBarButtonItem * rightItemBookMark;
+@property (nonatomic, strong) UIBarButtonItem * rightItemCompose;
 @end
 
 @implementation InteractMainViewController
@@ -64,6 +68,27 @@
     // Do any additional setup after loading the view.
     [self addSubViewControllers];
     // Do any additional setup after loading the view.
+    
+}
+
+- (void)actionBookMark{
+    
+}
+
+- (void)actionCompose{
+    if(_segCtr.selectedIndex ==3){
+        WBStatusComposeViewController *vc = [WBStatusComposeViewController new];
+        vc.type = WBStatusComposeViewTypeStatus;
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+        @weakify(nav);
+        vc.dismiss = ^{
+            @strongify(nav);
+            [nav dismissViewControllerAnimated:YES completion:NULL];
+        };
+        [self presentViewController:nav animated:YES completion:NULL];
+    }else{
+        
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -75,6 +100,13 @@
 - (void)segmentAction:(XWSegmentedControl *)sender
 {
     NSInteger index = sender.selectedIndex;
+    if(0==index){
+        _rightItemBookMark = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(actionBookMark)];
+        self.navigationItem.rightBarButtonItem = _rightItemBookMark;
+    }else{
+         _rightItemCompose= [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(actionCompose)];
+        self.navigationItem.rightBarButtonItem = _rightItemCompose;
+    }
     
     [self transChildViewControllerWith:index];
     [self.scrollView setContentOffset:CGPointMake(kScreenW*index, 0)];

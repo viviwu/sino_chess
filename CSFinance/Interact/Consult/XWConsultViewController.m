@@ -14,6 +14,8 @@
 #import "YYKit.h"
 #import "NSString+YYAdd.h"
 #import "WBStatusComposeViewController.h"
+#import "MyQnATableViewController.h"
+#import "XWTopicsTableController.h"
 
 //#import "XWImageTitleCell.h"
 //#import "XWCollectionRightCell.h"
@@ -36,7 +38,10 @@
 @implementation XWConsultViewController
 
 - (IBAction)seeMineQnA:(id)sender {
-    
+    MyQnATableViewController * myQnA = [[MyQnATableViewController alloc]init];
+    myQnA.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:myQnA animated:NO];
+    myQnA.hidesBottomBarWhenPushed = YES;
 }
 
 - (IBAction)quickAsk:(id)sender {
@@ -51,7 +56,7 @@
     [self presentViewController:nav animated:YES completion:NULL];
 }
 - (IBAction)orderMaster:(id)sender {
-    
+    [self performSegueWithIdentifier:@"MasterList" sender:self];
 }
 
 - (void)viewDidLoad {
@@ -96,7 +101,13 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"MasterList" sender:self];
+    if(indexPath.section==0){
+        XWTopicsTableController * topic = [[XWTopicsTableController alloc]init];
+        topic.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:topic animated:NO];
+        topic.hidesBottomBarWhenPushed = NO;
+    }else
+        [self performSegueWithIdentifier:@"MasterList" sender:self];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView

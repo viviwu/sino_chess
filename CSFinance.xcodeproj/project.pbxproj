@@ -1052,6 +1052,7 @@
 		4F7CC799208DDBEF00429B06 /* UIScrollView+STRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CC793208DDBEF00429B06 /* UIScrollView+STRefresh.m */; };
 		4F7CC79A208DDBEF00429B06 /* STRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CC794208DDBEF00429B06 /* STRefreshHeader.m */; };
 		4F7CC79B208DDBEF00429B06 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F7CC796208DDBEF00429B06 /* github.png */; };
+		4FEED9F7209FDBA500702B3C /* XWTopicsTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEED9F6209FDBA500702B3C /* XWTopicsTableController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2367,6 +2368,8 @@
 		4F7CC796208DDBEF00429B06 /* github.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = github.png; sourceTree = "<group>"; };
 		4F7CC797208DDBEF00429B06 /* STRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRefreshHeader.h; sourceTree = "<group>"; };
 		4F7CC798208DDBEF00429B06 /* UIScrollView+STRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+STRefresh.h"; sourceTree = "<group>"; };
+		4FEED9F5209FDBA500702B3C /* XWTopicsTableController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWTopicsTableController.h; sourceTree = "<group>"; };
+		4FEED9F6209FDBA500702B3C /* XWTopicsTableController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWTopicsTableController.m; sourceTree = "<group>"; };
 		ED1533C61D2705F727E0C416 /* Pods-CSFinance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CSFinance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CSFinance/Pods-CSFinance.debug.xcconfig"; sourceTree = "<group>"; };
 		FF2A8AF237248DF06E5B2F3D /* libPods-CSFinance.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CSFinance.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -2715,6 +2718,7 @@
 		4F1B0C552089B2D000D4114F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				4F1B137B2089CBA900D4114F /* DataAPI */,
 				0D4EA9002090C04500835302 /* double_right@3x.png */,
 				0D4EA8FE2090C03F00835302 /* double_right@2x.png */,
 				4F1B13672089C11C00D4114F /* Common */,
@@ -3880,7 +3884,7 @@
 		4F1B137A2089CBA900D4114F /* Opinion */ = {
 			isa = PBXGroup;
 			children = (
-				4F1B137B2089CBA900D4114F /* DataAPI */,
+				4F1B13832089CBA900D4114F /* weibo_0.json */,
 				4F1B13852089CBA900D4114F /* WBList */,
 				4F1B138F2089CBA900D4114F /* WEtools */,
 				4F1B13A12089CBA900D4114F /* WBCompose */,
@@ -3901,7 +3905,6 @@
 				4F1B13802089CBA900D4114F /* weibo_7.json */,
 				4F1B13812089CBA900D4114F /* weibo_6.json */,
 				4F1B13822089CBA900D4114F /* weibo_1.json */,
-				4F1B13832089CBA900D4114F /* weibo_0.json */,
 			);
 			path = DataAPI;
 			sourceTree = "<group>";
@@ -4059,6 +4062,8 @@
 				4F6FF3B220901CED00D3F6B3 /* MasterTableViewCell.m */,
 				0D0DCAB6209FB799002723D3 /* MyQnATableViewController.h */,
 				0D0DCAB7209FB799002723D3 /* MyQnATableViewController.m */,
+				4FEED9F5209FDBA500702B3C /* XWTopicsTableController.h */,
+				4FEED9F6209FDBA500702B3C /* XWTopicsTableController.m */,
 			);
 			path = Consult;
 			sourceTree = "<group>";
@@ -5468,6 +5473,7 @@
 				4F1B13162089B62100D4114F /* UIView+YYAdd.m in Sources */,
 				4F1B13582089BA4300D4114F /* KSYQRCodeVC.m in Sources */,
 				4F6FF415209087C200D3F6B3 /* ICTableMoreHeader.m in Sources */,
+				4FEED9F7209FDBA500702B3C /* XWTopicsTableController.m in Sources */,
 				4F7CC74A208D7C3600429B06 /* PPManagerHomepageViewController.m in Sources */,
 				4F1B13BF2089CBA900D4114F /* YYTableViewCell.m in Sources */,
 				0D0DCAB4209F51EE002723D3 /* AAOptions.m in Sources */,

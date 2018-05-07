@@ -1,27 +1,36 @@
 //
-//  MastersTableViewController.m
-//  XWScrollBanner
+//  XWTopicsTableController.m
+//  CSFinance
 //
-//  Created by vivi wu on 2018/4/24.
-//  Copyright © 2018年 vivi wu. All rights reserved.
+//  Created by csco on 2018/5/7.
+//  Copyright © 2018年 csco. All rights reserved.
 //
 
-#import "MastersTableViewController.h"
+#import "XWTopicsTableController.h"
 #import "YYKit.h"
 #import "WBStatusComposeViewController.h"
 
-
-
-@interface MastersTableViewController ()
+@interface XWTopicsTableController ()
 
 @end
 
-@implementation MastersTableViewController
-
+@implementation XWTopicsTableController
+- (instancetype)init{
+    self = [super initWithStyle:UITableViewStylePlain];
+    if(self){
+        self.tableView.separatorColor = [UIColor lightGrayColor];
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+//        self.tableView.estimatedRowHeight = kNormalRowH;//
+//
+//        [self.tableView registerClass:[XWTableViewCell class] forCellReuseIdentifier:kReuseIdentifier];     //XWTableViewCellStyleNormal
+//        [self.tableView registerClass:[XWTableChartCell class] forCellReuseIdentifier:kReuseIdChart];//
+        //        [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"opinion"];
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-     
-    self.title = @"热门答主";
+    self.title  = @"主题XXX";
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -38,30 +47,28 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 //#warning Incomplete implementation, return the number of sections
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //#warning Incomplete implementation, return the number of rows
-    return 5;
+    return 10;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section==0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MasterA" forIndexPath:indexPath];
-        
-        // Configure the cell...
-        
-        return cell;
-    }else{
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MasterB" forIndexPath:indexPath];
-        
-        // Configure the cell...
-        
-        return cell;
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"topic"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"topic"];
     }
-    
+    // Configure the cell...
+    cell.textLabel.font = [UIFont systemFontOfSize:16.0];
+    cell.textLabel.numberOfLines =2;
+    cell.detailTextLabel.font = [UIFont systemFontOfSize:13.0];
+    cell.detailTextLabel.textColor = [UIColor darkGrayColor];
+    cell.textLabel.text = @"如何看待 巴菲特2018年股东大会总结，涉及世界贸易，接班人及中国投资机会";
+    cell.detailTextLabel.text = @"回复/添加评论";
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

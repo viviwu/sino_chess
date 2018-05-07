@@ -22,7 +22,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *layouts;
 @property (nonatomic, strong) YYFPSLabel *fpsLabel;
-@property (nonatomic, strong) UIToolbar * compositeBar;
+//@property (nonatomic, strong) UIToolbar * compositeBar;
 @end
 
 @implementation WBStatusTimelineViewController
@@ -49,7 +49,7 @@
     _tableView.dataSource = self;
     _layouts = [NSMutableArray new];
 }
-
+/*
 - (UIToolbar *)compositeView{
     if(nil == _compositeBar){
         UIBarButtonItem * space = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
@@ -61,7 +61,7 @@
     }
     return _compositeBar;
 }
-
+*/
 - (void)viewDidLoad {
     [super viewDidLoad];
 //#ifdef __IPHONE_11_0
@@ -215,6 +215,7 @@
     return NO;
 }
 
+/*
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     return self.compositeView;
@@ -224,6 +225,7 @@
 {
     return 44.0;
 }
+*/
 
 #pragma mark - WBStatusCellDelegate
 // 此处应该用 Router 之类的东西。。。这里只是个Demo，直接全跳网页吧～

@@ -10,5 +10,5 @@
 
 /// 观点列表
 @interface WBStatusTimelineViewController : UIViewController
-
+- (void)sendStatus;
 @end

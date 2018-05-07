@@ -22,7 +22,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="4as-gR-Gse">
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="asf-FB-GKe"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="jbx-VA-XJk"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
