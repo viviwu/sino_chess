@@ -40,6 +40,45 @@
 - (void)refreshWithLayoutModel:(XWItemLayout*)model
 {
     self.titleLabel.text = model.title;
+    switch (_cellStyle) {
+        case XWCollectionCellStyleNormal:
+            {
+            
+            }
+            break;
+        case XWCollectionCellStyleSubtitle:
+            {
+                
+            }
+            break;
+        case XWCollectionCellStyleDuoSubtitle:
+            {
+            
+            }
+            break;
+        case XWCollectionCellStyleImageTitle:
+            {
+            
+            }
+            break;
+        case XWCollectionCellStyleRightTitle:
+            {
+            
+            }
+            break;
+        case XWCollectionCellStyleLeftTitle:
+            {
+            
+            }
+            break;
+        case XWCollectionCellStyleTag:
+            {
+            
+            }
+            break;
+        default:
+            break;
+    }
     if (model.imgUrl) {
         [self.imageView setImageWithURL:model.imgUrl placeholder:[UIImage imageNamed:@"picture"]];
     }
@@ -52,11 +91,7 @@
     NSString * time = model.linkInfo[@"date"];
     if (time) {
         self.leftLabel.text= time;
-    }
-    NSString * tag = model.linkInfo[@"tag"];
-    if (tag) {
-        self.rightLabel.text = tag;
-    }
+    } 
 }
 
 - (void)drawRect:(CGRect)rect
@@ -187,7 +222,7 @@
     if (!_rightLabel) {
         _rightLabel = [self instanceNewLabel];
         _rightLabel.textAlignment = NSTextAlignmentRight;
-        _rightLabel.text = @"浏览👀233";
+        _rightLabel.text = [NSString stringWithFormat:@"浏览%d", arc4random()%300+123];
         _rightLabel.textColor = [UIColor darkGrayColor];
     }
     return _rightLabel;
@@ -197,8 +232,8 @@
     
     UILabel * la = UILabel.new;
     la.textColor = UIColor.blackColor;
-    la.text = @"*^*";
-    la.font =  [UIFont systemFontOfSize:14.0];
+    la.text = @"---";
+    la.font =  [UIFont systemFontOfSize:15.0];
     la.textAlignment = NSTextAlignmentCenter;
     la.numberOfLines = 0;
     la.lineBreakMode = NSLineBreakByCharWrapping;

@@ -16,10 +16,8 @@
     if (self) {
         _contentView = [[UIView alloc]initWithFrame:CGRectMake(0, 5.0, self.frame.size.width, self.frame.size.height-6.0)];
         _contentView.backgroundColor = [UIColor whiteColor];
-        [self addSubview:_contentView];
-        
-        [_contentView addSubview:self.detailButton];
-        
+        [self addSubview:_contentView]; 
+        [_contentView addSubview:self.titleLabel]; 
         self.backgroundColor = [UIColor groupTableViewBackgroundColor];
     }
     return self;
@@ -61,6 +59,7 @@
 //    NSLog(@"groupLayout.itemGroup==%ld", _groupModel.itemGroup.count);
     if (groupModel.title && kSelfH>15.0) {
         self.titleLabel.text = groupModel.title;
+        _titleLabel.adjustsFontSizeToFitWidth = YES;
     }
     
     if (groupModel.detail && kSelfH>25.0) {

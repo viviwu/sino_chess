@@ -17,12 +17,14 @@
 #import "YYPhotoGroupView.h"
 #import "YYFPSLabel.h"
 
+#import "XWImageTitleCell.h"
 
 @interface XWOpinionTimelineViewController () <UITableViewDelegate, UITableViewDataSource, XWOpinionCellDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *layouts;
 @property (nonatomic, strong) YYFPSLabel *fpsLabel;
 @property (nonatomic, strong) UIView * topicBoard;
+@property (nonatomic, strong) UISegmentedControl * segmentedControl;
 @property (nonatomic, strong) UICollectionView * collectionView;
 @end
 
@@ -54,42 +56,56 @@
 - (UIView *)topicBoard
 {
     if(nil == _topicBoard){
-        _topicBoard = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, 300.0)];
+        _topicBoard = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, 100.0)];
         _topicBoard.backgroundColor = [UIColor whiteColor];
-        
-        UIImageView * imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, 100.0)];
-        imgView.image = [UIImage imageNamed:@"LibertyStatue.jpg"];
-        [_topicBoard addSubview:imgView];
-        [_topicBoard addSubview:self.collectionView];
     }
     return _topicBoard;
+}
+
+- (UISegmentedControl *)segmentedControl{
+    if (!_segmentedControl) {
+        _segmentedControl= [[UISegmentedControl alloc]initWithItems:@[@"关注", @"热门", @"我的"]];
+        _segmentedControl.selectedSegmentIndex = 0;
+        _segmentedControl.tintColor = [UIColor orangeColor];
+        //KSYRGBAlpha(30, 144, 255, 1.0);
+        NSDictionary *selAttri = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18], NSFontAttributeName,nil];
+        [ _segmentedControl setTitleTextAttributes:selAttri forState:UIControlStateSelected];
+        
+        NSDictionary *normalAttri = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor orangeColor], NSForegroundColorAttributeName,  [UIFont systemFontOfSize:12], NSFontAttributeName,nil];
+        [ _segmentedControl setTitleTextAttributes:normalAttri forState:UIControlStateNormal];
+        [_segmentedControl addTarget:self action:@selector(segmentedControlValueChanged) forControlEvents:UIControlEventValueChanged];
+    }
+    return _segmentedControl;
 }
 
 -(UICollectionView *) collectionView
 {
     if (nil == _collectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.sectionInset = UIEdgeInsetsMake(1.0, 10.0, 1.0, 10.0);
+        layout.sectionInset = UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0);
 //        layout.itemSize = CGSizeMake(kScreenW/6, 50.0);
         layout.minimumLineSpacing = 5.0;
         layout.minimumInteritemSpacing = 1.0;
-        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 100.0, kScreenW, 200.0) collectionViewLayout:layout];
-        [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"topic"];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, 80.0) collectionViewLayout:layout];
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.pagingEnabled = YES;
 //        _collectionView.allowsMultipleSelection = YES; //多选
         _collectionView.delegate = (id)self;
         _collectionView.dataSource = (id)self;
+        
+        [_collectionView registerClass:[XWImageTitleCell class] forCellWithReuseIdentifier:@"XWImageTitleCell"];
     }
     return _collectionView;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.segmentedControl setFrame:CGRectMake(0, 0, kScreenW, 30.0)];
+    [self.view addSubview:self.segmentedControl];
+    
     //#ifdef __IPHONE_11_0
-    //#else
-    //#endif
     if (@available(iOS 11.0, *)) {
         if ([self.tableView respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
             self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -101,7 +117,7 @@
         }
     }
     
-    _tableView.frame = self.view.bounds;
+    _tableView.frame = CGRectMake(0, 30.0, kScreenW, kScreenH-88.0);
     _tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     _tableView.scrollIndicatorInsets = _tableView.contentInset;
     _tableView.backgroundColor = [UIColor clearColor];
@@ -155,7 +171,6 @@
         
         // 复制一下，让列表长一些，不至于滑两下就到底了
         //        [self->_layouts addObjectsFromArray:self->_layouts];
-        
         dispatch_async(dispatch_get_main_queue(), ^{
             //   self.title = [NSString stringWithFormat:@"Weibo (loaded:%d)", (int)_layouts.count];
             [indicator removeFromSuperview];
@@ -163,8 +178,20 @@
             [self->_tableView reloadData];
         });
     });
+    
+    [self segmentedControlValueChanged];
 }
 
+- (void)segmentedControlValueChanged{
+    NSLog(@"%s", __func__);
+    if (_segmentedControl.selectedSegmentIndex ==0) {
+        self.tableView.tableHeaderView = nil;
+    }else if(_segmentedControl.selectedSegmentIndex ==1){
+        self.tableView.tableHeaderView = self.collectionView;
+    }else{
+        self.tableView.tableHeaderView = nil;
+    }
+}
 
 - (void)sendStatus {
     
@@ -434,34 +461,30 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 2;
+    return 1;
 }
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if (section==0) {
-        return 10;
-    }else
-        return 4;
+    return 10;
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"topic" forIndexPath:indexPath];
-    cell.contentView.backgroundColor = [UIColor lightGrayColor];
-    if (indexPath.section == 0) {
-        cell.contentView.backgroundColor = [UIColor orangeColor];
-    }else{
-        cell.contentView.backgroundColor = [UIColor lightGrayColor];
-    }
+    /*
+    UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"user_ico" forIndexPath:indexPath];
+    cell.contentView.backgroundColor = [UIColor orangeColor];
+     */
+    XWImageTitleCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"XWImageTitleCell" forIndexPath:indexPath];
+    cell.cellStyle  = XWImageTitleCellStyleUser;
+    XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
+    itemLayout.title = @"User";
+    itemLayout.image = [UIImage imageNamed:@"online_support"];
+    [cell refreshWithLayoutModel:itemLayout];
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        return CGSizeMake(kScreenW/5-15.0, 55.0);
-    }else{
-        return CGSizeMake(kScreenW/2-15.0, 35.0);
-    }
+    return CGSizeMake(kScreenW/5-10.0, 75.0);
 }
 
 

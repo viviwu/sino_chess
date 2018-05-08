@@ -985,7 +985,6 @@
 		4F404673207CB2D200FF4DCE /* InteractMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F404672207CB2D200FF4DCE /* InteractMainViewController.m */; };
 		4F404678207CB37200FF4DCE /* Interact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F404677207CB37200FF4DCE /* Interact.storyboard */; };
 		4F42654B2092C7040052A341 /* XWImageTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F42654A2092C7040052A341 /* XWImageTitleCell.m */; };
-		4F42654D2092C7100052A341 /* XWImageTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F42654C2092C7100052A341 /* XWImageTitleCell.xib */; };
 		4F4265502092EE790052A341 /* XWCollectionRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F42654F2092EE790052A341 /* XWCollectionRightCell.m */; };
 		4F4265522092EE830052A341 /* XWCollectionRightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4265512092EE830052A341 /* XWCollectionRightCell.xib */; };
 		4F42655B209317120052A341 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F426557209317120052A341 /* FontAwesome.ttf */; };
@@ -1027,11 +1026,12 @@
 		4F7CC732208D782D00429B06 /* SalonChoicenessTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CC727208D782D00429B06 /* SalonChoicenessTableController.m */; };
 		4F7CC733208D782D00429B06 /* CreateSalonTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CC72C208D782D00429B06 /* CreateSalonTableController.m */; };
 		4F7CC734208D782D00429B06 /* CSSalonInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CC72D208D782D00429B06 /* CSSalonInputCell.m */; };
-		4F7CC755208D7E8100429B06 /* CSImgCollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CC754208D7E8100429B06 /* CSImgCollectCell.m */; };
+		4F7CC755208D7E8100429B06 /* XWTableCollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CC754208D7E8100429B06 /* XWTableCollectCell.m */; };
 		4F7CC78C208DDBAC00429B06 /* XWSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CC789208DDBAC00429B06 /* XWSegmentControl.m */; };
 		4F7CC799208DDBEF00429B06 /* UIScrollView+STRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CC793208DDBEF00429B06 /* UIScrollView+STRefresh.m */; };
 		4F7CC79A208DDBEF00429B06 /* STRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7CC794208DDBEF00429B06 /* STRefreshHeader.m */; };
 		4F7CC79B208DDBEF00429B06 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F7CC796208DDBEF00429B06 /* github.png */; };
+		4FC32C3120A1293D00D550DB /* XWConsultCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC32C3020A1293D00D550DB /* XWConsultCenterViewController.m */; };
 		4FEED9F7209FDBA500702B3C /* XWTopicsTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEED9F6209FDBA500702B3C /* XWTopicsTableController.m */; };
 /* End PBXBuildFile section */
 
@@ -2231,7 +2231,6 @@
 		4F404677207CB37200FF4DCE /* Interact.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interact.storyboard; sourceTree = "<group>"; };
 		4F4265492092C7040052A341 /* XWImageTitleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWImageTitleCell.h; sourceTree = "<group>"; };
 		4F42654A2092C7040052A341 /* XWImageTitleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWImageTitleCell.m; sourceTree = "<group>"; };
-		4F42654C2092C7100052A341 /* XWImageTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XWImageTitleCell.xib; sourceTree = "<group>"; };
 		4F42654E2092EE790052A341 /* XWCollectionRightCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWCollectionRightCell.h; sourceTree = "<group>"; };
 		4F42654F2092EE790052A341 /* XWCollectionRightCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWCollectionRightCell.m; sourceTree = "<group>"; };
 		4F4265512092EE830052A341 /* XWCollectionRightCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XWCollectionRightCell.xib; sourceTree = "<group>"; };
@@ -2300,8 +2299,8 @@
 		4F7CC72C208D782D00429B06 /* CreateSalonTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateSalonTableController.m; sourceTree = "<group>"; };
 		4F7CC72D208D782D00429B06 /* CSSalonInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSSalonInputCell.m; sourceTree = "<group>"; };
 		4F7CC72E208D782D00429B06 /* SalonChoicenessTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SalonChoicenessTableController.h; sourceTree = "<group>"; };
-		4F7CC753208D7E8100429B06 /* CSImgCollectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSImgCollectCell.h; sourceTree = "<group>"; };
-		4F7CC754208D7E8100429B06 /* CSImgCollectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSImgCollectCell.m; sourceTree = "<group>"; };
+		4F7CC753208D7E8100429B06 /* XWTableCollectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWTableCollectCell.h; sourceTree = "<group>"; };
+		4F7CC754208D7E8100429B06 /* XWTableCollectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWTableCollectCell.m; sourceTree = "<group>"; };
 		4F7CC785208DDBAC00429B06 /* XWSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSegmentControl.h; sourceTree = "<group>"; };
 		4F7CC789208DDBAC00429B06 /* XWSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSegmentControl.m; sourceTree = "<group>"; };
 		4F7CC793208DDBEF00429B06 /* UIScrollView+STRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+STRefresh.m"; sourceTree = "<group>"; };
@@ -2310,6 +2309,8 @@
 		4F7CC796208DDBEF00429B06 /* github.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = github.png; sourceTree = "<group>"; };
 		4F7CC797208DDBEF00429B06 /* STRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRefreshHeader.h; sourceTree = "<group>"; };
 		4F7CC798208DDBEF00429B06 /* UIScrollView+STRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+STRefresh.h"; sourceTree = "<group>"; };
+		4FC32C2F20A1293D00D550DB /* XWConsultCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWConsultCenterViewController.h; sourceTree = "<group>"; };
+		4FC32C3020A1293D00D550DB /* XWConsultCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWConsultCenterViewController.m; sourceTree = "<group>"; };
 		4FEED9F5209FDBA500702B3C /* XWTopicsTableController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWTopicsTableController.h; sourceTree = "<group>"; };
 		4FEED9F6209FDBA500702B3C /* XWTopicsTableController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWTopicsTableController.m; sourceTree = "<group>"; };
 		ED1533C61D2705F727E0C416 /* Pods-CSFinance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CSFinance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CSFinance/Pods-CSFinance.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2495,8 +2496,8 @@
 				4F2F47EA208F321E00169383 /* XWCollectionGroupHeader.m */,
 				4F2F47EC208F321E00169383 /* XWCollectionViewCell.h */,
 				4F2F47EF208F321E00169383 /* XWCollectionViewCell.m */,
-				4F7CC753208D7E8100429B06 /* CSImgCollectCell.h */,
-				4F7CC754208D7E8100429B06 /* CSImgCollectCell.m */,
+				4F4265492092C7040052A341 /* XWImageTitleCell.h */,
+				4F42654A2092C7040052A341 /* XWImageTitleCell.m */,
 			);
 			path = collect;
 			sourceTree = "<group>";
@@ -4010,6 +4011,8 @@
 		4F6FF3B020901BFD00D3F6B3 /* Consult */ = {
 			isa = PBXGroup;
 			children = (
+				4FC32C2F20A1293D00D550DB /* XWConsultCenterViewController.h */,
+				4FC32C3020A1293D00D550DB /* XWConsultCenterViewController.m */,
 				4F6FF3AE20901BF400D3F6B3 /* XWConsultViewController.h */,
 				4F6FF3AD20901BF400D3F6B3 /* XWConsultViewController.m */,
 				4F6FF3B420901CEE00D3F6B3 /* MastersTableViewController.h */,
@@ -4066,9 +4069,6 @@
 		4F71F25F2091A38F007F769D /* CollectCellHeader */ = {
 			isa = PBXGroup;
 			children = (
-				4F4265492092C7040052A341 /* XWImageTitleCell.h */,
-				4F42654A2092C7040052A341 /* XWImageTitleCell.m */,
-				4F42654C2092C7100052A341 /* XWImageTitleCell.xib */,
 				4F71F15320919BFC007F769D /* XWImageSubtitleCell.h */,
 				4F71F15420919BFC007F769D /* XWImageSubtitleCell.m */,
 				4F71F15620919C10007F769D /* XWImageSubtitleCell.xib */,
@@ -4163,6 +4163,8 @@
 				0D4EA8FC2090BB5900835302 /* XWItemLayout.m */,
 				4F77865A209C2C190052F7E4 /* XWTableHeader.h */,
 				4F77865B209C2C190052F7E4 /* XWTableHeader.m */,
+				4F7CC753208D7E8100429B06 /* XWTableCollectCell.h */,
+				4F7CC754208D7E8100429B06 /* XWTableCollectCell.m */,
 				4F08D23E209A9B6300A68E54 /* collect */,
 				4F08D23F209A9B8F00A68E54 /* Table */,
 				4F71F26F2091B4F7007F769D /* TableViewCellHeader */,
@@ -4547,7 +4549,6 @@
 				4F1B0F972089B2D200D4114F /* AddNode_@2x.png in Resources */,
 				4F71F15720919C10007F769D /* XWImageSubtitleCell.xib in Resources */,
 				4F1B13B12089CBA900D4114F /* weibo_3.json in Resources */,
-				4F42654D2092C7100052A341 /* XWImageTitleCell.xib in Resources */,
 				4F1B10A92089B2D300D4114F /* sale@3x.png in Resources */,
 				4F1B0FF82089B2D200D4114F /* genealogy@2x.png in Resources */,
 				4F1B10CF2089B2D300D4114F /* star_half.png in Resources */,
@@ -5224,7 +5225,7 @@
 				4F1B12F52089B62100D4114F /* CALayer+YYWebImage.m in Sources */,
 				0D19ACA6209B536900D34A18 /* XWFund.m in Sources */,
 				4F71F13A20916A2B007F769D /* ManagerInfoCell.m in Sources */,
-				4F7CC755208D7E8100429B06 /* CSImgCollectCell.m in Sources */,
+				4F7CC755208D7E8100429B06 /* XWTableCollectCell.m in Sources */,
 				4F1B132B2089B62100D4114F /* CALayer+YYAdd.m in Sources */,
 				4F1B130E2089B62100D4114F /* UITextField+YYAdd.m in Sources */,
 				0D0DCAA5209F51EE002723D3 /* AAPlotLinesElement.m in Sources */,
@@ -5244,6 +5245,7 @@
 				4F71F13D20916A4B007F769D /* FundInfoCell.m in Sources */,
 				4F1B12F32089B62100D4114F /* UIImageView+YYWebImage.m in Sources */,
 				0D0DCAB1209F51EE002723D3 /* AAChart.m in Sources */,
+				4FC32C3120A1293D00D550DB /* XWConsultCenterViewController.m in Sources */,
 				4F08D273209AE13E00A68E54 /* NJKWebViewProgressView.m in Sources */,
 				4F1B13102089B62100D4114F /* UIColor+YYAdd.m in Sources */,
 				4F1B13262089B62100D4114F /* NSString+YYAdd.m in Sources */,

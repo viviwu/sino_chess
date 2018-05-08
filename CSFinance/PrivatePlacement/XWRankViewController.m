@@ -232,6 +232,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     _funds = [NSMutableArray array];
     _managers = [NSMutableArray array];
     _companys = [NSMutableArray array];

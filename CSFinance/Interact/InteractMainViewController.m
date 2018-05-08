@@ -10,7 +10,8 @@
 #import "XWSegmentedControl.h"
 #import "CompositeTableController.h"
 #import "PodcastCollectionController.h"
-#import "XWConsultViewController.h"
+//#import "XWConsultViewController.h"
+#import "XWConsultCenterViewController.h"
 #import "XWOpinionTimelineViewController.h"
 #import "SalonCenterViewController.h"
 
@@ -117,7 +118,8 @@
     
     CompositeTableController * interact = [[UIStoryboard storyboardWithName:@"Interact" bundle:nil] instantiateViewControllerWithIdentifier:@"CompositeTableController"];
     PodcastCollectionController * podcast = [[UIStoryboard storyboardWithName:@"Podcast" bundle:nil] instantiateViewControllerWithIdentifier:@"PodcastCollectionController"];
-    XWConsultViewController * consult = [[UIStoryboard storyboardWithName:@"Interact" bundle:nil] instantiateViewControllerWithIdentifier:@"XWConsultViewController"];
+//    XWConsultViewController * consult = [[UIStoryboard storyboardWithName:@"Interact" bundle:nil] instantiateViewControllerWithIdentifier:@"XWConsultViewController"];
+    XWConsultCenterViewController * consult =[[XWConsultCenterViewController alloc]init];
     UIViewController * opinion = [XWOpinionTimelineViewController new];
     SalonCenterViewController * salon = [[SalonCenterViewController alloc]init];
     

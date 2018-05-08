@@ -138,6 +138,7 @@
     XWItemLayout * item = groupLayout.itemGroup[indexPath.row];
     return item.size;
 }
+
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     XWItemLayoutGroup * groupLayout = self.groupLayouts[indexPath.section];
@@ -161,6 +162,7 @@
         return UIEdgeInsetsMake(2.5, 2.5, 2.5, 2.5);
     }
 }
+
 - (NSArray<XWItemLayoutGroup*>*)defaultgroupLayouts{
     NSArray * domains = @[@"IPO", @"私募", @"新三板", @"债权", @"顾问", @"咨询", @"量化", @"选股"];
     NSArray * labels = @[@"小米IPO", @"MSCI", @"区块链", @"BAT", @"小米概念股", @"中兴被罚", @"粤港澳大湾区", @"虹膜识别", @"混改", @"深圳国企改革", @"大数据"];
