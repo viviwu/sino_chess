@@ -10,7 +10,7 @@
 #import "NSString+YYAdd.h"
 
 @interface XWTableCollectCell () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-//UICollectionViewFlowLayout *layout;
+@property(nonatomic, strong) UICollectionViewFlowLayout *layout;
 @end
 
 @implementation XWTableCollectCell
@@ -20,28 +20,31 @@
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     if (self) {
         self.contentView.backgroundColor =[UIColor whiteColor];
-        [self.contentView addSubview:self.collectionView];
+        
     }
     return self;
 }
-
+- (UICollectionViewFlowLayout *)layout
+{
+    if (!_layout) {
+        _layout = [[UICollectionViewFlowLayout alloc] init];
+        _layout.sectionInset = UIEdgeInsetsMake(2.5, 10.0, 2.5, 10.0);
+        //        layout.itemSize = CGSizeMake(kScreenW/6, 50.0);
+        _layout.minimumLineSpacing = 2.5;
+        _layout.minimumInteritemSpacing = 5.0;
+        _layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    }
+    return _layout;
+}
 -(UICollectionView *) collectionView
 {
     if (nil == _collectionView) {
-        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.sectionInset = UIEdgeInsetsMake(2.5, 10.0, 2.5, 10.0);
-//        layout.itemSize = CGSizeMake(kScreenW/6, 50.0);
-        layout.minimumLineSpacing = 2.5;
-        layout.minimumInteritemSpacing = 5.0;
-        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        
-        _collectionView = [[UICollectionView alloc]initWithFrame:self.bounds collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc]initWithFrame:self.bounds collectionViewLayout:self.layout];
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.pagingEnabled = YES;
-        //_collectionView.allowsMultipleSelection = YES; //多选
         _collectionView.delegate = (id)self;
         _collectionView.dataSource = (id)self;
-        
+        //_collectionView.allowsMultipleSelection = YES; //多选
         [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:kCTCellReuseId];
     }
     return _collectionView;
@@ -51,22 +54,29 @@
 {
     _cellType = cellType;
     if (_cellType == XWTableCollectCellType10Menu) {
-        [_collectionView registerClass:[XWImageTitleCell class] forCellWithReuseIdentifier:kCTCellReuseIdMenu];
+        self.layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        [self.collectionView registerClass:[XWImageTitleCell class] forCellWithReuseIdentifier:kCTCellReuseIdMenu];
+        
     }else if(_cellType == XWTableCollectCellTypeUserLine){
-        [_collectionView registerClass:[XWImageTitleCell class] forCellWithReuseIdentifier:kCTCellReuseIdUser];
+        self.layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        [self.collectionView registerClass:[XWImageTitleCell class] forCellWithReuseIdentifier:kCTCellReuseIdUser];
+        
     }else if(_cellType == XWTableCollectCellTypeDynTags){
-        [_collectionView registerClass:[XWCollectionViewCell class] forCellWithReuseIdentifier:kCTCellReuseIdTags];
+        self.layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        [self.collectionView registerClass:[XWCollectionViewCell class] forCellWithReuseIdentifier:kCTCellReuseIdTags];
     }else{
         
     }
+    [self.contentView addSubview:self.collectionView];
+    [self.collectionView setFrame:self.bounds];
     //  [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UICollectionElementKindSectionHeader"];
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [self.collectionView setFrame:self.bounds];
-    [self.collectionView reloadData];
+    
+//    [self.collectionView reloadData];
 }
 
 - (void)refreshWithLayoutModel:(NSArray<XWItemLayout*>*) sectionItems
@@ -97,7 +107,6 @@
         return cell;
     }else if(_cellType == XWTableCollectCellTypeDynTags){
         XWCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCTCellReuseIdTags forIndexPath:indexPath];
- 
         cell.cellStyle =XWCollectionCellStyleTag;
         [cell refreshWithLayoutModel:item];
         return cell;
@@ -116,20 +125,15 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_cellType == XWTableCollectCellType10Menu) {
-        return CGSizeMake(kSelfW/5-8.0, kSelfH/2-8.0);
+        return CGSizeMake(kSelfW/5-8.0, kSelfH/2-5.0);
     }else if(_cellType == XWTableCollectCellTypeDynTags){
         XWItemLayout * item = _sectionItems[indexPath.row];
-        CGFloat txtLen=[item.title widthForFont:[UIFont systemFontOfSize:14.0]]+5.0;
-        return CGSizeMake(txtLen, 25.0);
-    }else{
-        XWItemLayout * item = _sectionItems[indexPath.row];
+//        NSLog(@"item.width==>%f", item.size.width);
         return item.size;
+    }else{
+        return CGSizeMake(kSelfW/5-8.0, kSelfH-5.0);
     }
 }
-
-//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-//    return UIEdgeInsetsMake(2.5, 10.0, 2.5, 10.0);
-//}
 
 - (void)awakeFromNib {
     [super awakeFromNib];

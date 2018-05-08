@@ -57,6 +57,7 @@
 		0D4EA8FD2090BB5900835302 /* XWItemLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4EA8FC2090BB5900835302 /* XWItemLayout.m */; };
 		0D4EA8FF2090C04000835302 /* double_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4EA8FE2090C03F00835302 /* double_right@2x.png */; };
 		0D4EA9012090C04500835302 /* double_right@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4EA9002090C04500835302 /* double_right@3x.png */; };
+		0D73B4D420A1EFC900F5E656 /* question_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D73B4D320A1EFC800F5E656 /* question_list.json */; };
 		0D76B729209E0E8A00F075CF /* XWRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D76B728209E0E8900F075CF /* XWRankViewController.m */; };
 		0D76B72E209EB95D00F075CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D76B72D209EB95D00F075CF /* Foundation.framework */; };
 		0D76B730209EB96400F075CF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D76B72F209EB96400F075CF /* UIKit.framework */; };
@@ -1137,6 +1138,7 @@
 		0D4EA8FC2090BB5900835302 /* XWItemLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWItemLayout.m; sourceTree = "<group>"; };
 		0D4EA8FE2090C03F00835302 /* double_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "double_right@2x.png"; sourceTree = "<group>"; };
 		0D4EA9002090C04500835302 /* double_right@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "double_right@3x.png"; sourceTree = "<group>"; };
+		0D73B4D320A1EFC800F5E656 /* question_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = question_list.json; path = CSFinance/Interact/Opinion/question_list.json; sourceTree = SOURCE_ROOT; };
 		0D76B727209E0E8900F075CF /* XWRankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWRankViewController.h; sourceTree = "<group>"; };
 		0D76B728209E0E8900F075CF /* XWRankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWRankViewController.m; sourceTree = "<group>"; };
 		0D76B72D209EB95D00F075CF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -4011,6 +4013,7 @@
 		4F6FF3B020901BFD00D3F6B3 /* Consult */ = {
 			isa = PBXGroup;
 			children = (
+				0D73B4D320A1EFC800F5E656 /* question_list.json */,
 				4FC32C2F20A1293D00D550DB /* XWConsultCenterViewController.h */,
 				4FC32C3020A1293D00D550DB /* XWConsultCenterViewController.m */,
 				4F6FF3AE20901BF400D3F6B3 /* XWConsultViewController.h */,
@@ -4367,6 +4370,7 @@
 				4F1B10762089B2D200D4114F /* lightning@2x.png in Resources */,
 				4F1B13B32089CBA900D4114F /* weibo_5.json in Resources */,
 				4F1B10FE2089B2D300D4114F /* music@3x.png in Resources */,
+				0D73B4D420A1EFC900F5E656 /* question_list.json in Resources */,
 				4F1B11B12089B2D300D4114F /* left_down@3x.png in Resources */,
 				4F1B113B2089B2D300D4114F /* folder@3x.png in Resources */,
 				4F1B12342089B2D300D4114F /* services@3x.png in Resources */,

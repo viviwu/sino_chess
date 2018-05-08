@@ -11,6 +11,9 @@
 #import "XWCollectionGroupHeader.h"
 #import "MastersTableViewController.h"
 
+#import "YYSimpleWebViewController.h"
+#import "XWOpinionComposeViewController.h"
+
 #import "YYKit.h"
 #import "NSString+YYAdd.h"
 #import "YYTableView.h"
@@ -25,11 +28,13 @@
 #import "MyQnATableViewController.h"
 #import "XWTopicsTableController.h"
 
-@interface XWConsultCenterViewController ()<UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface XWConsultCenterViewController ()<UITableViewDelegate, UITableViewDataSource, XWOpinionCellDelegate /*, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout*/>
 {
     NSArray * _cellReuseIDs;
 }
 @property (nonatomic, strong) UITableView * tableView;
+@property (nonatomic, strong) NSMutableArray *layouts;
+
 @property (nonatomic, strong) UIView * topicBoard;
 @property (nonatomic, strong) UICollectionView * collectionView;
 @property (nonatomic, copy) NSArray<XWItemLayoutGroup*>* groupLayouts;
@@ -56,8 +61,8 @@
 {
     if (!_tableView) {
         _tableView = [YYTableView new];
-        _tableView.backgroundColor = [UIColor clearColor];
-        _tableView.backgroundView.backgroundColor = [UIColor clearColor];
+        _tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+//        _tableView.backgroundView.backgroundColor = [UIColor clearColor];
         _tableView.delegate = self;
         _tableView.dataSource = self;
     }
@@ -67,6 +72,8 @@
 #define kTCRID @"XWTableCollectCell"
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _layouts = [NSMutableArray new];
+    
     if (@available(iOS 11.0, *)) {
         if ([self.tableView respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
             self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -77,10 +84,14 @@
             self.automaticallyAdjustsScrollViewInsets = NO;
         }
     }
+    //ios11默认开启self-sizing：heightForHeaderInSection设置高度无效 所以加上这个
+    self.tableView.estimatedRowHeight = 0;
+    self.tableView.estimatedSectionHeaderHeight = 0;
+    self.tableView.estimatedSectionFooterHeight = 0;
     self.tableView.frame = self.view.bounds;
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     self.tableView.scrollIndicatorInsets = _tableView.contentInset;
-    [self.tableView registerClass:[XWTableCollectCell class] forCellReuseIdentifier:@"XWTableCollectCell"];
+    [self.tableView registerClass:[XWOpinionCell class] forCellReuseIdentifier:@"question"];
     
     [self.view addSubview:_tableView];
     self.view.backgroundColor = kWBCellBackgroundColor;
@@ -89,8 +100,32 @@
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.groupLayouts = [self defaultgroupLayouts];
-//    [self.collectionView reloadData];
     // Do any additional setup after loading the view.
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicator.size = CGSizeMake(80, 80);
+    indicator.center = CGPointMake(self.view.width / 2, self.view.height / 2);
+    indicator.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.670];
+    indicator.clipsToBounds = YES;
+    indicator.layer.cornerRadius = 6;
+    [indicator startAnimating];
+    [self.view addSubview:indicator];
+    
+     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+         NSData *data = [NSData dataNamed:@"question_list.json"];
+         WBTimelineItem *item = [WBTimelineItem modelWithJSON:data];
+         for (XWOpinion *status in item.statuses) {
+             XWOpinionLayout *layout = [[XWOpinionLayout alloc] initWithStatus:status style:WBLayoutStyleTimeline];
+             //                [layout layout];
+             [self->_layouts addObject:layout];
+         }
+         
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [indicator removeFromSuperview];
+             self.navigationController.view.userInteractionEnabled = YES;
+             [self->_tableView reloadData];
+         });
+     });
+//    [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,55 +145,262 @@
 #pragma mark--UITableViewDelegate, UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 4;
 }
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (section==0 || section==1 || section==2) {
+        return 1;
+    }else
+        return _layouts.count;
 }
 
-- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    
-    if (indexPath.row<3) {
-//        kTCRID
-        XWItemLayoutGroup * groupLayout = self.groupLayouts[indexPath.row];
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    if (indexPath.section<3) { //        kTCRID
+        XWItemLayoutGroup * groupLayout = self.groupLayouts[indexPath.section];
         NSArray * sectionItems = groupLayout.itemGroup;
-        if (indexPath.row == 0) {
-            XWTableCollectCell * cell = [tableView dequeueReusableCellWithIdentifier:kTCRID forIndexPath:indexPath];
-            cell.cellType = XWTableCollectCellType10Menu;
+        if (indexPath.section == 0) {
             
+            XWTableCollectCell * cell = [tableView dequeueReusableCellWithIdentifier:@"XWTableCollectCellType10Menu"];
+            if (!cell) {
+                cell = [[XWTableCollectCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"XWTableCollectCellType10Menu"];
+            }
+            cell.cellType = XWTableCollectCellType10Menu;
             [cell refreshWithLayoutModel:sectionItems];
             return cell;
-        }else if(indexPath.row == 1){
-            XWTableCollectCell * cell = [tableView dequeueReusableCellWithIdentifier:kTCRID forIndexPath:indexPath];
+        }else if(indexPath.section == 1){
+            
+            XWTableCollectCell * cell = [tableView dequeueReusableCellWithIdentifier:@"XWTableCollectCellTypeDynTags"];
+            if (!cell) {
+                cell = [[XWTableCollectCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"XWTableCollectCellTypeDynTags"];
+            }
             cell.cellType = XWTableCollectCellTypeDynTags;
             [cell refreshWithLayoutModel:sectionItems];
             return cell;
-        }else{
-            XWTableCollectCell * cell = [tableView dequeueReusableCellWithIdentifier:kTCRID forIndexPath:indexPath];
-            cell.cellType = XWTableCollectCellType10Menu; 
+        }else{// if(indexPath.section == 2)
+            XWTableCollectCell * cell = [tableView dequeueReusableCellWithIdentifier:@"XWTableCollectCellTypeUserLine"];
+            if (!cell) {
+                cell = [[XWTableCollectCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"XWTableCollectCellTypeUserLine"];
+            }
+            cell.cellType = XWTableCollectCellTypeUserLine;
             [cell refreshWithLayoutModel:sectionItems];
             return cell;
         }
     }else{
-        UITableViewCell * cell =[tableView dequeueReusableCellWithIdentifier:@""];
+        NSString *cellID = @"question";
+        XWOpinionCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
         if (!cell) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
+            cell = [[XWOpinionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+            cell.delegate = (id)self;
         }
+        [cell setLayout:_layouts[indexPath.row]];
         return cell;
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==0) {
+    if (indexPath.section==0) {
         return 135.0;
-    }else if(indexPath.row == 1 ){
-        return 80.0;
-    }else if(indexPath.row == 2 ){
-        return 65.0;
-    }else
-        return 100.0;
+    }else if(indexPath.section == 1 ){
+        return 70.0;
+    }else if(indexPath.section == 2 ){
+        return 64.0;
+    }else{
+        CGFloat height = ((XWOpinionLayout *)_layouts[indexPath.row]).height;
+        return height;
+    }
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section==0) {
+        return 1.0;
+    }else
+        return 5.0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 1.0;
+}
+
+//====================================================================
+#pragma mark - XWOpinionCellDelegate
+// 此处应该用 Router 之类的东西。。。这里只是个Demo，直接全跳网页吧～
+
+/// 点击了 Cell
+- (void)cellDidClick:(XWOpinionCell *)cell {
+    NSLog(@"%s", __func__);
+}
+
+/// 点击了 Card
+- (void)cellDidClickCard:(XWOpinionCell *)cell {
+    WBPageInfo *pageInfo = cell.statusView.layout.status.pageInfo;
+    NSString *url = pageInfo.pageURL; // sinaweibo://... 会跳到 Weibo.app 的。。
+    YYSimpleWebViewController *vc = [[YYSimpleWebViewController alloc] initWithURL:[NSURL URLWithString:url]];
+    vc.title = pageInfo.pageTitle;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+/// 点击了转发内容
+- (void)cellDidClickRetweet:(XWOpinionCell *)cell {
+    NSLog(@"%s", __func__);
+}
+
+/// 点击了 Cell 菜单
+- (void)cellDidClickMenu:(XWOpinionCell *)cell {
+    NSLog(@"%s", __func__);
+}
+
+/// 点击了下方 Tag
+- (void)cellDidClickTag:(XWOpinionCell *)cell {
+    WBTag *tag = cell.statusView.layout.status.tagStruct.firstObject;
+    NSString *url = tag.tagScheme; // sinaweibo://... 会跳到 Weibo.app 的。。
+    YYSimpleWebViewController *vc = [[YYSimpleWebViewController alloc] initWithURL:[NSURL URLWithString:url]];
+    vc.title = tag.tagName;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+/// 点击了关注
+- (void)cellDidClickFollow:(XWOpinionCell *)cell {
+    NSLog(@"%s", __func__);
+}
+
+/// 点击了转发
+- (void)cellDidClickRepost:(XWOpinionCell *)cell {
+    XWOpinionComposeViewController *vc = [XWOpinionComposeViewController new];
+    vc.type = XWOpinionComposeViewTypeRetweet;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    @weakify(nav);
+    vc.dismiss = ^{
+        @strongify(nav);
+        [nav dismissViewControllerAnimated:YES completion:NULL];
+    };
+    [self presentViewController:nav animated:YES completion:NULL];
+}
+
+/// 点击了评论
+- (void)cellDidClickComment:(XWOpinionCell *)cell {
+    XWOpinionComposeViewController *vc = [XWOpinionComposeViewController new];
+    vc.type = XWOpinionComposeViewTypeComment;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    @weakify(nav);
+    vc.dismiss = ^{
+        @strongify(nav);
+        [nav dismissViewControllerAnimated:YES completion:NULL];
+    };
+    [self presentViewController:nav animated:YES completion:NULL];
+}
+
+/// 点击了赞
+- (void)cellDidClickLike:(XWOpinionCell *)cell {
+    XWOpinion *status = cell.statusView.layout.status;
+    [cell.statusView.toolbarView setLiked:!status.attitudesStatus withAnimation:YES];
+}
+
+/// 点击了用户
+- (void)cell:(XWOpinionCell *)cell didClickUser:(WBUser *)user {
+    if (user.userID == 0) return;
+    NSString *url = [NSString stringWithFormat:@"http://m.weibo.cn/u/%lld",user.userID];
+    YYSimpleWebViewController *vc = [[YYSimpleWebViewController alloc] initWithURL:[NSURL URLWithString:url]];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+/// 点击了图片
+- (void)cell:(XWOpinionCell *)cell didClickImageAtIndex:(NSUInteger)index {
+    UIView *fromView = nil;
+    NSMutableArray *items = [NSMutableArray new];
+    XWOpinion *status = cell.statusView.layout.status;
+    NSArray<WBPicture *> *pics = status.retweetedStatus ? status.retweetedStatus.pics : status.pics;
+    
+    for (NSUInteger i = 0, max = pics.count; i < max; i++) {
+        UIView *imgView = cell.statusView.picViews[i];
+        WBPicture *pic = pics[i];
+        WBPictureMetadata *meta = pic.largest.badgeType == WBPictureBadgeTypeGIF ? pic.largest : pic.large;
+        YYPhotoGroupItem *item = [YYPhotoGroupItem new];
+        item.thumbView = imgView;
+        item.largeImageURL = meta.url;
+        item.largeImageSize = CGSizeMake(meta.width, meta.height);
+        [items addObject:item];
+        if (i == index) {
+            fromView = imgView;
+        }
+    }
+    
+    YYPhotoGroupView *v = [[YYPhotoGroupView alloc] initWithGroupItems:items];
+    [v presentFromImageView:fromView toContainer:self.navigationController.view animated:YES completion:nil];
+}
+
+/// 点击了 Label 的链接
+- (void)cell:(XWOpinionCell *)cell didClickInLabel:(YYLabel *)label textRange:(NSRange)textRange {
+    NSAttributedString *text = label.textLayout.text;
+    if (textRange.location >= text.length) return;
+    YYTextHighlight *highlight = [text attribute:YYTextHighlightAttributeName atIndex:textRange.location];
+    NSDictionary *info = highlight.userInfo;
+    if (info.count == 0) return;
+    
+    if (info[kWBLinkHrefName]) {
+        NSString *url = info[kWBLinkHrefName];
+        YYSimpleWebViewController *vc = [[YYSimpleWebViewController alloc] initWithURL:[NSURL URLWithString:url]];
+        [self.navigationController pushViewController:vc animated:YES];
+        return;
+    }
+    
+    if (info[kWBLinkURLName]) {
+        WBURL *url = info[kWBLinkURLName];
+        WBPicture *pic = url.pics.firstObject;
+        if (pic) {
+            // 点击了文本中的 "图片链接"
+            YYTextAttachment *attachment = [label.textLayout.text attribute:YYTextAttachmentAttributeName atIndex:textRange.location];
+            if ([attachment.content isKindOfClass:[UIView class]]) {
+                YYPhotoGroupItem *info = [YYPhotoGroupItem new];
+                info.largeImageURL = pic.large.url;
+                info.largeImageSize = CGSizeMake(pic.large.width, pic.large.height);
+                
+                YYPhotoGroupView *v = [[YYPhotoGroupView alloc] initWithGroupItems:@[info]];
+                [v presentFromImageView:attachment.content toContainer:self.navigationController.view animated:YES completion:nil];
+            }
+            
+        } else if (url.oriURL.length){
+            YYSimpleWebViewController *vc = [[YYSimpleWebViewController alloc] initWithURL:[NSURL URLWithString:url.oriURL]];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        return;
+    }
+    
+    if (info[kWBLinkTagName]) {
+        WBTag *tag = info[kWBLinkTagName];
+        NSLog(@"tag:%@",tag.tagScheme);
+        return;
+    }
+    
+    if (info[kWBLinkTopicName]) {
+        WBTopic *topic = info[kWBLinkTopicName];
+        NSString *topicStr = topic.topicTitle;
+        topicStr = [topicStr stringByURLEncode];
+        if (topicStr.length) {
+            NSString *url = [NSString stringWithFormat:@"http://m.weibo.cn/k/%@",topicStr];
+            YYSimpleWebViewController *vc = [[YYSimpleWebViewController alloc] initWithURL:[NSURL URLWithString:url]];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        return;
+    }
+    
+    if (info[kWBLinkAtName]) {
+        NSString *name = info[kWBLinkAtName];
+        name = [name stringByURLEncode];
+        if (name.length) {
+            NSString *url = [NSString stringWithFormat:@"http://m.weibo.cn/n/%@",name];
+            YYSimpleWebViewController *vc = [[YYSimpleWebViewController alloc] initWithURL:[NSURL URLWithString:url]];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        return;
+    }
+}
+
+//====================================================================
 
 - (NSArray<XWItemLayoutGroup*>*)defaultgroupLayouts{
     NSArray * domains = @[@"IPO", @"PE", @"VC", @"MSCI", @"FOF", @"阳光私募", @"ETF", @"QDII", @"个股期权", @"更多"];
@@ -189,8 +431,8 @@
             for (NSString * label in labels) {
                 XWItemLayout * itemLayout = [[XWItemLayout alloc]init];
                 NSString * topic = [NSString stringWithFormat:@"#%@#", label];
-                CGFloat labelLength = [topic widthForFont:[UIFont systemFontOfSize:14.0]]+5.0;
-                itemLayout.size = CGSizeMake(labelLength, 25.0);
+                CGFloat labelLength = [topic widthForFont:[UIFont systemFontOfSize:14.0]]+8.0;
+                itemLayout.size = CGSizeMake(labelLength, 28.0);
                 itemLayout.title = topic;
                 [itemGroup addObject:itemLayout];
             }

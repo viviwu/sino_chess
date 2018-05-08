@@ -11,6 +11,7 @@
 @implementation YYTableView
 
 - (instancetype)initWithFrame:(CGRect)frame {
+//    self = [super initWithFrame:frame style:UITableViewStyleGrouped];
     self = [super initWithFrame:frame];
     self.delaysContentTouches = NO;
     self.canCancelContentTouches = YES;
