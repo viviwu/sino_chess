@@ -74,7 +74,7 @@ typedef NS_ENUM(NSUInteger, WBPictureBadgeType) {
 @property (nonatomic, strong) NSString *pageID; ///< 对应着 WBPageInfo
 @property (nonatomic, strong) NSString *storageType;
 //如果是图片，则会有下面这些，可以直接点开看
-@property (nonatomic, strong) NSArray<NSString *> *picIds;
+@property (nonatomic, strong) NSArray<NSString *> *picIds;//
 @property (nonatomic, strong) NSDictionary<NSString *, WBPicture *> *picInfos;
 @property (nonatomic, strong) NSArray<WBPicture *> *pics;
 @end

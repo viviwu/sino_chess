@@ -78,17 +78,19 @@
         if ([self.tableView respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
             self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
+        
     } else {
         // Fallback on earlier versions
         if ([self respondsToSelector:@selector( setAutomaticallyAdjustsScrollViewInsets:)]) {
             self.automaticallyAdjustsScrollViewInsets = NO;
         }
     }
+    
     //ios11默认开启self-sizing：heightForHeaderInSection设置高度无效 所以加上这个
     self.tableView.estimatedRowHeight = 0;
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
-    self.tableView.frame = self.view.bounds;
+    [self.tableView setFrame:self.view.bounds];
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     self.tableView.scrollIndicatorInsets = _tableView.contentInset;
     [self.tableView registerClass:[XWOpinionCell class] forCellReuseIdentifier:@"question"];
@@ -126,6 +128,24 @@
          });
      });
 //    [self.collectionView reloadData];
+}
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    CGFloat wbOffSetH = 49.0 + 64.0;
+    if (@available(iOS 11.0, *)) {
+        wbOffSetH = self.view.safeAreaInsets.top+ self.view.safeAreaInsets.bottom;
+    } else {
+        // Fallback on earlier versions
+    }
+    NSLog(@"wbOffSetH==%f", wbOffSetH);
+    [_tableView setFrame:CGRectMake(0, 0, kSelfVB_W, kSelfVB_H-wbOffSetH)];
 }
 
 - (void)didReceiveMemoryWarning {

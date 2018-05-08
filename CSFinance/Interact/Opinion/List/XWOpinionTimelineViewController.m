@@ -372,7 +372,7 @@
         WBPictureMetadata *meta = pic.largest.badgeType == WBPictureBadgeTypeGIF ? pic.largest : pic.large;
         YYPhotoGroupItem *item = [YYPhotoGroupItem new];
         item.thumbView = imgView;
-        item.largeImageURL = meta.url;
+        item.largeImageURL = meta.url;NSLog(@"item.largeImageURL==%@", item.largeImageURL);
         item.largeImageSize = CGSizeMake(meta.width, meta.height);
         [items addObject:item];
         if (i == index) {

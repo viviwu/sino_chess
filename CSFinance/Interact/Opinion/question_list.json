@@ -321,9 +321,7 @@
                   "biz_feature" : 0,
                   "mlevel" : 0,
                   "created_at" : "Thu May 03 10:23:16 +0800 2018",
-                  "pic_ids" : [
-                               "9a099b04gw1evvzlou4tmj20yi0rsgt7"
-                               ],
+                  "pic_ids" : [],
                   "visible" : {
                   "type" : 0,
                   "list_id" : 0
@@ -526,10 +524,7 @@
                   "biz_feature" : 0,
                   "mlevel" : 0,
                   "created_at" : "Thu May 09 10:21:54 +0800 2018",
-                  "pic_ids" : [
-                               "6204ece1gw1evvzegkumsj20k069f4hm",
-                               "6204ece1gw1evvzh9bp37j20fa08yjt5"
-                               ],
+                  "pic_ids" : [],
                   "visible" : {
                   "type" : 0,
                   "list_id" : 0
@@ -1058,17 +1053,7 @@
                   "biz_feature" : 0,
                   "mlevel" : 0,
                   "created_at" : "Tue Sep 08 21:42:03 +0800 2018",
-                  "pic_ids" : [
-                               "648ac377gw1evvb5q5xw9j20k50qo7ar",
-                               "648ac377gw1evvb64986kj20ke0qo79q",
-                               "648ac377gw1evvb638ctyj20jg0qon80",
-                               "648ac377gw1evvb5p5racj20kg0p07eo",
-                               "648ac377gw1evvb61yq07j20kg0q8wqx",
-                               "648ac377gw1evvb671w2nj20kg0pugvo",
-                               "648ac377gw1evvb6917s9j20kg0qdwkm",
-                               "648ac377gw1evvb69y6z0j20kg0ox0y5",
-                               "648ac377gw1evvb6bwk53j20kg0o7q8n"
-                               ],
+                  "pic_ids" : [],
                   "visible" : {
                   "type" : 0,
                   "list_id" : 0
