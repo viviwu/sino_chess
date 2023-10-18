@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.html>.
  */
-#include "ChooseMainWindow.h"
+#include "mode_selector.h"
 
 #include <QApplication>
 #include <QMessageBox>
@@ -27,7 +27,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
-ChooseMainWindow::ChooseMainWindow(QWidget *parent) : QDialog(parent)
+ModelSelector::ModelSelector(QWidget *parent) : QDialog(parent)
 
 {
     this->setWindowTitle("选择游戏方式");
@@ -91,7 +91,7 @@ ChooseMainWindow::ChooseMainWindow(QWidget *parent) : QDialog(parent)
 
 }
 
-ChooseMainWindow::~ChooseMainWindow()
+ModelSelector::~ModelSelector()
 {
 
 }

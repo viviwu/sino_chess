@@ -51,28 +51,6 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_4">
-       <property name="maximumSize">
-        <size>
-         <width>200</width>
-         <height>200</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="chooseresource.qrc">:/images/Alipay.png</pixmap>
-       </property>
-       <property name="scaledContents">
-        <bool>true</bool>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QLabel" name="label_2">
        <property name="maximumSize">
         <size>
@@ -88,28 +66,6 @@
        </property>
        <property name="text">
         <string>支付宝</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_3">
-       <property name="maximumSize">
-        <size>
-         <width>200</width>
-         <height>200</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="chooseresource.qrc">:/images/WeChat.png</pixmap>
-       </property>
-       <property name="scaledContents">
-        <bool>true</bool>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -145,39 +101,19 @@
     <widget class="QTextBrowser" name="textBrowser">
      <property name="html">
       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'华文楷体';&quot;&gt;作者:&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'华文楷体';&quot;&gt;     &lt;/span&gt;&lt;a href=&quot;https://github.com/XMuli&quot;&gt;&lt;span style=&quot; font-family:'华文楷体'; text-decoration: underline; color:#007af4;&quot;&gt;偕臧&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'华文楷体';&quot;&gt; Copyri © 2019-2022&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'华文楷体'; text-decoration: underline; color:#007af4;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt;贡献者: &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt;    - &lt;/span&gt;&lt;a href=&quot;https://github.com/Bruce-Ch&quot;&gt;&lt;span style=&quot; font-family:'FangSong'; text-decoration: underline; color:#007af4;&quot;&gt;Bruce-Ch&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt;    - &lt;/span&gt;&lt;a href=&quot;https://github.com/BlueArvin&quot;&gt;&lt;span style=&quot; font-family:'FangSong'; text-decoration: underline; color:#007af4;&quot;&gt;BlueArvin&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt;    - &lt;/span&gt;&lt;a href=&quot;https://github.com/Ubuntuser2012&quot;&gt;&lt;span style=&quot; font-family:'FangSong'; text-decoration: underline; color:#007af4;&quot;&gt;Ubuntuser2012&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt;    - &lt;/span&gt;&lt;a href=&quot;https://github.com/kira-yamatoo&quot;&gt;&lt;span style=&quot; font-family:'FangSong'; text-decoration: underline; color:#007af4;&quot;&gt;kira-yamatoo&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt;    - &lt;/span&gt;&lt;a href=&quot;https://github.com/hmsjy2017&quot;&gt;&lt;span style=&quot; font-family:'FangSong'; text-decoration: underline; color:#007af4;&quot;&gt;hmsjy2017&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'FangSong';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'FangSong';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt;项目:&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt;    关于 &lt;/span&gt;&lt;a href=&quot;https://github.com/XMuli/chineseChess&quot;&gt;&lt;span style=&quot; font-family:'FangSong'; text-decoration: underline; color:#007af4;&quot;&gt;ChinessChess&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt; 此开源项目，兴趣之做；说明都在这里 [&lt;/span&gt;&lt;a href=&quot;https://github.com/XMuli/chineseChess/blob/master/README.zh_CN.md&quot;&gt;&lt;span style=&quot; font-family:'FangSong'; text-decoration: underline; color:#007af4;&quot;&gt;中文&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt; | &lt;/span&gt;&lt;a href=&quot;https://github.com/XMuli/chineseChess/blob/master/README.md&quot;&gt;&lt;span style=&quot; font-family:'FangSong'; text-decoration: underline; color:#007af4;&quot;&gt;English&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt;]&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'FangSong';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'FangSong';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt;其他: &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt;    对仓库  &lt;/span&gt;&lt;a href=&quot;https://github.com/XMuli/chineseChess&quot;&gt;&lt;span style=&quot; font-family:'FangSong'; text-decoration: underline; color:#007af4;&quot;&gt;ChineseChess&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt;  的 star 和 fork 才是给我的最大鼓励，其次才是一杯加冰的快乐水，&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt;​    当然欢迎任何人提交在提交 PR，帮助丰富它, 对应开发教程和源码已开源，供大家学习参考；&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt;    所有参与贡献的，亦都会留名在此。​热爱开源，热爱生命，热爱生活。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'FangSong';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'FangSong';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt;Bolg: &lt;/span&gt;&lt;a href=&quot;https://ifmet.cn&quot;&gt;&lt;span style=&quot; font-family:'FangSong'; text-decoration: underline; color:#007af4;&quot;&gt;ifmet.cn&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'FangSong'; text-decoration: underline; color:#007af4;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt;Gmail: xmulitech@gmail.com&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'FangSong'; text-decoration: underline; color:#007af4;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt;Telegram: &lt;/span&gt;&lt;a href=&quot;https://t.me/xmuli&quot;&gt;&lt;span style=&quot; font-family:'FangSong'; text-decoration: underline; color:#007af4;&quot;&gt;https://t.me/xmuli&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'FangSong';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'FangSong';&quot;&gt;GitHub: &lt;/span&gt;&lt;a href=&quot;https://github.com/XMuli&quot;&gt;&lt;span style=&quot; font-family:'FangSong'; text-decoration: underline; color:#007af4;&quot;&gt;https://github.com/XMuli&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'FangSong';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'FangSong';&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;h3 style=&quot; margin-top:5px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:160%;&quot;&gt;&lt;a name=&quot;棋盤&quot;&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'sans-serif'; font-size:large; font-weight:700; color:#000000;&quot;&gt;棋&lt;/span&gt;&lt;span style=&quot; font-family:'sans-serif'; font-size:large; font-weight:700; color:#000000;&quot;&gt;盘&lt;/span&gt;&lt;/h3&gt;
+&lt;p style=&quot; margin-top:5px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:160%;&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;象棋的棋盘由9条纵线和10条横线相交而成。棋子放在各条线的相交点上，并在线上移动。棋盘中间的一行没有画上纵线，称为“河界”，通常标上“楚河汉界”字样，象征&lt;/span&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E6%A5%9A%E6%BC%A2%E6%88%B0%E7%88%AD&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; text-decoration: underline; color:#795cb2;&quot;&gt;楚汉相争&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;时的&lt;/span&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E9%B4%BB%E6%BA%9D&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; text-decoration: underline; color:#795cb2;&quot;&gt;鸿沟&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;。据&lt;/span&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%88%98%E5%9B%BD%E6%96%8C&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; text-decoration: underline; color:#795cb2;&quot;&gt;刘国斌&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;考证古书与古棋具，棋盘写有&lt;/span&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E6%A5%9A%E6%B2%B3%E6%BC%A2%E7%95%8C&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; text-decoration: underline; color:#795cb2;&quot;&gt;楚河汉界&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;是在1920年代到1930年代之间才开始有&lt;/span&gt;&lt;a name=&quot;cite_ref-象棋人生_26-0&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E8%B1%A1%E6%A3%8B#cite_note-%E8%B1%A1%E6%A3%8B%E4%BA%BA%E7%94%9F-26&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; text-decoration: underline; color:#795cb2; vertical-align:super;&quot;&gt;[&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#795cb2; vertical-align:super;&quot;&gt;26]&lt;/span&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;。河界亦有标上“观棋不语真君子，起手无回大丈夫”字样。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:8px; margin-bottom:8px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;现行的中式记录方法是：9条纵线，红方从右到左用汉字“一”至“九”表示，黑方在自己的那一面从右到左用数字“1”至“9”表示。也就是说，红方的纵线“一”就是黑方的纵线“9”，以此类推。第四条纵线（或第6条纵线）和第六条纵线（或第4条纵线）称为“两肋”、“两肋线”，简称“肋”。棋盘上，划有斜交叉线而构成“米”字形方格的地方，双方各有一块，称为“九宫”，是将（帅）和士（仕）活动的区域。&lt;/span&gt;&lt;/p&gt;
+&lt;h3 style=&quot; margin-top:5px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:160%;&quot;&gt;&lt;a name=&quot;.E6.A3.8B.E5.AD.90&quot;&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'sans-serif'; font-size:large; font-weight:700; color:#000000;&quot;&gt;棋&lt;/span&gt;&lt;span style=&quot; font-family:'sans-serif'; font-size:large; font-weight:700; color:#000000;&quot;&gt;子&lt;/span&gt;&lt;/h3&gt;
+&lt;p style=&quot; margin-top:8px; margin-bottom:8px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;棋子的颜色分为&lt;/span&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E7%B4%85%E8%89%B2&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; text-decoration: underline; color:#795cb2;&quot;&gt;红色&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;和&lt;/span&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E9%BB%91%E8%89%B2&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; text-decoration: underline; color:#795cb2;&quot;&gt;黑色&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;（也有&lt;/span&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E7%B6%A0%E8%89%B2&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; text-decoration: underline; color:#795cb2;&quot;&gt;绿色&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;和&lt;/span&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E8%97%8D%E8%89%B2&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; text-decoration: underline; color:#795cb2;&quot;&gt;蓝色&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;代替黑色）。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:8px; margin-bottom:8px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;总共有32枚棋子&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:8px; margin-bottom:8px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;分别是一枚&lt;/span&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%B8%A5_(%E4%B8%AD%E5%9C%8B%E8%B1%A1%E6%A3%8B)&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; text-decoration: underline; color:#795cb2;&quot;&gt;將/帥&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;、2枚&lt;/span&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E4%BB%95_(%E4%B8%AD%E5%9C%8B%E8%B1%A1%E6%A3%8B)&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; text-decoration: underline; color:#795cb2;&quot;&gt;士/仕&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;、2枚&lt;/span&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E7%9B%B8_(%E4%B8%AD%E5%9C%8B%E8%B1%A1%E6%A3%8B)&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; text-decoration: underline; color:#795cb2;&quot;&gt;象/相&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;、2枚&lt;/span&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E9%A6%AC_(%E4%B8%AD%E5%9C%8B%E8%B1%A1%E6%A3%8B)&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; text-decoration: underline; color:#795cb2;&quot;&gt;馬/傌&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;、2枚&lt;/span&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E8%BB%8A_(%E4%B8%AD%E5%9C%8B%E8%B1%A1%E6%A3%8B)&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; text-decoration: underline; color:#795cb2;&quot;&gt;車/俥&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;、2枚&lt;/span&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E7%82%AE_(%E4%B8%AD%E5%9C%8B%E8%B1%A1%E6%A3%8B)&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; text-decoration: underline; color:#795cb2;&quot;&gt;砲/炮&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;、5枚&lt;/span&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%85%B5_(%E4%B8%AD%E5%9C%8B%E8%B1%A1%E6%A3%8B)&quot;&gt;&lt;span style=&quot; font-family:'sans-serif'; text-decoration: underline; color:#795cb2;&quot;&gt;卒/兵&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-family:'sans-serif'; color:#202122;&quot;&gt;。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="openExternalLinks">
       <bool>true</bool>
@@ -186,10 +122,7 @@ p, li { white-space: pre-wrap; }
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="chooseresource.qrc"/>
-  <include location="chooseresource.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>buttonBox</sender>

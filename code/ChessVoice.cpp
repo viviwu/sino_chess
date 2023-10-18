@@ -18,51 +18,48 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.html>.
  */
 #include "ChessVoice.h"
+
 #include <QDebug>
 
-ChessVoice::ChessVoice(QObject *parent) : QObject(parent)
-{
-    // 初始化声音播放器
-    sound_effect_.setVolume(1.0);
+ChessVoice::ChessVoice(QObject *parent) : QObject(parent) {
+  // 初始化声音播放器
+  sound_effect_.setVolume(0.9f);
 }
-ChessVoice:: ~ChessVoice()
-{
-    qDebug()<<__FUNCTION__ ;
+ChessVoice::~ChessVoice() { qDebug() << __FUNCTION__; }
+
+void ChessVoice::voiceWin() {
+  sound_effect_.setSource(QUrl::fromLocalFile(":/sound/WinSound.wav"));
+  //  sound_effect_.setLoopCount(-1); // 设置循环播放
+  sound_effect_.play();
+  qDebug() << __FUNCTION__;
 }
 
-void ChessVoice:: voiceWin()
-{
-    sound_effect_.setSource(QUrl(":/sound/WinSound.wav"));
-//  sound_effect_.setLoopCount(-1); // 设置循环播放
-    sound_effect_.play();
+void ChessVoice::voiceSelect() {
+  sound_effect_.setSource(QUrl::fromLocalFile(":/sound/selectChess.wav"));
+  sound_effect_.play();
+  qDebug() << __FUNCTION__;
 }
 
-void ChessVoice::voiceSelect()
-{
-    sound_effect_.setSource(QUrl(":/sound/selectChess.wav"));
-    sound_effect_.play();
+void ChessVoice::voiceMove() {
+  sound_effect_.setSource(QUrl::fromLocalFile(":/sound/moveChess.wav"));
+  sound_effect_.play();
+  qDebug() << __FUNCTION__;
 }
 
-void ChessVoice:: voiceMove()
-{
-    sound_effect_.setSource(QUrl(":/sound/moveChess.wav"));
-    sound_effect_.play();
+void ChessVoice::voiceEat() {
+  sound_effect_.setSource(QUrl::fromLocalFile(":/sound/eatChess.wav"));
+  sound_effect_.play();
+  qDebug() << __FUNCTION__;
 }
 
-void ChessVoice:: voiceEat()
-{
-    sound_effect_.setSource(QUrl(":/sound/eatChess.wav"));
-    sound_effect_.play();
+void ChessVoice::voiceBack() {
+  sound_effect_.setSource(QUrl::fromLocalFile(":/sound/backChess.wav"));
+  sound_effect_.play();
+  qDebug() << __FUNCTION__;
 }
 
-void ChessVoice:: voiceBack()
-{
-    sound_effect_.setSource(QUrl(":/sound/backChess.wav"));
-    sound_effect_.play();
-}
-
-void ChessVoice:: voiceGeneral()
-{
-    sound_effect_.setSource(QUrl(":/sound/generalSound.wav"));
-    sound_effect_.play();
+void ChessVoice::voiceGeneral() {
+  sound_effect_.setSource(QUrl::fromLocalFile(":/sound/generalSound.wav"));
+  sound_effect_.play();
+  qDebug() << __FUNCTION__;
 }

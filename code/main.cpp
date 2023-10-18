@@ -20,7 +20,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.html>.
  */
 #include <QApplication>
-#include "ChooseMainWindow.h"
+#include "mode_selector.h"
 
 /***
  *  佛曰:
@@ -45,8 +45,8 @@ int main(int argc, char *argv[])
 //    if(dlg.exec() != QDialog::Accepted)
 //        return 0;
 
-//    ChooseMainWindow wnd(dlg.m_nSelect);
-    ChooseMainWindow c;
+//    ModelSelector wnd(dlg.m_nSelect);
+    ModelSelector c;
     c.show();
 
     return a.exec();
