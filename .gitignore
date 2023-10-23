@@ -92,5 +92,5 @@ cmake-build-*/
 *.sln
 
 # macos
-*.DS_store
+**/.DS_store
 *.xcodeproj/
