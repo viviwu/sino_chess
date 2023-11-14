@@ -1,10 +1,10 @@
 ﻿/*
- * Copyright (C)  2019~2020  偕臧  All rights reserved.
+ * Copyright (C)  2019~2020  XXX  All rights reserved.
  *
- * Author:  xmuli(偕臧) xmulitech@gmail.com
  *
- * GitHub:  https://github.com/XMuli
- * Blogs:   https://ifmet.cn
+ *
+ *
+ *
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
